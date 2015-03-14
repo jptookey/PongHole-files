@@ -1,0 +1,390 @@
+/*  Possible APP colors
+#DE0202
+#0418B0
+#4F63F7
+#B0B8F7
+*/
+
+
+* {
+	border: .1em dashed pink
+	}
+html{
+	padding: 0;
+	margin: 0;
+	}
+	
+#body1{
+	background-color: #45473b;
+	padding: 0;
+	margin: 0;
+	
+	}
+
+div { 
+	border: .2em solid grey;
+	}
+
+.button1
+	{
+	height: 3.5em;
+	width: 3.5em;
+	border-radius: .5em;
+	box-shadow: .1em .1em .05em black;
+	background-color: #DB0413;
+	padding: 0 0 0 0;
+	margin-right: 0;
+
+	}
+
+#profile {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	}
+	
+
+#title {
+	display: block;
+	top: 0;
+	margin: 0 auto;
+	width: 65%;
+	height: 1.6em;
+	padding-top: 0;
+	border: .1em solid black;
+	text-align: center;
+	font-size:200%;
+	background-color: #DB0413;
+	font-weight: bold;
+	color: #5656E8;
+	text-shadow: .1em .1em .1em  #1C1CBD;
+	font-family: sans-serif;
+	line-height: 1.6em;
+	
+	}
+
+.buttonpics1 {
+	height: 3.5em;
+	width: 3.5em;
+	border: none;
+	}
+	
+
+#options{
+	display: inline-block;
+	margin-right: 0;
+	right: 0;
+	position: absolute;
+	top: 0;
+	
+	}
+a {
+border: none;
+}
+#stats {
+	display: inline-block;
+	margin-right: 0;
+	right: 0;
+	top: 4.5em;
+	position: absolute;
+}
+
+.par1	{
+	color: #5656E8;
+	text-shadow: .07em .07em .05em  black; /*#1C1CBD;*/
+	font-weight: bold;
+	}
+	
+#bigbox {
+	border-radius: .5em;
+	box-shadow: .1em .1em .05em black;
+	height: 16em;
+	width: 16em;
+	display: block;
+	margin: 0 auto;
+	background-color:#DB0413;
+	padding-top: 0;
+	
+	}
+
+#play {
+	display: block;
+	height: 15.5em;
+	width: 14em;
+	border: none;
+	margin: 0 auto;
+	margin-top: 1.5em;
+	}
+	
+.button2 {
+	display: inline-block;
+	height: 3.5em;
+	width: 9em;
+	border-radius: .5em;
+	box-shadow: .1em .1em .05em black;
+	background-color: #DB0413;
+	padding: .02em;
+	margin-right: 0;
+	margin-top: 1em;
+}
+
+#notifications{
+	display: inline-block;
+	margin: 1em;
+	margin-right:0;
+	margin-left: auto;
+	float: right;
+	}
+	
+#notifications1 {
+	display: block;
+	height: 3.2em;
+	width: 5.5em;
+	margin:0 auto;
+	border: none;
+	}
+	
+#tourney1 {
+	height: 3em;
+	width: 7em;
+	border: none;
+	margin:0 auto;
+	margin-top: .25em;
+	margin-bottom: auto;
+	display: block;
+	}
+	
+.playbutton {
+	display: block;
+	margin: 0 auto;
+	height: 14em;
+	width: 14em;
+	border-radius: .5em;
+	box-shadow: .1em .1em .05em black;
+	background-color: #DB0413;
+	padding: 0 0 0 0;
+	margin-top: 1.5em;
+		}
+	
+	
+#beerpongpic {
+	height: 12em;
+	width: 12em;
+	display: block;
+	margin:  auto;
+	border: none;
+	padding-top: 1em;
+	}
+	
+#cornholepic {
+	height: 12em;
+	width: 12em;
+	display: block;
+	margin:  auto;
+	border: none;
+	padding-top: 1em;
+	}	
+
+.highlighted {
+    width: 7em;
+    height: 5em;
+    border: .5em solid #DB0413;
+    box-shadow: .5em .5em 1em grey;
+}
+/*TODO add CSS for a hidden button on the simple*/
+.hidden{
+    display: none;
+}
+#gameChoicePong{
+	margin-left: 25%;
+	margin-right: auto;
+     width: 7em;
+     height: 5em;
+     border: .5em solid #DB0413;
+     box-shadow: .5em .5em 1em grey;
+     background-color: #5656E8;
+	background-image: url(./Resources/pong2.jpg);
+	background-size: 7em 5em;
+	background-position: center;
+	background-repeat: no-repeat;
+
+     /*background-image: url(pong2.jpg);*/
+ }
+
+#gameChoiceHole{
+	margin-left: 25%;
+	margin-right: auto;
+	width: 7em;
+	height: 5em;
+	border: .5em solid #DB0413;
+	box-shadow: .5em .5em 1em grey;
+	background-color: #5656E8;
+	background-image: url(http://zieglerworld.com/images/cornhole-bags.jpg);
+	background-size: 7em 5em;
+	background-position: center;
+	background-repeat: no-repeat;
+	/*background-image: url(pong2.jpg);*/
+}
+
+#onePlay{
+    margin-left: 25%;
+    margin-right: auto;
+	width: 7em;
+	height: 5em;
+	border: .5em solid #DB0413;
+	box-shadow: .5em .5em 1em grey;
+	background-color: #5656E8;
+	background-image: url(https://lh3.googleusercontent.com/-QILYa8CR_2Q/AAAAAAAAAAI/AAAAAAAAAAA/M5Hvpbxp-4g/photo.jpg);
+    background-size: 7em 5em;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#twoPlay{
+    margin-left: 25%;
+    margin-right: auto;
+    width: 7em;
+    height: 5em;
+    border: .5em solid #DB0413;
+    box-shadow: .5em .5em 1em grey;
+    background-color: #5656E8;
+    background-image: url(./Resources/twoplayer.png);
+    background-size: 7em 5em;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#onePlayOpp{
+
+}
+
+#twoPlayOpp{
+
+}
+/*
+	
+	
+#img1{
+		height:3.8em;
+		width: 3.8em;
+		margin-top: -10%;
+		}
+	
+body {
+		margin: 0;
+		padding: 0;
+}
+html {
+background-color: white;
+border: .25em solid #black;
+}
+#title {
+	height: 4em;
+	width: 20em;
+	display: inline;
+	top: 0;
+	float: center;
+	}
+
+h2 {
+	font-size: 3em;
+	color: #DE0202;
+	position: absolute;
+	top: 0;
+	margin-top: 0%;
+	margin-left: 40%;
+	margin-right: auto;
+	display: inline;
+	}
+
+div {
+	background-color: #0418B0;
+	border: .25em solid #DE0202;
+	border-radius: 2em;
+	box-shadow: .25em .25em .125em orange;
+	}
+	
+.button1 {
+	border-radius: .25em;
+	height: 3em;
+	width: 3em;
+	}
+
+#profile {
+	display:inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	}
+
+#options {
+	display: inline-block;
+	position: absolute;
+	margin-top: 0;
+	top: 0;
+	right: 0;
+	padding-top: 0%;
+	}
+.innerbox {
+	z-index: 1
+	
+	}
+
+#bigbox  {
+	width: 25%;
+	height: 25%;
+	background-color: green;
+	margin-left: auto;
+	margin-right: auto;
+	
+	}
+
+#optionbut {
+		width: 3.6em;
+		height: 3.6em;
+		
+		}
+	
+.button2 {
+	width:23em;
+	height: 4em;
+	margin-left: 20%;
+	display: inline-block;
+	margin-top: 1em;
+	
+	}
+	*/
+	
+	/*
+#tourney {
+	display: inline-block;
+	}
+	
+#notifications {
+	margin-right: 20%;
+	}
+	*/
+	/*
+p {
+	color:white;
+	clear: left;
+	padding: 0;
+	margin-top: 3%;
+	}
+.par2 {
+	margin-top:3%;
+	
+/*
+
+/*
+#title2{
+	padding-bottom: 0;
+	padding-top: 0;
+	color: orange;
+	text-align: center;
+	font-size: 200%;
+
+	}
+*/	
