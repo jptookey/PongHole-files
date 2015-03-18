@@ -31,6 +31,7 @@ $(document).delegate('#opendialog', 'click', function() {
     start();
     $('<div>').simpledialog2({
         // themeDialog: 'a',
+        //TODO ASAP - Change this dialog to free mode, add a big holding div, and then two button divs with the gameChoicePong IDs
         mode: 'button',
         buttonPrompt: 'Please Choose a Game...',
         headerText: false,
