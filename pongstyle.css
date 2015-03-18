@@ -22,15 +22,28 @@ html{
 	}
 
 div { 
-	border: .2em solid grey;
+
 	}
+
+.border1 {
+    border: .2em solid grey;
+    border-radius: .5em;
+    box-shadow: .1em .1em .05em black;
+}
+
+.text1 {
+    font-weight: bold;
+    color: #5656E8;
+    text-shadow: .1em .1em .1em  #1C1CBD;
+    font-family: sans-serif;
+}
 
 .button1
 	{
 	height: 3.5em;
 	width: 3.5em;
-	border-radius: .5em;
-	box-shadow: .1em .1em .05em black;
+
+/*	box-shadow: .1em .1em .05em black; */
 	background-color: #DB0413;
 	padding: 0 0 0 0;
 	margin-right: 0;
@@ -53,14 +66,17 @@ div {
 	width: 65%;
 	height: 1.6em;
 	padding-top: 0;
-	border: .1em solid black;
+   border: .1em solid grey;
+    border-radius: .25em;
+    box-shadow: .05em .05em .025em black;
 	text-align: center;
 	font-size:200%;
+
 	background-color: #DB0413;
-	font-weight: bold;
+/*	font-weight: bold;
 	color: #5656E8;
 	text-shadow: .1em .1em .1em  #1C1CBD;
-	font-family: sans-serif;
+	font-family: sans-serif; */
 	line-height: 1.6em;
 	
 	}
@@ -92,14 +108,14 @@ border: none;
 }
 
 .par1	{
-	color: #5656E8;
-	text-shadow: .07em .07em .05em  black; /*#1C1CBD;*/
-	font-weight: bold;
+/*	color: #5656E8; */
+/*	text-shadow: .07em .07em .05em  black; /*#1C1CBD;*/
+/*	font-weight: bold; */
 	}
 	
 #bigbox {
-	border-radius: .5em;
-	box-shadow: .1em .1em .05em black;
+/*	border-radius: .5em;
+	box-shadow: .1em .1em .05em black; */
 	height: 16em;
 	width: 16em;
 	display: block;
@@ -111,7 +127,7 @@ border: none;
 
 #play {
 	display: block;
-	height: 15.5em;
+	height: 14em;
 	width: 14em;
 	border: none;
 	margin: 0 auto;
@@ -122,8 +138,8 @@ border: none;
 	display: inline-block;
 	height: 3.5em;
 	width: 9em;
-	border-radius: .5em;
-	box-shadow: .1em .1em .05em black;
+/*	border-radius: .5em;
+	box-shadow: .1em .1em .05em black; */
 	background-color: #DB0413;
 	padding: .02em;
 	margin-right: 0;
@@ -161,8 +177,8 @@ border: none;
 	margin: 0 auto;
 	height: 14em;
 	width: 14em;
-	border-radius: .5em;
-	box-shadow: .1em .1em .05em black;
+/*	border-radius: .5em;
+	box-shadow: .1em .1em .05em black; */
 	background-color: #DB0413;
 	padding: 0 0 0 0;
 	margin-top: 1.5em;
@@ -387,4 +403,16 @@ p {
 	font-size: 200%;
 
 	}
-*/	
+*/
+
+#testdiv1 {
+    width: 100%;
+    height: 100%;
+    background-color: purple;
+}
+
+#testdiv2 {
+    width: 5em;
+    height: 5em;
+    background-color: green;
+}
