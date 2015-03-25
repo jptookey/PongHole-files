@@ -40,7 +40,7 @@ $(document).delegate('#opendialog', 'click', function() {
         forceFullScreen: true,
         buttons: {
             '': {
-                id: 'gameChoicePong',
+                id: 'gameChoicePongDiag',
                 click: function () {
                     //update the gameType attribute
                     game1.gameType = 1001;
@@ -54,7 +54,7 @@ $(document).delegate('#opendialog', 'click', function() {
                 }
             },
             ' ': {
-                id: 'gameChoiceHole',
+                id: 'gameChoiceHoleDiag',
                 click: function () {
                     //update the gameType attribute
                     game1.gameType = 1002;
@@ -333,7 +333,7 @@ function emailop1() {
           });
       }
     }
-    console.log(teamemail);
+  //  console.log(teamemail);
 }
 function scores() {
     console.log(teamemail+'HELLO'+oppemail);
@@ -350,14 +350,14 @@ function scores() {
 
 //TODO capture blank content in a variable, then use the variables to cut down on code and use a single dialog box to run all of the inputs
 function emailop2() {
-    $.mobile.sdCurrentDialog.close()
-    if (color == 'purple') {
+    $.mobile.sdCurrentDialog.close();
+ /*   if (color == 'purple') {
         var divtest = '<div id=testdiv1>Hello';
         var divtest2 = '</div>'
     } else if (color == 'green') {
         var divtest = '"<div id=testdiv2>World</div>"';
     }
-    console.log(divtest)
+    console.log(divtest)     */
     //  $(document).delegate('#opendialog', 'click', function () {
 
     // NOTE: The selector can be whatever you like, so long as it is an HTML element.
@@ -367,13 +367,20 @@ function emailop2() {
         mode: 'blank',
         headerText: false,
         headerClose: false,
-        blankContent: "<input id='emailop1id'/>" +
-        divtest +
-        "<input id='emailop2id'/>" +
+       // dialogAllow: true,
+       // dialogForce: true,
+        blankContent:
+                "<div class='border1 dialogCont'>"+
+                "<div class='border1 text1 diagHeader'><span class='middle'>CHOOSE A GAME</span></div>" +
+                "<a onclick='emailop1()' class='border1' id='gameChoicePongDiag' data-role='button' rel='close'></button>"+
+                "<a onclick='emailentry2()' class='border1' data-role='button' id ='gameChoiceHoleDiag' rel='close'></a>" +
+                "</div>"
+       // divtest +
+       // "<input id='emailop2id'/></div>" +
 
             // NOTE: the use of rel="close" causes this button to close the dialog.
-        "<a onclick='function1()' data-role='button' rel='close' href='#'>Submit</a>" +
-        divtest2
+      //  "<a onclick='function1()' data-role='button' rel='close' href='#'>Submit</a>" +
+      //  divtest2
     });
 }
 
