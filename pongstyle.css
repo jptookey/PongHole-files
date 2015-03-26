@@ -57,7 +57,7 @@ div {
 	left: 0;
 	
 	}
-	
+
 
 #title {
 	display: block;
@@ -217,7 +217,7 @@ border: none;
 	margin-left: 25%;
 	margin-right: auto;
      width: 7em;
-     height: 5em;
+     height: 7em;
      border: .5em solid #DB0413;
      box-shadow: .5em .5em 1em grey;
      background-color: #5656E8;
@@ -233,52 +233,125 @@ border: none;
 	margin-left: 25%;
 	margin-right: auto;
 	width: 7em;
-	height: 5em;
+	height: 7em;
 	border: .5em solid #DB0413;
 	box-shadow: .5em .5em 1em grey;
 	background-color: #5656E8;
 	background-image: url(http://zieglerworld.com/images/cornhole-bags.jpg);
-	background-size: 7em 5em;
+	background-size: 7em 7em;
 	background-position: center;
 	background-repeat: no-repeat;
 	/*background-image: url(pong2.jpg);*/
 }
 
-#onePlay{
+#onePlay {
     margin-left: 25%;
     margin-right: auto;
-	width: 7em;
-	height: 5em;
-	border: .5em solid #DB0413;
-	box-shadow: .5em .5em 1em grey;
-	background-color: #5656E8;
-	background-image: url(https://lh3.googleusercontent.com/-QILYa8CR_2Q/AAAAAAAAAAI/AAAAAAAAAAA/M5Hvpbxp-4g/photo.jpg);
-    background-size: 7em 5em;
+    width: 50%;
+    height: 0;
+    padding-bottom: 50%;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    background-image: url(https://lh3.googleusercontent.com/-QILYa8CR_2Q/AAAAAAAAAAI/AAAAAAAAAAA/M5Hvpbxp-4g/photo.jpg);
 }
 
 #twoPlay{
     margin-left: 25%;
     margin-right: auto;
-    width: 7em;
-    height: 5em;
-    border: .5em solid #DB0413;
-    box-shadow: .5em .5em 1em grey;
-    background-color: #5656E8;
-    background-image: url(./Resources/twoplayer.png);
-    background-size: 7em 5em;
+    width: 50%;
+    height: 0;
+    padding-bottom: 50%;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    background-image: url(./Resources/twoplayer.png);
 }
 
-#onePlayOpp{
+.diagHeader{
+    height: 2em;
+    padding-top: 0;
+    margin-left: 0;
+    width: 100%;
+    background-color: #DB0413;
+    text-align: center;
+    padding-left: 0;
+    border-bottom-width: .1em;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#diagHeadLarge {
+    height: 4em;
+}
+
+.dialogCont {
+    height: 100%;
+    width: 100%;
+    background-color: #45473b;
+ }
+
+#gameChoicePongDiag{
+    margin-left: 25%;
+    margin-right: auto;
+    width: 50%;
+    height: 0;
+    padding-bottom: 50%;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./Resources/pong2.jpg);
+}
+
+.middle {
+    position: relative;
+    top: 25%;
+    transform: translateY(-50%);
+    border: none;
+}
+
+#gameChoiceHoleDiag {
+    margin-left: 25%;
+    margin-right: auto;
+    width: 50%;
+    height: 0;
+    padding-bottom: 50%;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(http://zieglerworld.com/images/cornhole-bags.jpg);
+}
+
+#nextButton {
+    height: 5em;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: auto;
+    background-color: #DB0413;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./Resources/next.ico);
+}
+
+.inputs {
+    background-color: #DB0413;
+}
+
+.diagButton {
+    margin-left: 25%;
+    margin-right: auto;
+    width: 50%;
+    height: 0;
+    padding-bottom: 50%;
+    background-color: #DB0413;
 
 }
 
-#twoPlayOpp{
+/*background-image: url(pong2.jpg);*/
 
-}
 /*
 	
 	
@@ -405,14 +478,4 @@ p {
 	}
 */
 
-#testdiv1 {
-    width: 100%;
-    height: 100%;
-    background-color: purple;
-}
 
-#testdiv2 {
-    width: 5em;
-    height: 5em;
-    background-color: green;
-}
