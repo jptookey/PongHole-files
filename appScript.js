@@ -17,384 +17,252 @@ function Game(gameType, homePlayers, homePlayerEmail, awayPlayers, awayPlayerEma
 
 //build function in scope?  Nope...won't be recognized in other functions...need to build the new function here
 function start() {
-    game1 = new Game();
+  game1 = new Game();
 }
 var color = 'black';
 var teamFlag = 0;
 var oppFlag = 0;
 var playerName = '';
-var teammateemail = 0;
-// TODO 3) Build SimpleDialog2 Function on the play button
+//var teammateemail = 0;
+
 
 $(document).delegate('#opendialog', 'click', function() {
     //initialize the game object
     start();
-    $('<div>').simpledialog2({
-        // themeDialog: 'a',
-        //TODO ASAP - Change this dialog to free mode, add a big holding div, and then two button divs with the gameChoicePong IDs
-        mode: 'button',
-        buttonPrompt: 'Please Choose a Game...',
-        headerText: false,
-        headerClose: false,
-        fullScreen: true,
-        forceFullScreen: true,
-        buttons: {
-            '': {
-                id: 'gameChoicePongDiag',
-                click: function () {
-                    //update the gameType attribute
-                    game1.gameType = 1001;
-                    teamFlag = 1;
-                    var self = this;
-                    //goto choseplayers function and close this instance of a dialog pop
-                    //      choosePlayers();
-                    color = 'purple';
-                    emailop2();
-                     self.close();
-                }
-            },
-            ' ': {
-                id: 'gameChoiceHoleDiag',
-                click: function () {
-                    //update the gameType attribute
-                    game1.gameType = 1002;
-                    var self = this;
-                    teamFlag = 1;
-                    color = 'green';
-                    emailop2();
-                    // choosePlayers();
-                      self.close();
-                }
-
-            }
-        }
-    });
+    gameChoice();
 });
-/*
-   $('<div>').simpledialog2({
-       // themeDialog: 'a',
-        mode: 'button',
-        buttonPrompt: 'Please Choose a Game...',
+
+function gameChoice() {
+    $('<div>').simpledialog2({
+        mode: 'blank',
+        top: 1,
         headerText: false,
         headerClose: false,
-        fullScreen: true,
-        forceFullScreen: true,
-        buttons: {
-            '': {
-                id: 'gameChoicePong',
-                click: function () {
-             //update the gameType attribute
-                    game1.gameType = 1001;
-                    teamFlag = 1;
-                    var self = this;
-             //goto choseplayers function and close this instance of a dialog pop
-              //      choosePlayers();
-                    color = 'purple';
-                   emailop2();
-                   // self.close();
-                }
-            },
-            ' ': {
-                id: 'gameChoiceHole',
-                click: function () {
-                    //update the gameType attribute
-                    game1.gameType = 1002;
-                    var self = this;
-                    teamFlag = 1;
-                    color = 'green';
-                    emailop2();
-                   // choosePlayers();
-                  //  self.close();
-                }
+        // dialogAllow: true,
+        // dialogForce: true,
+        blankContent:
+        "<div class='border1 dialogCont'>"+
+        "<div class='text1 diagHeader'><span class='middle'>CHOOSE A GAME</span></div>" +
+        "<a onclick='pongGame()' class='diagButton border1' id='gameChoicePongDiag' data-role='button' rel='close'></a>"+
+        "<a onclick='holeGame()' class='diagButton border1' id ='gameChoiceHoleDiag' data-role='button' rel='close'></a>" +
+        "</div>"
+        // divtest +
+        // "<input id='emailop2id'/></div>" +
 
-            }
-        }
+        // NOTE: the use of rel="close" causes this button to close the dialog.
+        //  "<a onclick='function1()' data-role='button' rel='close' href='#'>Submit</a>" +
+        //  divtest2
     });
-}); */
+}
+
+
+function pongGame() {
+    game1.gameType = '1001';
+    teamFlag = 1;
+    choosePlayers()
+}
+
+function holeGame() {
+    game1.gameType = '1002';
+    teamFlag = 1;
+    choosePlayers()
+}
+
 //JUST FYI, you can chain the dialog boxes together.  Just make different functions for each dialog box,
 function choosePlayers() {
     if (teamFlag === 1){
-      var  prompt = 'YOUR'
+      var  prompt = 'YOUR';
+        var playerButton1 = "<a onclick='oneTeam()' class='border1 diagButton' id='onePlay' data-role='button' rel='close'></a>";
+        var playerButton2 = "<a onclick='twoTeam()' class='border1 diagButton' id='twoPlay' data-role='button' rel='close'></a>";
+        teamFlag = 2;
     } else if (teamFlag === 2) {
-        prompt = 'OPPONENT\'S'
+        prompt = 'OPPONENT\'S';
+        playerButton1 = "<a onclick='oneOpp()' class='border1 diagButton' id='onePlay' data-role='button' rel='close'></a>";
+        playerButton2 = "<a onclick='twoOpp()' class='border1 diagButton' id='twoPlay' data-role='button' rel='close'></a>";
+        teamFlag = 3;
     }
 
-    console.log(teamFlag);
+   // console.log(teamFlag);
    // console.log(game1.gameType);
     $('<div>').simpledialog2({
-        mode: 'button',
+        mode: 'blank',
+        top: 1,
         headerText: false,
         headerClose: false,
-        fullScreen: true,
-        forceFullScreen: true,
-        buttonPrompt: 'Please Choose One or Two Players on '+prompt+' Team',
-        buttons: {
-            '': {
-                id: 'onePlay',
-                click: function () {
-                    game1.homePlayers = 1;
-                    var self = this;
-                    teamFlag = 2;
-                    choosePlayers();
-                    self.close();
-                }
-            },
-             ' ': {
-                 id: 'twoPlay',
-                 click: function () {
-                     game1.homePlayers = 2;
-                        teamFlag = 1;
-                     var self = this;
-                     emailentry();
-                     self.close();
-                    }
-
-            }
-        }
+        // dialogAllow: true,
+        // dialogForce: true,
+        blankContent:
+        "<div class='border1 dialogCont'>"+
+        "<div class='text1 diagHeader'><span class='middle'>"+
+        "PLAYERS  ON "+ prompt + " TEAM" + "</span></div>" +
+        playerButton1 +
+        playerButton2 +
+            "</div>"
     });
 }
-/*
-function opponents() {
-    console.log(game1.homePlayers);
-    console.log(game1.gameType);
-    $('<div>').simpledialog2({
-        mode: 'button',
-        headerText: false,
-        headerClose: false,
-        fullScreen: true,
-        forceFullScreen: true,
-        buttonPrompt: 'Please Choose One or Two Players on OPPOSING Team',
-        buttons: {
-            'One': {
-                id: 'onePlay',
-                click: function () {
-                    game1.awayPlayers = 1;
-                    teamFlag = 2;
-                    var self = this;
-                    emailentry();
-                    self.close();
-                }
-            },
-            'Two': {
-                id: 'twoPlay',
-                click: function () {
-                    game1.awayPlayers = 2;
-                    teamFlag = 2;
-                    var self = this;
-                    emailentry2();
-                    self.close();
-                }
 
-            }
-        }
-    });
+function oneTeam() {
+    game1.homePlayers = 1;
+    choosePlayers();
 }
-*/
-//TODO: Re-figure out how to close an free-form Simple Dialog.  And figure out how to close a Button dialog.
 
+function twoTeam() {
+    game1.homePlayers = 2;
+    emailentry();
+}
 
+function oneOpp() {
+    game1.awayPlayers = 1;
+    emailentry();
+}
 
+function twoOpp() {
+    game1.awayPlayers = 2;
+    emailentry()
+}
 
-
-//TODO: Figure out how to make the email entry dialog box work...most likely a blank dialog box
 function emailentry() {
-    if (teamFlag === 1) {
-       // teammateemail = 3;
-        playerName = 'Jack';
-        console.log(teammateemail);
+    if (teamFlag === 2) {
+        var prompt = "Please enter in your Teammate\'s email and hit next";
+        var input1 = "<input class='border1' id='emailTeam' value='Teammate Email'/input>";
+        var input2 = "";
+    } else if (teamFlag === 3 && game1.awayPlayers === 1) {
+        prompt = "Please enter in the Opponent's email and hit next";
+        input1 = "<input class='border1' id='emailOpp1' value='Opponent Email'/input>";
+        input2 = "";
+    } else if (teamFlag === 3 && game1.awayPlayers === 2) {
+        prompt = "Please enter in the Opponents' email and hit next";
+        input1 = "<input class='border1' id='emailOpp1' value='Opponent 1 Email'/input>";
+        input2 = "<input class='border1' id='emailOpp2' value='Opponent 2 Email'/input>";
+    }
+
+
         $('<div>').simpledialog2({
-            mode: 'button',
+            mode: 'blank',
+            top: 1,
             headerText: false,
             headerClose: false,
-            fullScreen: true,
-            forceFullScreen: true,
-            buttonPrompt: 'What is ' + playerName + '\'s email address?',
-            buttonInput: true,
-            buttons: {
-                'One': {
-                    id: 'teamemail',
-                    click: function () {
-                        //Step one, assign variable self to this
-                        var self = this;
-                        opplayers = 1;
-                        teamemail = self.thisInput;
-                        console.log(teamemail);
-                        teamFlag = 2;
-                        pathtest();
-                       // emailop1();
-                        //Step two:Here is how to close one dialog box and open another.  Remember to assign things to self
-                        self.close();
-                    }
-                }
-            }
+            // dialogAllow: true,
+            // dialogForce: true,
+            blankContent:
+            "<div class='border1 dialogCont'>"+
+            "<div class='text1 diagHeader' id='diagHeadLarge'><span class='middle'>"+
+            prompt + "</span></div>" +
+            input1 +
+            input2 +
+                "<a onclick='emailChoice()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>"+
+            "</div>"
         });
-    }
-}
-function pathtest() {
-    if (teammateemail === 3) {
-        choosePlayers();
-    } else {
-        teamFlag = 2;
-        choosePlayers();
-    }
 }
 
-//TODO: create an email entry for the 2 opponents
-function emailentry2() {
-    var teammateemail = 1;
-        $('<div>').simpledialog2({
-            mode: 'button',
-            headerText: false,
-            headerClose: false,
-            fullScreen: true,
-            forceFullScreen: true,
-            buttonPrompt: 'What is '+ playerName +'\'s address?',
-            buttonInput: true,
-            buttons: {
-                'Submit': {
-                    id: 'teamemail',
-                    click: function () {
-                        //Step one, assign variable self to this
-                        var self = this;
-                        opplayers = 1;
-                        teamemail = self.thisInput;
-                        console.log(teamemail);
-                        emailop1();
-                        //Step two:Here is how to close one dialog box and open another.  Remember to assign things to self
-                        self.close();
-                    }
-                }
-            }
-        });
-    }
 
-function emailop1() {
+function emailChoice() {
+    if (teamFlag === 2) {
+        game1.homePlayerEmail = document.getElementById('emailTeam').value;
+     //  $.mobile.sdCurrentDialog.close();
+        choosePlayers()
 
-    //going to try to add in an if statement to pull the correct box...one vs. two email addresses
-    if (game1.awayPlayers === 1){
-        $('<div>').simpledialog2({
-            mode: 'button',
-            headerText: false,
-            headerClose: false,
-            fullScreen: true,
-            forceFullScreen: true,
-            buttonPrompt: 'What is '+ playerName +'\'s address?',
-            buttonInput: true,
-            buttons: {
-                'One': {
-                    id: 'opponentemail',
-                    click: function () {
-                        //Step one, assign variable self to this
-                        var self = this;
-                        oppemail = self.thisInput;
-                        console.log(oppemail);
-                        scores();
-                        //Step two:Here is how to close one dialog box and open another.  Remember to assign things to self
-                        self.close();
-                    }
-                }
-            }
-        });
-      if(game1.awayPlayers === 2)  {
-          $('<div>').simpledialog2({
-              mode: 'button',
-              headerText: false,
-              headerClose: false,
-              fullScreen: true,
-              forceFullScreen: true,
-              buttonPrompt: 'What is '+ playerName +'\'s address?',
-              buttonInput: true,
-              buttons: {
-                  'One': {
-                      id: 'Opponent1',
-                      click: function () {
-                          //Step one, assign variable self to this
-                          var self = this;
-                          opplayers = 1;
-                          oppemail = self.thisInput;
-                          console.log(oppemail);
-                          scores();
-                          //Step two:Here is how to close one dialog box and open another.  Remember to assign things to self
-                          self.close();
-                      }
-                  },
-                  'Two': {
-                      id: 'Opponent2',
-                      click: function () {
-                          var self = this;
-                          opplayers = 2;
-                          oppemail2 = self.thisInput;
-                          console.log(oppemail2);
-                          scores();
-                          self.close();
-                      }
-                  }
-              }
-          });
-      }
+    } else if (teamFlag === 3 && game1.awayPlayers === 1) {
+        game1.awayPlayerEmail1 = document.getElementById('emailOpp1').value;
+     //   $.mobile.sdCurrentDialog.close();
+        scoreEntry()
+
+    } else if (teamFlag === 3 && game1.awayPlayers === 2) {
+        game1.awayPlayerEmail1 = document.getElementById('emailOpp1').value;
+        game1.awayPlayerEmail2 = document.getElementById('emailOpp2').value;
+     //   $.mobile.sdCurrentDialog.close();
+        scoreEntry()
     }
-  //  console.log(teamemail);
 }
-function scores() {
-    console.log(teamemail+'HELLO'+oppemail);
-};
 
-//TODO function emailteam, emailop1, emailop2 -- Need  either 3 different dialogs, or dynamic dialogs...see if you can do a dynamic dialog
-//TODO figure out icons and themes
-
-//TODO Figure out how to use the freeform mode that follows.  Make sure that you can close it, and make sure that you can get the element
-
-
-//The following is an illustration on how to use an blank form simple dialog to capture input values.
-//TODO Next step for this is to capture AND validate input values, which I imagine can be done through regex validation
-
-//TODO capture blank content in a variable, then use the variables to cut down on code and use a single dialog box to run all of the inputs
-function emailop2() {
-    $.mobile.sdCurrentDialog.close();
- /*   if (color == 'purple') {
-        var divtest = '<div id=testdiv1>Hello';
-        var divtest2 = '</div>'
-    } else if (color == 'green') {
-        var divtest = '"<div id=testdiv2>World</div>"';
+function scoreEntry() {
+    if (game1.gameType == '1001') {
+        var scoreHint = "<p class='text1'>Scores in Pong are the number of cups each team sinks</p>";
+    } else if (game1.gameType == '1002') {
+        scoreHint = "";
     }
-    console.log(divtest)     */
-    //  $(document).delegate('#opendialog', 'click', function () {
-
-    // NOTE: The selector can be whatever you like, so long as it is an HTML element.
-    //       If you prefer, it can be a member of the current page, or an anonymous div
-    //       like shown.
     $('<div>').simpledialog2({
         mode: 'blank',
+        top: 1,
         headerText: false,
         headerClose: false,
-       // dialogAllow: true,
-       // dialogForce: true,
-        blankContent:
-                "<div class='border1 dialogCont'>"+
-                "<div class='border1 text1 diagHeader'><span class='middle'>CHOOSE A GAME</span></div>" +
-                "<a onclick='emailop1()' class='border1' id='gameChoicePongDiag' data-role='button' rel='close'></button>"+
-                "<a onclick='emailentry2()' class='border1' data-role='button' id ='gameChoiceHoleDiag' rel='close'></a>" +
-                "</div>"
-       // divtest +
-       // "<input id='emailop2id'/></div>" +
+        // dialogAllow: true,
+        // dialogForce: true,
+        blankContent: "<div class='border1 dialogCont'>" +
+        "<div class='text1 diagHeader' id='diagHeadLarge'><span class='middle'>Please enter the scores of both teams and hit next</span></div>" +
+            scoreHint+
+        "<input class='border1 text1' id='homeScore' value='Your Score'/input>" +
+        "<input class='border1 text1' id='awayScore' value='Opponent Score'/input>" +
+        "<a onclick='submitScore()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>"
+    });
 
-            // NOTE: the use of rel="close" causes this button to close the dialog.
-      //  "<a onclick='function1()' data-role='button' rel='close' href='#'>Submit</a>" +
-      //  divtest2
+}
+
+function submitScore() {
+    game1.homeScore = document.getElementById('homeScore').value;
+    game1.awayScore = document.getElementById('awayScore').value;
+    //TODO Add a way to JSON.Stringify the object and send it to a database
+    var JACK1 = JSON.stringify(game1);
+    console.log(JACK1);
+    nextGame()
+}
+
+function nextGame() {
+    if (game1.homeScore > game1.awayScore) {
+        var gameMessage = "<p class='text1'>Congratulation!! Want to continue dominating?</p>";
+    } else if (game1.homeScore < game1.awayScore) {
+        gameMessage = "<p class='text1'>Too bad! Another game to prove your worth?</p>";
+    } else if (game1.homeScore == game1.awayScore) {
+        gameMessage = "<p class='text1'>A Tie! Sounds like you need a rematch!</p>";
+    }
+    $('<div>').simpledialog2({
+        mode: 'blank',
+        top: 1,
+        headerText: false,
+        headerClose: false,
+        // dialogAllow: true,
+        // dialogForce: true,
+        blankContent: "<div class='border1 dialogCont'>" +
+        gameMessage +
+        "<a onclick='rematch()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>" +
+        "<a onclick='newGame()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>" +
+        "<a onclick='done()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>"
     });
 }
 
-function function1() {
-    var testes = document.getElementById('emailop2id').value;
-    //  console.log(document.getElementById('emailop2id').value);
-    console.log(testes)
-    $.mobile.sdCurrentDialog.close();
-   // $(document).trigger('simpledialog', {'method':'close'});
+function rematch() {
+    //TODO come up with a way to generate a unique game number
+    game1.homeScore = '';
+    game1.awayScore = '';
+    scoreEntry()
 }
 
-//Here's the close...just need to add it to whatever function stores the email addresses
- //$.mobile.sdCurrentDialog.close();
+function newGame() {
+    game1.awayPlayerEmail1 = '';
+    game1.awayPlayerEmail2 = '';
+    game1.homeScore = '';
+    game1.awayScore = '';
+    game1.gameType = '';
+    teamFlag = 0;
+    game1.awayPlayers = '';
+    game1.homePlayers = '';
+    game1.homePlayerEmail = '';
+    gameChoice();
+}
 
+function done () {
+    console.log('We are done')
+}
+
+
+
+
+
+//TODO figure out icons and themes
+
+//TODO Next step for this is to capture AND validate input values, which I imagine can be done through regex validation
+
+ //   $.mobile.sdCurrentDialog.close();
 
 
 // TODO 4) Build SimpleDialog HTML box for the game selection
