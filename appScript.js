@@ -1,15 +1,53 @@
 
 // TODO 1) Build an object constructor to handle input
 
-function Game(gameType, homePlayers, homePlayerEmail, awayPlayers, awayPlayerEmail1, awayPlayerEmail2, homeScore, awayScore){
-    this.gameType = gameType;
-    this.homePlayers = homePlayers;
-    this.homePlayerEmail = homePlayerEmail;
-    this.awayPlayers = awayPlayers;
-    this.awayPlayerEmail1 = awayPlayerEmail1;
-    this.awayPlayerEmail2 = awayPlayerEmail2;
-    this.homeScore = homeScore;
-    this.awayScore = awayScore;
+// TODO Build an onload event that creates a logon function that checks local storage and if a variable exists, skips the pop-up and goes directly to the landing page,
+// TODO Add to the initialization routine a couple of AJAX calls to load the Stats lines
+$( document ).ready(function() {
+  //  localStorage.removeItem("email");
+    console.log(localStorage.email);
+    var email = localStorage.email;
+    if (localStorage.getItem("email") === null) {
+        login();
+    } else {
+        loadstats();
+    }
+});
+
+
+function login() {
+    $('<div>').simpledialog2({
+        mode: 'blank',
+        top: 1,
+        headerText: false,
+        headerClose: false,
+        // dialogAllow: true,
+        // dialogForce: true,
+        blankContent: "<div class='border1 dialogCont'>" +
+        "<div class='text1 diagHeader' id='diagHeadLarge'><span class='middle'>" +
+        "Please enter your email address to login to PongHole</span></div>" +
+        "<input class='border1' id='loginemail' value='Your email'/input>" +
+        "<a onclick='storelocal()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>" +
+        "</div>"
+    })
+}
+
+function storelocal(){
+    localStorage.email = document.getElementById('loginemail').value;
+    loadstats();
+}
+
+function loadstats(){
+    $.get("./Resources/stattest2.txt",function(data){
+         $("#pstats2").text(data);});
+    $.get("stattest.txt",function(data){
+        $("#pstats1").text(data);
+        });
+}
+
+
+function Game(){
+
 }
 
 
