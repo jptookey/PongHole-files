@@ -7,7 +7,7 @@
 
 
 * {
-	border: .1em dashed pink
+	/*border: .1em dashed pink*/
 	}
 html{
 	padding: 0;
@@ -29,6 +29,11 @@ div {
     border: .2em solid grey;
     border-radius: .5em;
     box-shadow: .1em .1em .05em black;
+}
+.border2 {
+    border: .2em solid grey;
+    border-radius: .5em;
+    box-shadow: .1em .1em .05em red;
 }
 
 .text1 {
@@ -350,6 +355,22 @@ border: none;
 
 }
 
+#newUser {
+    height: 5em;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: auto;
+    background-color: #DB0413;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(https://lh3.googleusercontent.com/-QILYa8CR_2Q/AAAAAAAAAAI/AAAAAAAAAAA/M5Hvpbxp-4g/photo.jpg);
+}
+
+#passwordcheck {
+    display: none;
+    color: #ff0000;
+}
 /*background-image: url(pong2.jpg);*/
 
 /*

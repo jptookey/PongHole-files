@@ -3,18 +3,20 @@
 
 // TODO Build an onload event that creates a logon function that checks local storage and if a variable exists, skips the pop-up and goes directly to the landing page,
 // TODO Add to the initialization routine a couple of AJAX calls to load the Stats lines
+var userKey ='';
 $( document ).ready(function() {
-  //  localStorage.removeItem("email");
-    console.log(localStorage.email);
-    var email = localStorage.email;
-    if (localStorage.getItem("email") === null) {
+    //localStorage.removeItem("email");
+    console.log(localStorage.userKey);
+   // var email = localStorage.email;
+    if (localStorage.getItem("userKey") === null) {
         login();
     } else {
+
         loadstats();
     }
 });
 
-
+//TODO: Create a login or new user Dialog Box
 function login() {
     $('<div>').simpledialog2({
         mode: 'blank',
@@ -25,20 +27,133 @@ function login() {
         // dialogForce: true,
         blankContent: "<div class='border1 dialogCont'>" +
         "<div class='text1 diagHeader' id='diagHeadLarge'><span class='middle'>" +
-        "Please enter your email address to login to PongHole</span></div>" +
-        "<input class='border1' id='loginemail' value='Your email'/input>" +
-        "<a onclick='storelocal()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>" +
+        "Welcome to PongHole! Please login or click the new user button </span></div>" +
+        "<input class='border1' id='loginemail' placeholder='Your email'/input>" +
+        "<input class='border1' id='password' type='password' placeholder='Password'/input>" +
+            "<p id='passwordcheck'></p>"+
+        "<a onclick='checkPassword()' data-role='button' class='border1 text1' id='nextButton'></a>" +
+        "<a onclick='newUser()' data-role='button' class='border1 text1' id='newUser' rel='close'></a>" +
         "</div>"
-    })
+    });
+    $('#password').keypress(function(e) {
+        var keycode = (e.keyCode ? e.keyCode : e.which);
+        if(keycode == '13') {
+            checkPassword();
+        }
+    });
 }
 
-function storelocal(){
-    localStorage.email = document.getElementById('loginemail').value;
-    loadstats();
+
+function checkPassword() {
+    var password1 = '';
+    var password2 = document.getElementById('password').value;
+    var emailCheck = document.getElementById('loginemail').value;
+    function checkPW() {
+        $.ajax({
+            type: "POST",
+            url: "getPassword.php",
+            data: { 'email': emailCheck },
+            cache: false,
+            dataType: 'json',
+            success: function(data)
+            {
+                password1= data;
+                pwcheck();
+            }
+        });
+    }
+    checkPW();
+    function pwcheck() {
+        console.log(password1 === password2);
+        if (password1 === password2) {
+            console.log('HERE');
+            $.mobile.sdCurrentDialog.close();
+            loadstats();
+        } else {
+            console.log('NOT HERE');
+            $('#passwordcheck').show().text('Invalid Email or Password');
+        }
+
+    }
 }
 
+function newUser() {
+    $('<div>').simpledialog2({
+        mode: 'blank',
+        top: 1,
+        headerText: false,
+        headerClose: false,
+        // dialogAllow: true,
+        // dialogForce: true,
+        blankContent: "<div class='border1 dialogCont'>" +
+        "<div class='text1 diagHeader' id='diagHeadLarge'><span class='middle'>" +
+        "Please enter the following information to create an account. </span></div>" +
+        "<input class='border2' id='userName' placeholder='User Name'/input>" +
+        "<input class='border1' id='firstName' placeholder='First Name'/input>" +
+        "<input class='border1' id='lastName' placeholder='Last Name'/input>" +
+        "<input class='border1' id='zipCode' placeholder='Zip Code'/input>" +
+        "<input class='border1' id='DOB' type='date' placeholder='Date of Birth'/input>" +
+        "<input class='border2' id='emailNew' placeholder='Email Address'/input>" +
+        "<input class='border2' id='pwNew1' type='password' placeholder='Password'/input>" +
+        "<input class='border2' id='pwNew2' type='password' placeholder='Repeat Password'/input>" +
+        "<p id='pwCompare'></p>"+
+        "<a onclick='submitUser1()' data-role='button' class='border1 text1' id='nextButton'></a>" +
+        "</div>"
+});
+
+}
+
+
+function submitUser1(){
+    var pwNew1 = document.getElementById('pwNew1').value;
+    var pwNew2 = document.getElementById('pwNew2').value;
+    if (pwNew2 === pwNew1) {
+    submitUser2()
+    } else {
+        $('#pwCompare').show().text('Invalid Email or Password');
+    }
+}
+
+function submitUser2() {
+    var userName = document.getElementById('userName').value;
+    var userPW = document.getElementById('pwNew1').value;
+    var fname = document.getElementById('firstName').value;
+    var lname = document.getElementById('lastName').value;
+    var zip = document.getElementById('zipCode').value;
+    var dob = document.getElementById('DOB').value;
+    var email = document.getElementById('emailNew').value;
+    var userDetails = {
+        userName: userName,
+        userpw: userPW,
+        firstName: fname,
+        lastName: lname,
+        zip: zip,
+        dob: dob,
+        email: email
+    };
+    var userDet = JSON.stringify(userDetails);
+    $.ajax({
+        type: "POST",
+        url: "newUsers.php",
+        data: userDet,
+        cache: false,
+        dataType: 'json',
+        success: function(data)
+        {
+            userKey= data;
+            $.mobile.sdCurrentDialog.close();
+            loadstats();
+        }
+    });
+}
+
+
+
+//TODO get a real result set from a php call
 function loadstats(){
     $.get("./Resources/stattest2.txt",function(data){
+     //   pulltest = data;
+      //  console.log(pulltest)
          $("#pstats2").text(data);});
     $.get("stattest.txt",function(data){
         $("#pstats1").text(data);
@@ -51,7 +166,6 @@ function Game(){
 }
 
 
-// TODO 2) Build functions to input data into object
 
 //build function in scope?  Nope...won't be recognized in other functions...need to build the new function here
 function start() {
@@ -61,7 +175,7 @@ var color = 'black';
 var teamFlag = 0;
 var oppFlag = 0;
 var playerName = '';
-//var teammateemail = 0;
+
 
 
 $(document).delegate('#opendialog', 'click', function() {
@@ -84,12 +198,9 @@ function gameChoice() {
         "<a onclick='pongGame()' class='diagButton border1' id='gameChoicePongDiag' data-role='button' rel='close'></a>"+
         "<a onclick='holeGame()' class='diagButton border1' id ='gameChoiceHoleDiag' data-role='button' rel='close'></a>" +
         "</div>"
-        // divtest +
-        // "<input id='emailop2id'/></div>" +
-
-        // NOTE: the use of rel="close" causes this button to close the dialog.
+         // NOTE: the use of rel="close" causes this button to close the dialog.
         //  "<a onclick='function1()' data-role='button' rel='close' href='#'>Submit</a>" +
-        //  divtest2
+
     });
 }
 
@@ -162,16 +273,16 @@ function twoOpp() {
 function emailentry() {
     if (teamFlag === 2) {
         var prompt = "Please enter in your Teammate\'s email and hit next";
-        var input1 = "<input class='border1' id='emailTeam' value='Teammate Email'/input>";
+        var input1 = "<input class='border1' id='emailTeam' placeholder='Teammate Email'/input>";
         var input2 = "";
     } else if (teamFlag === 3 && game1.awayPlayers === 1) {
         prompt = "Please enter in the Opponent's email and hit next";
-        input1 = "<input class='border1' id='emailOpp1' value='Opponent Email'/input>";
+        input1 = "<input class='border1' id='emailOpp1' placeholder='Opponent Email'/input>";
         input2 = "";
     } else if (teamFlag === 3 && game1.awayPlayers === 2) {
         prompt = "Please enter in the Opponents' email and hit next";
-        input1 = "<input class='border1' id='emailOpp1' value='Opponent 1 Email'/input>";
-        input2 = "<input class='border1' id='emailOpp2' value='Opponent 2 Email'/input>";
+        input1 = "<input class='border1' id='emailOpp1' placeholder='Opponent 1 Email'/input>";
+        input2 = "<input class='border1' id='emailOpp2' placeholder='Opponent 2 Email'/input>";
     }
 
 
@@ -229,8 +340,8 @@ function scoreEntry() {
         blankContent: "<div class='border1 dialogCont'>" +
         "<div class='text1 diagHeader' id='diagHeadLarge'><span class='middle'>Please enter the scores of both teams and hit next</span></div>" +
             scoreHint+
-        "<input class='border1 text1' id='homeScore' value='Your Score'/input>" +
-        "<input class='border1 text1' id='awayScore' value='Opponent Score'/input>" +
+        "<input class='border1 text1' id='homeScore' placeholder='Your Score'/input>" +
+        "<input class='border1 text1' id='awayScore' placeholder='Opponent Score'/input>" +
         "<a onclick='submitScore()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>"
     });
 
