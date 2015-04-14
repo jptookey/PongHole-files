@@ -4,6 +4,7 @@
 // TODO Build an onload event that creates a logon function that checks local storage and if a variable exists, skips the pop-up and goes directly to the landing page,
 // TODO Add to the initialization routine a couple of AJAX calls to load the Stats lines
 var userKey ='';
+var userNick = '';
 $( document ).ready(function() {
     //localStorage.removeItem("email");
     console.log(localStorage.userKey);
@@ -32,7 +33,9 @@ function login() {
         "<input class='border1' id='password' type='password' placeholder='Password'/input>" +
             "<p id='passwordcheck'></p>"+
         "<a onclick='checkPassword()' data-role='button' class='border1 text1' id='nextButton'></a>" +
-        "<a onclick='newUser()' data-role='button' class='border1 text1' id='newUser' rel='close'></a>" +
+
+       //TODO: CHANGE BACK TO newUser() once the demo is done
+        "<a onclick='loadstats()'  /*'newUser()'*/ data-role='button' class='border1 text1' id='newUser' rel='close'></a>" +
         "</div>"
     });
     $('#password').keypress(function(e) {
@@ -41,6 +44,9 @@ function login() {
             checkPassword();
         }
     });
+    $('#loginemail').focusout(function(){
+        console.log('You focused out');
+    });
 }
 
 
@@ -48,22 +54,36 @@ function checkPassword() {
     var password1 = '';
     var password2 = document.getElementById('password').value;
     var emailCheck = document.getElementById('loginemail').value;
+    if (password2 === '') {
+        console.log('NOT HERE');
+        $('#passwordcheck').show().text('Invalid Email or Password');
+            } else
     function checkPW() {
         $.ajax({
             type: "POST",
-            url: "getPassword.php",
+            url: "http://192.168.0.250/scripts/PW-get.php",
             data: { 'email': emailCheck },
             cache: false,
-            dataType: 'json',
+            dataType: "json",
             success: function(data)
             {
-                password1= data;
+                var results = data.split(',');
+                password1 = results[0];
+                userKey = results[1];
+                console.log(userKey);
+                console.log(password1);
                 pwcheck();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log( jqXHR.responseText);
+                console.log(JSON.stringify(jqXHR));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
             }
         });
     }
     checkPW();
     function pwcheck() {
+        console.log(password1);
         console.log(password1 === password2);
         if (password1 === password2) {
             console.log('HERE');
@@ -91,34 +111,52 @@ function newUser() {
         "<input class='border2' id='userName' placeholder='User Name'/input>" +
         "<input class='border1' id='firstName' placeholder='First Name'/input>" +
         "<input class='border1' id='lastName' placeholder='Last Name'/input>" +
+        "<table id='genderT'><tr><td><label class='gender' id='labelM'>Male</label></td><td><label class='gender' id='labelF'>Female</label></td></tr>" +
+        "<tr><td><input class='gender' type='radio' name='gender' id='genderM' value='M'/input></td><td>"+
+        "<input class='gender' type='radio' name='gender' id='genderF' value='F'/input></td></tr></table>"+
         "<input class='border1' id='zipCode' placeholder='Zip Code'/input>" +
         "<input class='border1' id='DOB' type='date' placeholder='Date of Birth'/input>" +
         "<input class='border2' id='emailNew' placeholder='Email Address'/input>" +
+        "<p id='emailValidate'></p>"+
         "<input class='border2' id='pwNew1' type='password' placeholder='Password'/input>" +
         "<input class='border2' id='pwNew2' type='password' placeholder='Repeat Password'/input>" +
         "<p id='pwCompare'></p>"+
         "<a onclick='submitUser1()' data-role='button' class='border1 text1' id='nextButton'></a>" +
         "</div>"
-});
-
+    });
+    $('#emailNew').focusout(function(){
+        $.ajax({
+            type: "POST",
+            url: "http://192.168.0.250/scripts/emailVal.php",
+            data: userDet,
+            cache: false,
+            //dataType: "json",
+            success: function(data)
+            {
+                if (data > 0) {
+                    $("#emailValidate").show().text('Email already in use');
+                }
+            }
+        });
+    });
 }
-
 
 function submitUser1(){
     var pwNew1 = document.getElementById('pwNew1').value;
     var pwNew2 = document.getElementById('pwNew2').value;
     if (pwNew2 === pwNew1) {
-    submitUser2()
+        submitUser2()
     } else {
-        $('#pwCompare').show().text('Invalid Email or Password');
+        $('#pwCompare').show().text('Please enter the same Password');
     }
 }
-
 function submitUser2() {
     var userName = document.getElementById('userName').value;
     var userPW = document.getElementById('pwNew1').value;
     var fname = document.getElementById('firstName').value;
     var lname = document.getElementById('lastName').value;
+    var gender = $("input[name=gender]:checked").val();
+    console.log(gender);
     var zip = document.getElementById('zipCode').value;
     var dob = document.getElementById('DOB').value;
     var email = document.getElementById('emailNew').value;
@@ -127,17 +165,19 @@ function submitUser2() {
         userpw: userPW,
         firstName: fname,
         lastName: lname,
+        gender: gender,
         zip: zip,
         dob: dob,
         email: email
     };
     var userDet = JSON.stringify(userDetails);
+    console.log(userDet);
     $.ajax({
         type: "POST",
-        url: "newUsers.php",
+        url: "http://192.168.0.250/scripts/newUsers.php",
         data: userDet,
         cache: false,
-        dataType: 'json',
+        dataType: "json",
         success: function(data)
         {
             userKey= data;
@@ -149,15 +189,27 @@ function submitUser2() {
 
 
 
+
 //TODO get a real result set from a php call
-function loadstats(){
-    $.get("./Resources/stattest2.txt",function(data){
-     //   pulltest = data;
-      //  console.log(pulltest)
-         $("#pstats2").text(data);});
-    $.get("stattest.txt",function(data){
+function loadstats() {
+    $.get("./Resources/stattest2.txt", function (data) {
+        //   pulltest = data;
+        //  console.log(pulltest)
+        $("#pstats2").text(data);
+    });
+    $.get("stattest.txt", function (data) {
         $("#pstats1").text(data);
-        });
+    });
+    $.ajax({
+        type: "POST",
+        url: "http://192.168.0.250/scripts/loginTrack.php",
+        data: userKey,
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+            userNick = data;
+        }
+    })
 }
 
 
@@ -197,6 +249,8 @@ function gameChoice() {
         "<div class='text1 diagHeader'><span class='middle'>CHOOSE A GAME</span></div>" +
         "<a onclick='pongGame()' class='diagButton border1' id='gameChoicePongDiag' data-role='button' rel='close'></a>"+
         "<a onclick='holeGame()' class='diagButton border1' id ='gameChoiceHoleDiag' data-role='button' rel='close'></a>" +
+        "<select id=gameSelect><option disabled selected> -- Choose another game -- </option><option value='1003'>Bowling</option><option value='1004'>Darts</option><option value='1005'>Kanjam</option></select>"+
+        "<a onclick='otherGame()' data-role='button' class='border1 text1' rel='close' id='nextButton'></a>" +
         "</div>"
          // NOTE: the use of rel="close" causes this button to close the dialog.
         //  "<a onclick='function1()' data-role='button' rel='close' href='#'>Submit</a>" +
@@ -204,6 +258,11 @@ function gameChoice() {
     });
 }
 
+function otherGame() {
+    game1.gameType = document.getElementById('gameSelect');
+    teamFlag = 1;
+    choosePlayers()
+}
 
 function pongGame() {
     game1.gameType = '1001';
@@ -373,8 +432,8 @@ function nextGame() {
         // dialogForce: true,
         blankContent: "<div class='border1 dialogCont'>" +
         gameMessage +
-        "<a onclick='rematch()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>" +
-        "<a onclick='newGame()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>" +
+        "<a onclick='rematch()' data-role='button' class='border1 text1' id='rematchButton' rel='close'></a>" +
+        "<a onclick='newGame()' data-role='button' class='border1 text1' id='newGameButton' rel='close'></a>" +
         "<a onclick='done()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>"
     });
 }
