@@ -35,7 +35,7 @@ function login() {
         "<a onclick='checkPassword()' data-role='button' class='border1 text1' id='nextButton'></a>" +
 
        //TODO: CHANGE BACK TO newUser() once the demo is done
-        "<a onclick='loadstats()'  /*'newUser()'*/ data-role='button' class='border1 text1' id='newUser' rel='close'></a>" +
+        "<a onclick='newUser()'  /*'newUser()'*/ data-role='button' class='border1 text1' id='newUser' rel='close'></a>" +
         "</div>"
     });
     $('#password').keypress(function(e) {
@@ -51,50 +51,44 @@ function login() {
 
 
 function checkPassword() {
-    var password1 = '';
     var password2 = document.getElementById('password').value;
     var emailCheck = document.getElementById('loginemail').value;
+    var emailPW = {
+        email: emailCheck,
+        pw: password2
+    };
+    var emailPWjson = JSON.stringify(emailPW);
     if (password2 === '') {
         console.log('NOT HERE');
         $('#passwordcheck').show().text('Invalid Email or Password');
-            } else
-    function checkPW() {
-        $.ajax({
-            type: "POST",
-            url: "http://192.168.0.250/scripts/PW-get.php",
-            data: { 'email': emailCheck },
-            cache: false,
-            dataType: "json",
-            success: function(data)
-            {
-                var results = data.split(',');
-                password1 = results[0];
-                userKey = results[1];
-                console.log(userKey);
-                console.log(password1);
-                pwcheck();
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log( jqXHR.responseText);
-                console.log(JSON.stringify(jqXHR));
-                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-            }
-        });
-    }
-    checkPW();
-    function pwcheck() {
-        console.log(password1);
-        console.log(password1 === password2);
-        if (password1 === password2) {
-            console.log('HERE');
-            $.mobile.sdCurrentDialog.close();
-            loadstats();
-        } else {
-            console.log('NOT HERE');
-            $('#passwordcheck').show().text('Invalid Email or Password');
+    } else {
+        console.log(emailPWjson);
+            $.ajax({
+                type: "POST",
+                url: "http://192.168.0.250/scripts/PW-get.php",
+                data: emailPWjson,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    var results = data;
+                    console.log(results);
+                    console.log(results.truth);
+                    console.log(results.UID);
+                    if (results.truth) {
+                        userKey = results.UID;
+                        loadstats();
+                    } else {
+                        $('#passwordcheck').show().text('Invalid Email or Password');
+                    }
+                    console.log(results);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.responseText);
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
         }
-
-    }
 }
 
 function newUser() {
@@ -124,27 +118,47 @@ function newUser() {
         "<a onclick='submitUser1()' data-role='button' class='border1 text1' id='nextButton'></a>" +
         "</div>"
     });
+
     $('#emailNew').focusout(function(){
+        var emailVal = document.getElementById('emailNew').value;
+        var emailVal3 = {
+            emailVal: emailVal
+        };
+        var emailVal2 = JSON.stringify(emailVal3);
+        console.log(emailVal2);
         $.ajax({
             type: "POST",
             url: "http://192.168.0.250/scripts/emailVal.php",
-            data: userDet,
+            data: emailVal2,
             cache: false,
-            //dataType: "json",
+            dataType: "json",
             success: function(data)
             {
+                console.log(data);
                 if (data > 0) {
                     $("#emailValidate").show().text('Email already in use');
+                } else {
+                    $("#emailValidate").hide().text('Email already in use');
                 }
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log( jqXHR.responseText);
+                console.log(JSON.stringify(jqXHR));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
             }
         });
     });
 }
 
 function submitUser1(){
+    var userName = document.getElementById('userName').value;
     var pwNew1 = document.getElementById('pwNew1').value;
     var pwNew2 = document.getElementById('pwNew2').value;
-    if (pwNew2 === pwNew1) {
+    var email = document.getElementById('emailNew').value;
+    if (userName.length < 1 && pwNew1.length < 1 && email.length < 1) {
+        $('#pwCompare').show().text('Please fill in all required fields');
+    } else if (pwNew2 === pwNew1) {
         submitUser2()
     } else {
         $('#pwCompare').show().text('Please enter the same Password');
@@ -180,9 +194,15 @@ function submitUser2() {
         dataType: "json",
         success: function(data)
         {
+            console.log(data);
             userKey= data;
-            $.mobile.sdCurrentDialog.close();
+
             loadstats();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log( jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
         }
     });
 }
@@ -192,6 +212,9 @@ function submitUser2() {
 
 //TODO get a real result set from a php call
 function loadstats() {
+    console.log("YOU DID IT");
+    $(document).trigger('simpledialog', {'method':'close'});
+
     $.get("./Resources/stattest2.txt", function (data) {
         //   pulltest = data;
         //  console.log(pulltest)
@@ -200,14 +223,24 @@ function loadstats() {
     $.get("stattest.txt", function (data) {
         $("#pstats1").text(data);
     });
+    var logLog = {
+        login:userKey
+    };
+    var log = JSON.stringify(logLog);
     $.ajax({
         type: "POST",
         url: "http://192.168.0.250/scripts/loginTrack.php",
-        data: userKey,
+        data: log,
         cache: false,
-        dataType: "json",
+       // dataType: "json",
         success: function (data) {
             userNick = data;
+            console.log(userNick);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
         }
     })
 }
@@ -358,7 +391,8 @@ function emailentry() {
             prompt + "</span></div>" +
             input1 +
             input2 +
-                "<a onclick='emailChoice()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>"+
+                "<p id='emailWarn'></p>"+
+                "<a onclick='emailChoice()' data-role='button' class='border1 text1' id='nextButton'></a>"+
             "</div>"
         });
 }
@@ -366,27 +400,113 @@ function emailentry() {
 
 function emailChoice() {
     if (teamFlag === 2) {
-        game1.homePlayerEmail = document.getElementById('emailTeam').value;
-     //  $.mobile.sdCurrentDialog.close();
-        choosePlayers()
+        var emailVar4  = document.getElementById('emailTeam').value;
+        if (emailVar4 === null || emailVar4 === '') {
+        $('#emailWarn').show().text("Please enter a valid email address or use GUEST")
+        } else {
+            $(document).trigger('simpledialog', {'method':'close'});
+            var emailVar5 = {
+                email: emailVar4
+            };
+            var emailVa1 = JSON.stringify(emailVar5);
+            $.ajax({
+                type: "POST",
+                url: "http://192.168.0.250/scripts/oPlayerEmail.php",
+                data: emailVa1,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
 
+                    var resource1= data;
+                    console.log(resource1);
+
+                    game1.homePlayerEmail = resource1.key_out;
+                    console.log(game1.homePlayerEmail);
+                    choosePlayers();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.responseText);
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+        }
     } else if (teamFlag === 3 && game1.awayPlayers === 1) {
-        game1.awayPlayerEmail1 = document.getElementById('emailOpp1').value;
-     //   $.mobile.sdCurrentDialog.close();
-        scoreEntry()
+        var emailVar1 = document.getElementById('emailOpp1').value;
+        if (emailVar1 === null || emailVar1 === '') {
+            $('#emailWarn').show().text("Please enter a valid email address or use GUEST")
+        } else {
+            $(document).trigger('simpledialog', {'method':'close'});
+            var emailVar2 = {
+                email: emailVar1
+            };
+            var emailVa2 = JSON.stringify(emailVar2);
+            $.ajax({
+                type: "POST",
+                url: "http://192.168.0.250/scripts/oPlayerEmail.php",
+                data: emailVa2,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
 
+                    var resource2 = data;
+                    console.log(resource2);
+                    game1.awayPlayerEmail1 = resource2.key_out;
+                    console.log(game1.awayPlayerEmail1);
+                    scoreEntry();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.responseText);
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+        }
     } else if (teamFlag === 3 && game1.awayPlayers === 2) {
-        game1.awayPlayerEmail1 = document.getElementById('emailOpp1').value;
-        game1.awayPlayerEmail2 = document.getElementById('emailOpp2').value;
-     //   $.mobile.sdCurrentDialog.close();
-        scoreEntry()
+        var emailVar6 = document.getElementById('emailOpp1').value;
+        var emailVar8 = document.getElementById('emailOpp2').value;
+        if ((emailVar6 === null || emailVar6 === '') && (emailVar8 === null || emailVar8 === '')) {
+            $('#emailWarn').show().text("Please enter a valid email address or use GUEST");
+
+        } else {
+            //HERE'sTHE PROBLEM
+            $(document).trigger('simpledialog', {'method':'close'});
+            var emailVar7 = {
+                email: emailVar6,
+                email2: emailVar8
+            };
+            var emailVa3 = JSON.stringify(emailVar7);
+            $.ajax({
+                type: "POST",
+                url: "http://192.168.0.250/scripts/oPlayersEmail.php",
+                data: emailVa3,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+
+                    var resource3 = data;
+                    console.log(resource3);
+                    game1.awayPlayerEmail1 = resource3.key_out1;
+                    game1.awayPlayerEmail2 = resource3.key_out2;
+                    console.log(game1.awayPlayerEmail1);
+                    console.log(game1.awayPlayerEmail2);
+                    scoreEntry();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.responseText);
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+         }
     }
 }
 
 function scoreEntry() {
+  //
     if (game1.gameType == '1001') {
         var scoreHint = "<p class='text1'>Scores in Pong are the number of cups each team sinks</p>";
-    } else if (game1.gameType == '1002') {
+    } else  {
         scoreHint = "";
     }
     $('<div>').simpledialog2({
@@ -410,9 +530,34 @@ function submitScore() {
     game1.homeScore = document.getElementById('homeScore').value;
     game1.awayScore = document.getElementById('awayScore').value;
     //TODO Add a way to JSON.Stringify the object and send it to a database
-    var JACK1 = JSON.stringify(game1);
+    var game2 = {
+        player1: userKey,
+        player2: game1.homePlayerEmail,
+        player3: game1.awayPlayerEmail1,
+        player4: game1.awayPlayerEmail2,
+        gametype: game1.gameType,
+        scoreH: game1.homeScore,
+        scoreA: game1.awayScore
+    };
+    console.log(game2);
+    var JACK1 = JSON.stringify(game2);
     console.log(JACK1);
-    nextGame()
+    $.ajax({
+        type: "POST",
+        url: "http://192.168.0.250/scripts/pushGame.php",
+        data: JACK1,
+        cache: false,
+        dataType: "json",
+        success: function () {
+              nextGame();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+
 }
 
 function nextGame() {
@@ -470,7 +615,7 @@ function done () {
 
 //TODO Next step for this is to capture AND validate input values, which I imagine can be done through regex validation
 
- //   $.mobile.sdCurrentDialog.close();
+ //   $.mobile.sdCurrentDialog.close();  $(document).trigger('simpledialog', {'method':'close'});
 
 
 // TODO 4) Build SimpleDialog HTML box for the game selection
