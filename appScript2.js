@@ -3,11 +3,11 @@
 
 // TODO Build an onload event that creates a logon function that checks local storage and if a variable exists, skips the pop-up and goes directly to the landing page,
 // TODO Add to the initialization routine a couple of AJAX calls to load the Stats lines
-var URLout = 'http://108.250.54.114/'
+var URLout = 'http://108.250.54.114/';
 var userKey ='';
 var userNick = '';
 $( document ).ready(function() {
-    //localStorage.removeItem("email");
+    //localStorage.removeItem("userKey");
     console.log(localStorage.userKey);
    // var email = localStorage.email;
     if (localStorage.getItem("userKey") === null) {
@@ -66,7 +66,7 @@ function checkPassword() {
         console.log(emailPWjson);
             $.ajax({
                 type: "POST",
-                url: "http://192.168.0.250/scripts/PW-get.php",
+                url: URLout +"scripts/PW-get.php",
                 data: emailPWjson,
                 cache: false,
                 dataType: "json",
@@ -129,7 +129,7 @@ function newUser() {
         console.log(emailVal2);
         $.ajax({
             type: "POST",
-            url: "http://192.168.0.250/scripts/emailVal.php",
+            url: URLout +"scripts/emailVal.php",
             data: emailVal2,
             cache: false,
             dataType: "json",
@@ -189,7 +189,7 @@ function submitUser2() {
     console.log(userDet);
     $.ajax({
         type: "POST",
-        url: "http://192.168.0.250/scripts/newUsers.php",
+        url: URLout +"scripts/newUsers.php",
         data: userDet,
         cache: false,
         dataType: "json",
@@ -213,6 +213,7 @@ function submitUser2() {
 
 //TODO get a real result set from a php call
 function loadstats() {
+
     console.log("YOU DID IT");
     $(document).trigger('simpledialog', {'method':'close'});
 
@@ -230,7 +231,7 @@ function loadstats() {
     var log = JSON.stringify(logLog);
     $.ajax({
         type: "POST",
-        url: "http://192.168.0.250/scripts/loginTrack.php",
+        url: URLout +"scripts/loginTrack.php",
         data: log,
         cache: false,
        // dataType: "json",
@@ -258,10 +259,7 @@ function Game(){
 function start() {
   game1 = new Game();
 }
-var color = 'black';
-var teamFlag = 0;
-var oppFlag = 0;
-var playerName = '';
+
 
 
 
@@ -414,7 +412,7 @@ function emailChoice() {
             var emailVa1 = JSON.stringify(emailVar5);
             $.ajax({
                 type: "POST",
-                url: "http://192.168.0.250/scripts/oPlayerEmail.php",
+                url: URLout +"scripts/oPlayerEmail.php",
                 data: emailVa1,
                 cache: false,
                 dataType: "json",
@@ -446,7 +444,7 @@ function emailChoice() {
             var emailVa2 = JSON.stringify(emailVar2);
             $.ajax({
                 type: "POST",
-                url: "http://192.168.0.250/scripts/oPlayerEmail.php",
+                url: URLout +"scripts/oPlayerEmail.php",
                 data: emailVa2,
                 cache: false,
                 dataType: "json",
@@ -481,7 +479,7 @@ function emailChoice() {
             var emailVa3 = JSON.stringify(emailVar7);
             $.ajax({
                 type: "POST",
-                url: "http://192.168.0.250/scripts/oPlayersEmail.php",
+                url: URLout +"scripts/oPlayersEmail.php",
                 data: emailVa3,
                 cache: false,
                 dataType: "json",
@@ -547,7 +545,7 @@ function submitScore() {
     console.log(JACK1);
     $.ajax({
         type: "POST",
-        url: "http://192.168.0.250/scripts/pushGame.php",
+        url: URLout +"scripts/pushGame.php",
         data: JACK1,
         cache: false,
         dataType: "json",
@@ -610,7 +608,13 @@ function done () {
     console.log('We are done')
 }
 
-
+function logout() {
+    localStorage.removeItem("userKey");
+    userKey = '';
+    userNick = '';
+    game1 = '';
+    login();
+}
 
 
 
