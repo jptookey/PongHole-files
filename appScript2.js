@@ -1,11 +1,19 @@
-
 // TODO 1) Build an object constructor to handle input
 
 // TODO Build an onload event that creates a logon function that checks local storage and if a variable exists, skips the pop-up and goes directly to the landing page,
 // TODO Add to the initialization routine a couple of AJAX calls to load the Stats lines
-var URLout = 'http://108.250.54.114/';
+
+var URLout = 'http://ibtee.com/';
 var userKey ='';
 var userNick = '';
+//var funFlag = 'No';
+var guest = {};
+var email = '';
+guest.guest1 = false;
+guest.guest2 = false;
+guest.guest3 = false;
+guest.guest4 = false;
+//var guestF = 'No';
 $( document ).ready(function() {
     //localStorage.removeItem("userKey");
     console.log(localStorage.userKey);
@@ -36,7 +44,7 @@ function login() {
         "<a onclick='checkPassword()' data-role='button' class='border1 text1' id='nextButton'></a>" +
 
        //TODO: CHANGE BACK TO newUser() once the demo is done
-        "<a onclick='newUser()'  /*'newUser()'*/ data-role='button' class='border1 text1' id='newUser' rel='close'></a>" +
+        "<a onclick='newUser()'   data-role='button' class='border1 text1' id='newUser' rel='close'></a>" +
         "</div>"
     });
     $('#password').keypress(function(e) {
@@ -45,9 +53,7 @@ function login() {
             checkPassword();
         }
     });
-    $('#loginemail').focusout(function(){
-        console.log('You focused out');
-    });
+
 }
 
 
@@ -116,41 +122,53 @@ function newUser() {
         "<input class='border2' id='pwNew1' type='password' placeholder='Password'/input>" +
         "<input class='border2' id='pwNew2' type='password' placeholder='Repeat Password'/input>" +
         "<p id='pwCompare'></p>"+
-        "<a onclick='submitUser1()' data-role='button' class='border1 text1' id='nextButton'></a>" +
+        "<div><a onclick='login()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>" +
+        "<a onclick='submitUser1()' data-role='button' class='border1 text1' id='nextButton1'></a></div>" +
         "</div>"
     });
-
     $('#emailNew').focusout(function(){
-        var emailVal = document.getElementById('emailNew').value;
-        var emailVal3 = {
-            emailVal: emailVal
-        };
-        var emailVal2 = JSON.stringify(emailVal3);
-        console.log(emailVal2);
-        $.ajax({
-            type: "POST",
-            url: URLout +"scripts/emailVal.php",
-            data: emailVal2,
-            cache: false,
-            dataType: "json",
-            success: function(data)
-            {
-                console.log(data);
-                if (data > 0) {
-                    $("#emailValidate").show().text('Email already in use');
-                } else {
-                    $("#emailValidate").hide().text('Email already in use');
-                }
+        email = document.getElementById('emailNew').value;
+        if(validateEmail(email)) {
+            var emailVal3 = {
+                emailVal: email
+            };
+            var emailVal2 = JSON.stringify(emailVal3);
+            console.log(emailVal2);
+            $.ajax({
+                type: "POST",
+                url: URLout +"scripts/emailVal.php",
+                data: emailVal2,
+                cache: false,
+                dataType: "json",
+                success: function(data)
+                {
+                    console.log(data);
+                    if (data > 0) {
+                      $("#emailValidate").show().text('Email already in use');
+                    } else {
+                      $("#emailValidate").hide().text('Email already in use');
+                    }
 
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log( jqXHR.responseText);
-                console.log(JSON.stringify(jqXHR));
-                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-            }
-        });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log( jqXHR.responseText);
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+    } else {
+            $('#emailValidate').show().text('Please enter a valid email');
+        }
     });
 }
+
+function validateEmail(email) {
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+}
+
+
+
 
 function submitUser1(){
     var userName = document.getElementById('userName').value;
@@ -234,7 +252,7 @@ function loadstats() {
         url: URLout +"scripts/loginTrack.php",
         data: log,
         cache: false,
-       // dataType: "json",
+     //  dataType: "json",
         success: function (data) {
             userNick = data;
             localStorage.userKey = userKey;
@@ -283,12 +301,20 @@ function gameChoice() {
         "<a onclick='pongGame()' class='diagButton border1' id='gameChoicePongDiag' data-role='button' rel='close'></a>"+
         "<a onclick='holeGame()' class='diagButton border1' id ='gameChoiceHoleDiag' data-role='button' rel='close'></a>" +
         "<select id=gameSelect><option disabled selected> -- Choose another game -- </option><option value='1003'>Bowling</option><option value='1004'>Darts</option><option value='1005'>Kanjam</option></select>"+
-        "<a onclick='otherGame()' data-role='button' class='border1 text1' rel='close' id='nextButton'></a>" +
+        "<div><a onclick='gcBack()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>" +
+        "<a onclick='otherGame()' data-role='button' class='border1 text1' rel='close' id='nextButton1'></a></div>" +
         "</div>"
          // NOTE: the use of rel="close" causes this button to close the dialog.
         //  "<a onclick='function1()' data-role='button' rel='close' href='#'>Submit</a>" +
 
     });
+
+}
+
+function gcBack() {
+    teamFlag = '';
+    game1.gameType = '';
+    loadstats();
 }
 
 function otherGame() {
@@ -339,8 +365,19 @@ function choosePlayers() {
         "PLAYERS  ON "+ prompt + " TEAM" + "</span></div>" +
         playerButton1 +
         playerButton2 +
+        "<a onclick='cpBack()' data-role='button' class='border1 text1' id='backButton' rel='close'></a>" +
             "</div>"
     });
+}
+
+function cpBack() {
+    game1.homePlayers = '';
+    game1.awayPlayers = '';
+    game1.awayPlayerEmail1 = null;
+    game1.awayPlayerEmail2 = null;
+    game1.homePlayerEmail = null;
+    game1.gameType = '';
+    gameChoice();
 }
 
 function oneTeam() {
@@ -366,18 +403,21 @@ function twoOpp() {
 function emailentry() {
     if (teamFlag === 2) {
         var prompt = "Please enter in your Teammate\'s email and hit next";
-        var input1 = "<input class='border1' id='emailTeam' placeholder='Teammate Email'/input>";
+        var input1 = "<div class='emailEnt'><input class='border1' id='emailTeam' placeholder='Teammate Email'/input></div>"+
+                    "<div class='guest guestUC' id='guest1' onclick='guestT1(1)'></div><p id='guestP'>Guest</p>";
         var input2 = "";
     } else if (teamFlag === 3 && game1.awayPlayers === 1) {
         prompt = "Please enter in the Opponent's email and hit next";
-        input1 = "<input class='border1' id='emailOpp1' placeholder='Opponent Email'/input>";
+        input1 = "<div class='emailEnt'><input class='border1' id='emailOpp1' placeholder='Opponent Email'/input></div>"+
+                "<div class='guest guestUC' id='guest2' onclick='guestT1(2)'></div><p id='guestP'>Guest</p>";
         input2 = "";
     } else if (teamFlag === 3 && game1.awayPlayers === 2) {
         prompt = "Please enter in the Opponents' email and hit next";
-        input1 = "<input class='border1' id='emailOpp1' placeholder='Opponent 1 Email'/input>";
-        input2 = "<input class='border1' id='emailOpp2' placeholder='Opponent 2 Email'/input>";
+        input1 = "<div class='emailEnt'><input class='border1' id='emailOpp1' placeholder='Opponent 1 Email'/input></div>"+
+                    "<div class='guest guestUC' id='guest3' onclick='guestT1(3)'></div><p id='guestP'>Guest</p>";
+        input2 = "<div class='emailEnt'><input class='border1' id='emailOpp2' placeholder='Opponent 2 Email'/input></div>"+
+                     "<div class='guest guestUC' id='guest4' onclick='guestT1(4)'></div><p id='guestP2'>Guest</p>";
     }
-
 
         $('<div>').simpledialog2({
             mode: 'blank',
@@ -393,11 +433,83 @@ function emailentry() {
             input1 +
             input2 +
                 "<p id='emailWarn'></p>"+
-                "<a onclick='emailChoice()' data-role='button' class='border1 text1' id='nextButton'></a>"+
+            "<div></div><a onclick='cpBack()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>"+
+                "<a onclick='emailChoice()' data-role='button' class='border1 text1' id='nextButton1'></a></div>"+
             "</div>"
         });
+
 }
 
+//TODO CHANGE the T in guestT to a variable number if possible
+
+
+//TODO see if this function will work for all scenarios:
+function guestT1(guestVar) {
+    guestEle = '#guest'+guestVar;
+    switch (guestVar) {
+        case 1:
+            gVar = guest.guest1;
+            eVar = '#emailTeam';
+            tVar = 'Teammate Email';
+            pVar = '#guestP';
+            break;
+        case 2:
+            gVar = guest.guest2;
+            eVar = '#emailOpp1';
+            tVar = 'Opponent Email';
+            pVar = '#guestP';
+            break;
+        case 3:
+            gVar = guest.guest3;
+            eVar = '#emailOpp1';
+            tVar = 'Opponent 1 Email';
+            pVar = '#guestP';
+            break;
+        case 4:
+            gVar = guest.guest4;
+            eVar = '#emailOpp2';
+            tVar = 'Opponent 2 Email';
+            pVar = '#guestP2';
+            break;
+    }
+    if (!gVar) {
+        $(guestEle).removeClass("guestUC").addClass("guestC");
+        $(eVar).prop('disabled', true).val('GUEST');
+        $(pVar).css('font-weight','bold');
+        switch (guestVar) {
+            case 1:
+                guest.guest1 = true;
+                break;
+            case 2:
+                guest.guest2 = true;
+                break;
+            case 3:
+                guest.guest3 = true;
+                break;
+            case 4:
+                guest.guest4 = true;
+                break;
+        }
+    } else {
+        $(guestEle).removeClass("guestC").addClass("guestUC");
+        $(eVar).val('').prop('placeholder', tVar).prop('disabled', false);
+        $(pVar).css('font-weight','normal');
+        switch (guestVar) {
+            case 1:
+                guest.guest1 = false;
+                break;
+            case 2:
+                guest.guest2 = false;
+                break;
+            case 3:
+                guest.guest3 = false;
+                break;
+            case 4:
+                guest.guest4 = false;
+                break;
+        }
+    }
+}
 
 function emailChoice() {
     if (teamFlag === 2) {
@@ -522,7 +634,8 @@ function scoreEntry() {
             scoreHint+
         "<input class='border1 text1' id='homeScore' placeholder='Your Score'/input>" +
         "<input class='border1 text1' id='awayScore' placeholder='Opponent Score'/input>" +
-        "<a onclick='submitScore()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>"
+        "<div></div><a onclick='cpBack()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>"+
+        "<a onclick='submitScore()' data-role='button' class='border1 text1' id='nextButton1' rel='close'></a></div>"
     });
 
 }
