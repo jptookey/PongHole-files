@@ -39,8 +39,7 @@ div {
 .text1 {
     font-weight: bold;
     color: #1C1CBD;
-    text-shadow: .01em .01em .01em  #5656E8;
-    font-family: sans-serif;
+    font-family: 'Bevan','sans-serif';
 }
 
 .button1
@@ -494,6 +493,22 @@ border: none;
     border: none;
     color: orange;
 }
+
+#funFlagP {
+    display:inline-block;
+    font-weight: bold;
+    margin-left: 3%;
+}
+
+#funFlagP2 {
+    display:inline-block;
+    margin-left: 3%;
+}
+
+#jff {
+    margin-left: 25%
+}
+
 
 
 /*

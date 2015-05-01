@@ -6,22 +6,26 @@
 var URLout = 'http://ibtee.com/';
 var userKey ='';
 var userNick = '';
-//var funFlag = 'No';
+var funFlag = false;
 var guest = {};
 var email = '';
 guest.guest1 = false;
 guest.guest2 = false;
 guest.guest3 = false;
 guest.guest4 = false;
+
 //var guestF = 'No';
 $( document ).ready(function() {
     //localStorage.removeItem("userKey");
+
     console.log(localStorage.userKey);
    // var email = localStorage.email;
     if (localStorage.getItem("userKey") === null) {
         login();
     } else {
 
+        userKey = localStorage.userKey;
+        console.log(userKey);
         loadstats();
     }
 });
@@ -116,6 +120,7 @@ function newUser() {
         "<tr><td><input class='gender' type='radio' name='gender' id='genderM' value='M'/input></td><td>"+
         "<input class='gender' type='radio' name='gender' id='genderF' value='F'/input></td></tr></table>"+
         "<input class='border1' id='zipCode' placeholder='Zip Code'/input>" +
+        "<p id='zipValidate'></p>"+
         "<input class='border1' id='DOB' type='date' placeholder='Date of Birth'/input>" +
         "<input class='border2' id='emailNew' placeholder='Email Address'/input>" +
         "<p id='emailValidate'></p>"+
@@ -144,7 +149,8 @@ function newUser() {
                 {
                     console.log(data);
                     if (data > 0) {
-                      $("#emailValidate").show().text('Email already in use');
+                        $("#emailValidate").show().text('Email already in use');
+                        $("#emailNew").val('');
                     } else {
                       $("#emailValidate").hide().text('Email already in use');
                     }
@@ -166,23 +172,29 @@ function validateEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     return re.test(email);
 }
-
-
-
-
-function submitUser1(){
+/*
+function validateZip(zip) {
+    var re = /^[0-9]{5}$/;
+    return re.test(zip);
+}
+*/
+function submitUser1() {
     var userName = document.getElementById('userName').value;
     var pwNew1 = document.getElementById('pwNew1').value;
     var pwNew2 = document.getElementById('pwNew2').value;
     var email = document.getElementById('emailNew').value;
-    if (userName.length < 1 && pwNew1.length < 1 && email.length < 1) {
+    if (!(userName.length > 0) || !(pwNew1.length > 0) || !(email.length)) {
         $('#pwCompare').show().text('Please fill in all required fields');
-    } else if (pwNew2 === pwNew1) {
-        submitUser2()
-    } else {
+    } else if (!validateEmail(email)) {
+        $('#emailValidate').show().text('Please enter a valid email');
+    } else if (pwNew1 !== pwNew2) {
         $('#pwCompare').show().text('Please enter the same Password');
+    } else {
+        submitUser2()
     }
 }
+
+
 function submitUser2() {
     var userName = document.getElementById('userName').value;
     var userPW = document.getElementById('pwNew1').value;
@@ -214,7 +226,7 @@ function submitUser2() {
         success: function(data)
         {
             console.log(data);
-            userKey= data;
+            userKey = data;
 
             loadstats();
         },
@@ -231,22 +243,58 @@ function submitUser2() {
 
 //TODO get a real result set from a php call
 function loadstats() {
-
-    console.log("YOU DID IT");
-    $(document).trigger('simpledialog', {'method':'close'});
-
-    $.get("./Resources/stattest2.txt", function (data) {
-        //   pulltest = data;
-        //  console.log(pulltest)
-        $("#pstats2").text(data);
-    });
-    $.get("stattest.txt", function (data) {
-        $("#pstats1").text(data);
-    });
     var logLog = {
         login:userKey
     };
     var log = JSON.stringify(logLog);
+    console.log(log);
+    console.log("YOU DID IT");
+    $(document).trigger('simpledialog', {'method':'close'});
+
+    $.ajax({
+        type: "POST",
+        url: URLout +"scripts/pongStat1.php",
+        data: log,
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+
+            var resource1= data;
+            console.log(resource1);
+            pongWin = resource1.pongWin;
+            pongRank= resource1.pongRank;
+            $("#pstats1").text("Ponghole -- Win%: "+pongWin+"  Current Rank: "+pongRank);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: URLout +"scripts/cornStat1.php",
+        data: log,
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+
+            var resource1= data;
+            console.log(resource1);
+            cornWin = resource1.cornWin;
+            cornRank= resource1.cornRank;
+           $("#pstats2").text("Cornhole -- Win%: "+cornWin+"  Current Rank: "+cornRank);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+
+
+
     $.ajax({
         type: "POST",
         url: URLout +"scripts/loginTrack.php",
@@ -377,6 +425,7 @@ function cpBack() {
     game1.awayPlayerEmail2 = null;
     game1.homePlayerEmail = null;
     game1.gameType = '';
+    funFlag = false;
     gameChoice();
 }
 
@@ -512,41 +561,48 @@ function guestT1(guestVar) {
 }
 
 function emailChoice() {
+    console.log(userKey);
     if (teamFlag === 2) {
         var emailVar4  = document.getElementById('emailTeam').value;
-        if (emailVar4 === null || emailVar4 === '') {
-        $('#emailWarn').show().text("Please enter a valid email address or use GUEST")
-        } else {
-            $(document).trigger('simpledialog', {'method':'close'});
-            var emailVar5 = {
-                email: emailVar4
-            };
-            var emailVa1 = JSON.stringify(emailVar5);
-            $.ajax({
-                type: "POST",
-                url: URLout +"scripts/oPlayerEmail.php",
-                data: emailVa1,
-                cache: false,
-                dataType: "json",
-                success: function (data) {
-
-                    var resource1= data;
-                    console.log(resource1);
-
-                    game1.homePlayerEmail = resource1.key_out;
-                    console.log(game1.homePlayerEmail);
-                    choosePlayers();
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(jqXHR.responseText);
-                    console.log(JSON.stringify(jqXHR));
-                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-                }
-            });
+        if(emailVar4 === 'GUEST') {
+            emailVar4 = 'guest@ibtee.com';
         }
+            if (!validateEmail(emailVar4)) {
+            $('#emailWarn').show().text("Please enter a valid email address or use GUEST")
+            } else {
+                $(document).trigger('simpledialog', {'method':'close'});
+                var emailVar5 = {
+                    email: emailVar4
+                 };
+                var emailVa1 = JSON.stringify(emailVar5);
+                $.ajax({
+                    type: "POST",
+                    url: URLout +"scripts/oPlayerEmail.php",
+                    data: emailVa1,
+                    cache: false,
+                    dataType: "json",
+                    success: function (data) {
+
+                        var resource1= data;
+                        console.log(resource1);
+
+                        game1.homePlayerEmail = resource1.key_out;
+                        console.log(game1.homePlayerEmail);
+                        choosePlayers();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR.responseText);
+                        console.log(JSON.stringify(jqXHR));
+                        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                    }
+                });
+            }
     } else if (teamFlag === 3 && game1.awayPlayers === 1) {
         var emailVar1 = document.getElementById('emailOpp1').value;
-        if (emailVar1 === null || emailVar1 === '') {
+        if(emailVar1 === 'GUEST') {
+            emailVar1 = 'guest@ibtee.com';
+        }
+        if (!validateEmail(emailVar1)) {
             $('#emailWarn').show().text("Please enter a valid email address or use GUEST")
         } else {
             $(document).trigger('simpledialog', {'method':'close'});
@@ -578,11 +634,16 @@ function emailChoice() {
     } else if (teamFlag === 3 && game1.awayPlayers === 2) {
         var emailVar6 = document.getElementById('emailOpp1').value;
         var emailVar8 = document.getElementById('emailOpp2').value;
-        if ((emailVar6 === null || emailVar6 === '') && (emailVar8 === null || emailVar8 === '')) {
-            $('#emailWarn').show().text("Please enter a valid email address or use GUEST");
-
-        } else {
-            //HERE'sTHE PROBLEM
+        if(emailVar6 === 'GUEST') {
+            emailVar6 = 'guest@ibtee.com';
+        }
+        if(emailVar8 === 'GUEST') {
+            emailVar8 = 'guest@ibtee.com';
+        }
+        console.log(validateEmail(emailVar6));
+        console.log(validateEmail(emailVar8));
+        if (validateEmail(emailVar6) && validateEmail(emailVar8)) {
+            console.log('PLEASE NOT HERE');
             $(document).trigger('simpledialog', {'method':'close'});
             var emailVar7 = {
                 email: emailVar6,
@@ -611,12 +672,26 @@ function emailChoice() {
                     console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                 }
             });
+
+        } else {
+            console.log('HERE');
+            $('#emailWarn').show().text("Please enter a valid email address or use GUEST");
+            //HERE'sTHE PROBLEM
+
          }
     }
 }
 
 function scoreEntry() {
-  //
+    if (guest.guest1 || guest.guest2 || guest.guest3 || guest.guest4) {
+        funFlag=true;
+        var funFlagHtml = "<div class='guest guestC' id='jff'> </div><p id='funFlagP'>Just For Fun</p>"+
+            "<p>When playing with a GUEST, the game is flagged as Just For Fun and will not figure into rankings.</p>";
+    } else {
+        funFlagHtml = "<div class='guest guestUC' id='jff' onclick='funFlagS()'></div><p id='funFlagP2'>Just For Fun</p>"+
+            "<p id='funFlagMessage'></p>";
+
+    }
     if (game1.gameType == '1001') {
         var scoreHint = "<p class='text1'>Scores in Pong are the number of cups each team sinks</p>";
     } else  {
@@ -634,44 +709,83 @@ function scoreEntry() {
             scoreHint+
         "<input class='border1 text1' id='homeScore' placeholder='Your Score'/input>" +
         "<input class='border1 text1' id='awayScore' placeholder='Opponent Score'/input>" +
+            funFlagHtml+"</br>"+
         "<div></div><a onclick='cpBack()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>"+
-        "<a onclick='submitScore()' data-role='button' class='border1 text1' id='nextButton1' rel='close'></a></div>"
+        "<a onclick='submitScore()' data-role='button' class='border1 text1' id='nextButton1'></a></div>"
     });
 
+}
+
+function funFlagS() {
+    if (funFlag) {
+        $("#jff").removeClass('guestC').addClass('guestUC');
+        $("#funFlagP2").css('font-weight','normal');
+        $("#funFlagMessage").show().text('');
+        funFlag = false;
+    } else {
+        $("#jff").removeClass('guestUC').addClass('guestC');
+        $("#funFlagP2").css('font-weight','bold');
+        $("#funFlagMessage").show().text('Games flagged Just For Fun will not be figured into rankings.');
+        funFlag = true;
+    }
+}
+
+function scorecheck(score) {
+    var re = /^[0-9]+$/;
+    return re.test(score);
 }
 
 function submitScore() {
     game1.homeScore = document.getElementById('homeScore').value;
     game1.awayScore = document.getElementById('awayScore').value;
-    //TODO Add a way to JSON.Stringify the object and send it to a database
-    var game2 = {
-        player1: userKey,
-        player2: game1.homePlayerEmail,
-        player3: game1.awayPlayerEmail1,
-        player4: game1.awayPlayerEmail2,
-        gametype: game1.gameType,
-        scoreH: game1.homeScore,
-        scoreA: game1.awayScore
-    };
-    console.log(game2);
-    var JACK1 = JSON.stringify(game2);
-    console.log(JACK1);
-    $.ajax({
-        type: "POST",
-        url: URLout +"scripts/pushGame.php",
-        data: JACK1,
-        cache: false,
-        dataType: "json",
-        success: function () {
-              nextGame();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR.responseText);
-            console.log(JSON.stringify(jqXHR));
-            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-        }
-    });
+    if(game1.homeScore > game1.awayScore) {
+        var winVar = 'H'
+    } else if (game1.homeScore < game1.awayScore){
+        winVar = 'A'
+    } else {
+        winVar = 'T'
+    }
 
+    console.log(scorecheck(game1.homeScore));
+    console.log(scorecheck(game1.awayScore));
+    console.log(!scorecheck(game1.homeScore) || !scorecheck(game1.awayScore));
+    if (!scorecheck(game1.homeScore) || !scorecheck(game1.awayScore)) {
+        $("#funFlagMessage").show().text('Please enter valid scores.');
+    } else {
+       $(document).trigger('simpledialog', {'method':'close'});
+        console.log(userKey);
+        //TODO Add a way to JSON.Stringify the object and send it to a database
+        var game2 = {
+            player1: userKey,
+            player2: game1.homePlayerEmail,
+            player3: game1.awayPlayerEmail1,
+            player4: game1.awayPlayerEmail2,
+            gametype: game1.gameType,
+            scoreH: game1.homeScore,
+            scoreA: game1.awayScore,
+            funFlag: funFlag,
+            winner: winVar
+        };
+        console.log(game2);
+        var JACK1 = JSON.stringify(game2);
+        console.log(JACK1);
+        $.ajax({
+            type: "POST",
+            url: URLout + "scripts/pushGame.php",
+            data: JACK1,
+            cache: false,
+            dataType: "json",
+            success: function () {
+                nextGame();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.responseText);
+                console.log(JSON.stringify(jqXHR));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            }
+        });
+
+    }
 }
 
 function nextGame() {
@@ -715,6 +829,7 @@ function newGame() {
     game1.homePlayers = '';
     game1.homePlayerEmail = '';
     gameChoice();
+    funFlag = false;
 }
 
 function done () {
@@ -735,7 +850,8 @@ function logout() {
 
 //TODO Next step for this is to capture AND validate input values, which I imagine can be done through regex validation
 
- //   $.mobile.sdCurrentDialog.close();  $(document).trigger('simpledialog', {'method':'close'});
+ //   $.mobile.sdCurrentDialog.close();
+ // $(document).trigger('simpledialog', {'method':'close'});
 
 
 // TODO 4) Build SimpleDialog HTML box for the game selection
