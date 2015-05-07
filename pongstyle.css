@@ -3,6 +3,10 @@
 #0418B0
 #4F63F7
 #B0B8F7
+pair
+#FF6B21
+#21B5FF
+endpair
 */
 
 
@@ -15,7 +19,7 @@ html{
 	}
 	
 #body1{
-	background-color: white; /*#45473b;*/
+	background-color: #f5f5f5; /*#45473b;*/
 	padding: 0;
 	margin: 0;
 	
@@ -26,20 +30,21 @@ div {
 	}
 
 .border1 {
-    border: .2em solid grey;
+    border: none;
     border-radius: .5em;
-    box-shadow: .1em .1em .05em black;
+
 }
 .border2 {
-    border: .2em solid grey;
+    border: none;
     border-radius: .5em;
-    box-shadow: .1em .1em .05em red;
+
 }
 
 .text1 {
+    text-shadow: none;
     font-weight: bold;
-    color: #1C1CBD;
-    font-family: 'Bevan','sans-serif';
+    color: #000000;
+    font-family: 'Open Sans','sans-serif';
 }
 
 .button1
@@ -48,10 +53,10 @@ div {
 	width: 3.5em;
 
 /*	box-shadow: .1em .1em .05em black; */
-	background-color: #DB0413;
+	background-color: #FF6B21;
 	padding: 0 0 0 0;
 	margin-right: 0;
-
+    border: .05em solid black;
 	}
 
 #profile {
@@ -70,13 +75,13 @@ div {
 	width: 65%;
 	height: 1.6em;
 	padding-top: 0;
-   border: .1em solid grey;
-    border-radius: .25em;
-    box-shadow: .05em .05em .025em black;
-	text-align: center;
-	font-size:200%;
 
-	background-color: #DB0413;
+    border-radius: .25em;
+
+	text-align: center;
+	font-size:125%;
+
+/*	background-color: #FFDE5C; */
 /*	font-weight: bold;
 	color: #5656E8;
 	text-shadow: .1em .1em .1em  #1C1CBD;
@@ -115,6 +120,9 @@ border: none;
 /*	color: #5656E8; */
 /*	text-shadow: .07em .07em .05em  black; /*#1C1CBD;*/
 /*	font-weight: bold; */
+    font-size: 90%;
+    padding-top: .5em;
+    margin-top: 1.5em;
 	}
 	
 #bigbox {
@@ -124,7 +132,7 @@ border: none;
 	width: 16em;
 	display: block;
 	margin: 0 auto;
-	background-color:#DB0413;
+	background-color:#FF6B21;
 	padding-top: 0;
 	
 	}
@@ -144,7 +152,7 @@ border: none;
 	width: 9em;
 /*	border-radius: .5em;
 	box-shadow: .1em .1em .05em black; */
-	background-color: #DB0413;
+	background-color: #FF6B21;
 	padding: .02em;
 	margin-right: 0;
 	margin-top: 1em;
@@ -183,7 +191,7 @@ border: none;
 	width: 14em;
 /*	border-radius: .5em;
 	box-shadow: .1em .1em .05em black; */
-	background-color: #DB0413;
+	background-color: #FF6B21;
 	padding: 0 0 0 0;
 	margin-top: 1.5em;
 		}
@@ -222,8 +230,7 @@ border: none;
 	margin-right: auto;
      width: 7em;
      height: 7em;
-     border: .5em solid #DB0413;
-     box-shadow: .5em .5em 1em grey;
+
      background-color: #5656E8;
 	background-image: url(./Resources/pong2.jpg);
 	background-size: 7em 5em;
@@ -238,8 +245,7 @@ border: none;
 	margin-right: auto;
 	width: 7em;
 	height: 7em;
-	border: .5em solid #DB0413;
-	box-shadow: .5em .5em 1em grey;
+
 	background-color: #5656E8;
 	background-image: url(http://zieglerworld.com/images/cornhole-bags.jpg);
 	background-size: 7em 7em;
@@ -277,7 +283,7 @@ border: none;
     padding-top: 0;
     margin-left: 0;
     width: 100%;
-    background-color: #DB0413;
+    background-color: #FF6B21;
     text-align: center;
     padding-left: 0;
     border-bottom-width: .1em;
@@ -334,7 +340,7 @@ border: none;
     width: 30%;
     margin-left: 35%;
     margin-right: auto;
-    background-color: #DB0413;
+    background-color: #FF6B21;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -342,7 +348,7 @@ border: none;
 }
 
 .inputs {
-    background-color: #DB0413;
+    background-color: #FF6B21;
 }
 
 .diagButton {
@@ -351,7 +357,7 @@ border: none;
     width: 50%;
     height: 0;
     padding-bottom: 50%;
-    background-color: #DB0413;
+    background-color: #FF6B21;
 
 }
 
@@ -360,7 +366,7 @@ border: none;
     width: 30%;
     margin-left: 35%;
     margin-right: auto;
-    background-color: #DB0413;
+    background-color: #FF6B21;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -377,7 +383,7 @@ border: none;
     width: 30%;
     margin-left: 35%;
     margin-right: auto;
-    background-color: #DB0413;
+    background-color: #FF6B21;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -389,7 +395,7 @@ border: none;
     width: 30%;
     margin-left: 35%;
     margin-right: auto;
-    background-color: #DB0413;
+    background-color: #FF6B21;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -412,7 +418,7 @@ border: none;
     width: 30%;
     margin-left: 10%;
     margin-right: auto;
-    background-color: #DB0413;
+    background-color: #FF6B21;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -425,7 +431,7 @@ border: none;
     width: 30%;
     margin-left: 12.5%;
     margin-right: auto;
-    background-color: #DB0413;
+    background-color: #FF6B21;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -439,7 +445,7 @@ border: none;
     width: 30%;
     margin-left: 35%;
     margin-right: auto;
-    background-color: #DB0413;
+    background-color: #FF6B21;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -509,7 +515,9 @@ border: none;
     margin-left: 25%
 }
 
-
+#funFlagMessage {
+    color: red;
+}
 
 /*
 

@@ -686,6 +686,7 @@ function scoreEntry() {
     if (guest.guest1 || guest.guest2 || guest.guest3 || guest.guest4) {
         funFlag=true;
         var funFlagHtml = "<div class='guest guestC' id='jff'> </div><p id='funFlagP'>Just For Fun</p>"+
+                "<p id='funFlagMessage'></p>"+
             "<p>When playing with a GUEST, the game is flagged as Just For Fun and will not figure into rankings.</p>";
     } else {
         funFlagHtml = "<div class='guest guestUC' id='jff' onclick='funFlagS()'></div><p id='funFlagP2'>Just For Fun</p>"+
