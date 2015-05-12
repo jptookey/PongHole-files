@@ -30,7 +30,7 @@ $( document ).ready(function() {
     }
 });
 
-//TODO: Create a login or new user Dialog Box
+//TODO: Create a login or new user Dialog Box   
 function login() {
     $('<div>').simpledialog2({
         mode: 'blank',
