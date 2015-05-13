@@ -39,8 +39,8 @@ function login() {
         headerClose: false,
         // dialogAllow: true,
         // dialogForce: true,
-        blankContent: "<div class='border1 dialogCont'>" +
-        "<div class='text1 diagHeader' id='diagHeadLarge'><span class='middle'>" +
+        blankContent: "<div class='dialogCont'>" +
+        "<div class='text1 diagHeader color1' id='diagHeadLarge'><span class='middle'>" +
         "Welcome to PongHole! Please login or click the new user button </span></div>" +
         "<input class='border1' id='loginemail' placeholder='Your email'/input>" +
         "<input class='border1' id='password' type='password' placeholder='Password'/input>" +
@@ -48,7 +48,7 @@ function login() {
         "<a onclick='checkPassword()' data-role='button' class='border1 text1' id='nextButton'></a>" +
 
        //TODO: CHANGE BACK TO newUser() once the demo is done
-        "<a onclick='newUser()'   data-role='button' class='border1 text1' id='newUser' rel='close'></a>" +
+        "<a onclick='newUser()'   data-role='button' class='border1 color1 text1 background1' id='newUser' rel='close'></a>" +
         "</div>"
     });
     $('#password').keypress(function(e) {
@@ -110,10 +110,10 @@ function newUser() {
         headerClose: false,
         // dialogAllow: true,
         // dialogForce: true,
-        blankContent: "<div class='border1 dialogCont'>" +
-        "<div class='text1 diagHeader' id='diagHeadLarge'><span class='middle'>" +
+        blankContent: "<div class='dialogCont'>" +
+        "<div class='text1 diagHeader color1' id='diagHeadLarge'><span class='middle'>" +
         "Please enter the following information to create an account. </span></div>" +
-        "<input class='border2' id='userName' placeholder='User Name'/input>" +
+        "<input class='border1' id='userName' placeholder='User Name'/input>" +
         "<input class='border1' id='firstName' placeholder='First Name'/input>" +
         "<input class='border1' id='lastName' placeholder='Last Name'/input>" +
         "<table id='genderT'><tr><td><label class='gender' id='labelM'>Male</label></td><td><label class='gender' id='labelF'>Female</label></td></tr>" +
@@ -122,13 +122,13 @@ function newUser() {
         "<input class='border1' id='zipCode' placeholder='Zip Code'/input>" +
         "<p id='zipValidate'></p>"+
         "<input class='border1' id='DOB' type='date' placeholder='Date of Birth'/input>" +
-        "<input class='border2' id='emailNew' placeholder='Email Address'/input>" +
+        "<input class='border1' id='emailNew' placeholder='Email Address'/input>" +
         "<p id='emailValidate'></p>"+
-        "<input class='border2' id='pwNew1' type='password' placeholder='Password'/input>" +
-        "<input class='border2' id='pwNew2' type='password' placeholder='Repeat Password'/input>" +
+        "<input class='border1' id='pwNew1' type='password' placeholder='Password'/input>" +
+        "<input class='border1' id='pwNew2' type='password' placeholder='Repeat Password'/input>" +
         "<p id='pwCompare'></p>"+
-        "<div><a onclick='login()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>" +
-        "<a onclick='submitUser1()' data-role='button' class='border1 text1' id='nextButton1'></a></div>" +
+        "<div><a onclick='login()' data-role='button' class='border1 text1 background1' id='backButton1' rel='close'></a>" +
+        "<a onclick='submitUser1()' data-role='button' class='border1 text1 background1' id='nextButton1'></a></div>" +
         "</div>"
     });
     $('#emailNew').focusout(function(){
@@ -328,14 +328,16 @@ function start() {
 
 
 
-
+/*
 $(document).delegate('#opendialog', 'click', function() {
     //initialize the game object
     start();
     gameChoice();
 });
+*/
 
 function gameChoice() {
+    start();
     $('<div>').simpledialog2({
         mode: 'blank',
         top: 1,
@@ -344,13 +346,13 @@ function gameChoice() {
         // dialogAllow: true,
         // dialogForce: true,
         blankContent:
-        "<div class='border1 dialogCont'>"+
-        "<div class='text1 diagHeader'><span class='middle'>CHOOSE A GAME</span></div>" +
-        "<a onclick='pongGame()' class='diagButton border1' id='gameChoicePongDiag' data-role='button' rel='close'></a>"+
-        "<a onclick='holeGame()' class='diagButton border1' id ='gameChoiceHoleDiag' data-role='button' rel='close'></a>" +
+        "<div class='dialogCont'>"+
+        "<div class='text1 color1 diagHeader'><span class='middle'>CHOOSE A GAME</span></div>" +
+        "<a onclick='pongGame()' class='diagButton color1 border1 background1' id='gameChoicePongDiag' data-role='button' rel='close'></a>"+
+        "<a onclick='holeGame()' class='diagButton color1 border1 background1' id ='gameChoiceHoleDiag' data-role='button' rel='close'></a>" +
         "<select id=gameSelect><option disabled selected> -- Choose another game -- </option><option value='1003'>Bowling</option><option value='1004'>Darts</option><option value='1005'>Kanjam</option></select>"+
         "<div><a onclick='gcBack()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>" +
-        "<a onclick='otherGame()' data-role='button' class='border1 text1' rel='close' id='nextButton1'></a></div>" +
+        "<a onclick='otherGame()' data-role='button' class='border1 background1 text1' rel='close' id='nextButton1'></a></div>" +
         "</div>"
          // NOTE: the use of rel="close" causes this button to close the dialog.
         //  "<a onclick='function1()' data-role='button' rel='close' href='#'>Submit</a>" +
@@ -388,8 +390,8 @@ function holeGame() {
 function choosePlayers() {
     if (teamFlag === 1){
       var  prompt = 'YOUR';
-        var playerButton1 = "<a onclick='oneTeam()' class='border1 diagButton' id='onePlay' data-role='button' rel='close'></a>";
-        var playerButton2 = "<a onclick='twoTeam()' class='border1 diagButton' id='twoPlay' data-role='button' rel='close'></a>";
+        var playerButton1 = "<a onclick='oneTeam()' class='border1 diagButton background1' id='onePlay' data-role='button' rel='close'></a>";
+        var playerButton2 = "<a onclick='twoTeam()' class='border1 diagButton background1' id='twoPlay' data-role='button' rel='close'></a>";
         teamFlag = 2;
     } else if (teamFlag === 2) {
         prompt = 'OPPONENT\'S';
@@ -408,8 +410,8 @@ function choosePlayers() {
         // dialogAllow: true,
         // dialogForce: true,
         blankContent:
-        "<div class='border1 dialogCont'>"+
-        "<div class='text1 diagHeader'><span class='middle'>"+
+        "<div class='dialogCont'>"+
+        "<div class='text1 diagHeader color1'><span class='middle'>"+
         "PLAYERS  ON "+ prompt + " TEAM" + "</span></div>" +
         playerButton1 +
         playerButton2 +
@@ -476,8 +478,8 @@ function emailentry() {
             // dialogAllow: true,
             // dialogForce: true,
             blankContent:
-            "<div class='border1 dialogCont'>"+
-            "<div class='text1 diagHeader' id='diagHeadLarge'><span class='middle'>"+
+            "<div class='dialogCont'>"+
+            "<div class='text1 diagHeader color1' id='diagHeadLarge'><span class='middle'>"+
             prompt + "</span></div>" +
             input1 +
             input2 +
@@ -705,8 +707,8 @@ function scoreEntry() {
         headerClose: false,
         // dialogAllow: true,
         // dialogForce: true,
-        blankContent: "<div class='border1 dialogCont'>" +
-        "<div class='text1 diagHeader' id='diagHeadLarge'><span class='middle'>Please enter the scores of both teams and hit next</span></div>" +
+        blankContent: "<div class='dialogCont'>" +
+        "<div class='text1 diagHeader color1' id='diagHeadLarge'><span class='middle'>Please enter the scores of both teams and hit next</span></div>" +
             scoreHint+
         "<input class='border1 text1' id='homeScore' placeholder='Your Score'/input>" +
         "<input class='border1 text1' id='awayScore' placeholder='Opponent Score'/input>" +
@@ -804,11 +806,11 @@ function nextGame() {
         headerClose: false,
         // dialogAllow: true,
         // dialogForce: true,
-        blankContent: "<div class='border1 dialogCont'>" +
+        blankContent: "<div class='dialogCont'>" +
         gameMessage +
-        "<a onclick='rematch()' data-role='button' class='border1 text1' id='rematchButton' rel='close'></a>" +
-        "<a onclick='newGame()' data-role='button' class='border1 text1' id='newGameButton' rel='close'></a>" +
-        "<a onclick='done()' data-role='button' class='border1 text1' id='nextButton' rel='close'></a>"
+        "<a onclick='rematch()' data-role='button' class='border1 text1 background1 diagButton1' id='rematchButton' rel='close'></a>" +
+        "<a onclick='newGame()' data-role='button' class='border1 text1 background1 diagButton1' id='newGameButton' rel='close'></a>" +
+        "<a onclick='done()' data-role='button' class='border1 text1 background1 diagButton1' id='nextButton' rel='close'></a>"
     });
 }
 
