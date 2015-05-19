@@ -38,7 +38,7 @@ function enableC() {
     }
 }
 
-function newUser2() {
+function enableC2() {
     $('<div>').simpledialog2({
         mode: 'blank',
         top: 1,
