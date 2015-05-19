@@ -3,61 +3,74 @@
 #0418B0
 #4F63F7
 #B0B8F7
+pair
+#FF6B21
+#21B5FF
+endpair
 */
 
+/*MAIN PAGE HTML STARTS HERE*/
 
-* {
-	border: .1em dashed pink
-	}
 html{
 	padding: 0;
 	margin: 0;
-	}
-	
-#body1{
-	background-color: #45473b;
-	padding: 0;
-	margin: 0;
-	
-	}
-
-div { 
-
-	}
-
-.border1 {
-    border: .2em solid grey;
-    border-radius: .5em;
-    box-shadow: .1em .1em .05em black;
 }
 
+#body1{
+	background-color: #f5f5f5; /*#45473b;*/
+	padding: 0;
+	margin: 0;
+
+}
+
+
+.border1 {
+	border: .07em solid black;
+	border-radius: .5em;
+
+}
+
+
 .text1 {
-    font-weight: bold;
-    color: #5656E8;
-    text-shadow: .1em .1em .1em  #1C1CBD;
-    font-family: sans-serif;
+	text-shadow: none;
+	font-weight: bold;
+	color: #000000;
+	font-family: 'Open Sans','sans-serif';
+}
+
+.color1 {
+	background-color: #FF6B21;
+}
+
+.background1 {
+	background: #FF6B21 no-repeat center;
 }
 
 .button1
-	{
+{
 	height: 3.5em;
 	width: 3.5em;
-
-/*	box-shadow: .1em .1em .05em black; */
-	background-color: #DB0413;
 	padding: 0 0 0 0;
 	margin-right: 0;
 
-	}
+}
 
-#profile {
+.topButton{
+	height: 3.5em;
+	width: 3.5em;
 	display: inline-block;
 	position: absolute;
 	top: 0;
-	left: 0;
-	
-	}
+}
 
+#profile {
+	left: 0;
+}
+
+#options{
+	margin-right: 0;
+	right: 0;
+}
 
 #title {
 	display: block;
@@ -66,81 +79,53 @@ div {
 	width: 65%;
 	height: 1.6em;
 	padding-top: 0;
-   border: .1em solid grey;
-    border-radius: .25em;
-    box-shadow: .05em .05em .025em black;
+	border-radius: .25em;
 	text-align: center;
-	font-size:200%;
-
-	background-color: #DB0413;
-/*	font-weight: bold;
-	color: #5656E8;
-	text-shadow: .1em .1em .1em  #1C1CBD;
-	font-family: sans-serif; */
+	font-size:125%;
+	/*	background-color: #FFDE5C; */
+	/*	font-weight: bold;
+        color: #5656E8;
+        text-shadow: .1em .1em .1em  #1C1CBD;
+        font-family: sans-serif; */
 	line-height: 1.6em;
-	
-	}
-
-.buttonpics1 {
-	height: 3.5em;
-	width: 3.5em;
-	border: none;
-	}
-	
-
-#options{
-	display: inline-block;
-	margin-right: 0;
-	right: 0;
-	position: absolute;
-	top: 0;
-	
-	}
-a {
-border: none;
 }
+
 #stats {
-	display: inline-block;
 	margin-right: 0;
 	right: 0;
 	top: 4.5em;
-	position: absolute;
 }
 
 .par1	{
-/*	color: #5656E8; */
-/*	text-shadow: .07em .07em .05em  black; /*#1C1CBD;*/
-/*	font-weight: bold; */
-	}
-	
+	/*	color: #5656E8; */
+	/*	text-shadow: .07em .07em .05em  black; /*#1C1CBD;*/
+	/*	font-weight: bold; */
+	font-size: 90%;
+	padding-top: .5em;
+	margin-top: 1.5em;
+}
+
 #bigbox {
-/*	border-radius: .5em;
-	box-shadow: .1em .1em .05em black; */
+	/*	border-radius: .5em;
+        box-shadow: .1em .1em .05em black; */
 	height: 16em;
 	width: 16em;
 	display: block;
 	margin: 0 auto;
-	background-color:#DB0413;
 	padding-top: 0;
-	
-	}
+	cursor: pointer;
+	background-image: url(./Resources/Play3.png);
+	background-size: 16em 16em;
 
-#play {
-	display: block;
-	height: 14em;
-	width: 14em;
-	border: none;
-	margin: 0 auto;
-	margin-top: 1.5em;
-	}
-	
+}
+
+
 .button2 {
 	display: inline-block;
 	height: 3.5em;
 	width: 9em;
-/*	border-radius: .5em;
-	box-shadow: .1em .1em .05em black; */
-	background-color: #DB0413;
+	/*	border-radius: .5em;
+        box-shadow: .1em .1em .05em black; */
 	padding: .02em;
 	margin-right: 0;
 	margin-top: 1em;
@@ -148,43 +133,38 @@ border: none;
 
 #notifications{
 	display: inline-block;
-	margin: 1em;
-	margin-right:0;
-	margin-left: auto;
+	margin: 1em 0 1em auto;
 	float: right;
-	}
-	
+	background-image: url(./Resources/notifications.png);
+	background-size: 7em 3em;
+}
+
 #notifications1 {
 	display: block;
 	height: 3.2em;
 	width: 5.5em;
 	margin:0 auto;
 	border: none;
-	}
-	
+}
+
 #tourney1 {
-	height: 3em;
-	width: 7em;
-	border: none;
-	margin:0 auto;
-	margin-top: .25em;
-	margin-bottom: auto;
-	display: block;
-	}
-	
-.playbutton {
-	display: block;
-	margin: 0 auto;
-	height: 14em;
-	width: 14em;
-/*	border-radius: .5em;
-	box-shadow: .1em .1em .05em black; */
-	background-color: #DB0413;
-	padding: 0 0 0 0;
-	margin-top: 1.5em;
-		}
-	
-	
+	cursor: pointer;
+	background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR0W2DkFDpU9uOAjVjHctEkb1aIlLJLQfRXg56qjC7tA91xhgDU);
+	background-size: 7em 3em;
+}
+
+
+
+
+
+/*MAIN PAGE HTML ENDS HERE*/
+/*TODO CHANGE OF PAGE
+/*PLAY LOOP HTML STARTS HERE*/
+
+
+
+
+
 #beerpongpic {
 	height: 12em;
 	width: 12em;
@@ -192,8 +172,8 @@ border: none;
 	margin:  auto;
 	border: none;
 	padding-top: 1em;
-	}
-	
+}
+
 #cornholepic {
 	height: 12em;
 	width: 12em;
@@ -201,281 +181,358 @@ border: none;
 	margin:  auto;
 	border: none;
 	padding-top: 1em;
-	}	
+}
 
-.highlighted {
-    width: 7em;
-    height: 5em;
-    border: .5em solid #DB0413;
-    box-shadow: .5em .5em 1em grey;
-}
-/*TODO add CSS for a hidden button on the simple*/
-.hidden{
-    display: none;
-}
+
+
+
 #gameChoicePong{
 	margin-left: 25%;
 	margin-right: auto;
-     width: 7em;
-     height: 7em;
-     border: .5em solid #DB0413;
-     box-shadow: .5em .5em 1em grey;
-     background-color: #5656E8;
+	width: 7em;
+	height: 7em;
 	background-image: url(./Resources/pong2.jpg);
 	background-size: 7em 5em;
-	background-position: center;
-	background-repeat: no-repeat;
-
-     /*background-image: url(pong2.jpg);*/
- }
+	/*background-image: url(pong2.jpg);*/
+}
 
 #gameChoiceHole{
 	margin-left: 25%;
 	margin-right: auto;
 	width: 7em;
 	height: 7em;
-	border: .5em solid #DB0413;
-	box-shadow: .5em .5em 1em grey;
-	background-color: #5656E8;
 	background-image: url(http://zieglerworld.com/images/cornhole-bags.jpg);
 	background-size: 7em 7em;
-	background-position: center;
-	background-repeat: no-repeat;
 	/*background-image: url(pong2.jpg);*/
 }
 
 #onePlay {
-    margin-left: 25%;
-    margin-right: auto;
-    width: 50%;
-    height: 0;
-    padding-bottom: 50%;
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url(https://lh3.googleusercontent.com/-QILYa8CR_2Q/AAAAAAAAAAI/AAAAAAAAAAA/M5Hvpbxp-4g/photo.jpg);
+	margin-left: 25%;
+	margin-right: auto;
+	width: 50%;
+	height: 0;
+	padding-bottom: 50%;
+	background-size: 100%;
+	background-image: url(https://lh3.googleusercontent.com/-QILYa8CR_2Q/AAAAAAAAAAI/AAAAAAAAAAA/M5Hvpbxp-4g/photo.jpg);
 }
 
 #twoPlay{
-    margin-left: 25%;
-    margin-right: auto;
-    width: 50%;
-    height: 0;
-    padding-bottom: 50%;
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url(./Resources/twoplayer.png);
+	margin-left: 25%;
+	margin-right: auto;
+	width: 50%;
+	height: 0;
+	padding-bottom: 50%;
+	background-size: 100%;
+	background-image: url(./Resources/twoplayer.png);
 }
 
 .diagHeader{
-    height: 2em;
-    padding-top: 0;
-    margin-left: 0;
-    width: 100%;
-    background-color: #DB0413;
-    text-align: center;
-    padding-left: 0;
-    border-bottom-width: .1em;
-    border-bottom-style: solid;
-    border-bottom-color: black;
-    border-radius: 0;
-    box-shadow: none;
+	height: 2em;
+	padding-top: 0;
+	margin-left: 0;
+	width: 100%;
+	text-align: center;
+	padding-left: 0;
+	border-bottom: .1em solid black;
+	border-radius: 0;
+	box-shadow: none;
 }
 
 #diagHeadLarge {
-    height: 4em;
+	height: 4em;
 }
 
 .dialogCont {
-    height: 100%;
-    width: 100%;
-    background-color: #45473b;
- }
+	height: 100%;
+	width: 100%;
+	background-color: whitesmoke;
+	/*   background-color: #45473b;*/
+}
 
 #gameChoicePongDiag{
-    margin-left: 25%;
-    margin-right: auto;
-    width: 50%;
-    height: 0;
-    padding-bottom: 50%;
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url(./Resources/pong2.jpg);
+	margin-left: 25%;
+	margin-right: auto;
+	width: 50%;
+	height: 0;
+	padding-bottom: 50%;
+	background-size: 100%;
+	background-image: url(./Resources/pong2.jpg);
 }
 
 .middle {
-    position: relative;
-    top: 25%;
-    transform: translateY(-50%);
-    border: none;
+	position: relative;
+	top: 10%;
+	transform: translateY(-50%);
+	border: none;
+	font-size: 80%
 }
 
 #gameChoiceHoleDiag {
-    margin-left: 25%;
-    margin-right: auto;
-    width: 50%;
-    height: 0;
-    padding-bottom: 50%;
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url(http://zieglerworld.com/images/cornhole-bags.jpg);
+	margin-left: 25%;
+	margin-right: auto;
+	width: 50%;
+	height: 0;
+	padding-bottom: 50%;
+	background-size: 100%;
+	background-image: url(http://zieglerworld.com/images/cornhole-bags.jpg);
 }
 
 #nextButton {
-    height: 5em;
-    width: 30%;
-    margin-left: 35%;
-    margin-right: auto;
-    background-color: #DB0413;
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url(./Resources/next.ico);
+	height: 5em;
+	width: 30%;
+	margin-left: 35%;
+	margin-right: auto;
+	background-size: 100%;
+	background-image: url(./Resources/next.ico);
 }
 
-.inputs {
-    background-color: #DB0413;
-}
 
 .diagButton {
-    margin-left: 25%;
-    margin-right: auto;
-    width: 50%;
-    height: 0;
-    padding-bottom: 50%;
-    background-color: #DB0413;
-
-}
-
-/*background-image: url(pong2.jpg);*/
-
-/*
-	
-	
-#img1{
-		height:3.8em;
-		width: 3.8em;
-		margin-top: -10%;
-		}
-	
-body {
-		margin: 0;
-		padding: 0;
-}
-html {
-background-color: white;
-border: .25em solid #black;
-}
-#title {
-	height: 4em;
-	width: 20em;
-	display: inline;
-	top: 0;
-	float: center;
-	}
-
-h2 {
-	font-size: 3em;
-	color: #DE0202;
-	position: absolute;
-	top: 0;
-	margin-top: 0%;
-	margin-left: 40%;
+	margin-left: 25%;
 	margin-right: auto;
-	display: inline;
-	}
+	width: 50%;
+	height: 0;
+	padding-bottom: 50%;
 
-div {
-	background-color: #0418B0;
-	border: .25em solid #DE0202;
-	border-radius: 2em;
-	box-shadow: .25em .25em .125em orange;
-	}
-	
-.button1 {
+
+}
+
+#newUser {
+	height: 5em;
+	width: 30%;
+	margin-left: 35%;
+	margin-right: auto;
+	background-size: 100%;
+	background-image: url(https://lh3.googleusercontent.com/-QILYa8CR_2Q/AAAAAAAAAAI/AAAAAAAAAAA/M5Hvpbxp-4g/photo.jpg);
+}
+
+#passwordcheck {
+	display: none;
+	color: #ff0000;
+}
+
+.diagButton1 {
+	height: 5em;
+	width: 30%;
+
+	margin-right: auto;
+}
+
+#rematchButton {
+	background-size: 100%;
+	margin-left: 35%;
+	background-image: url(./Resources/reload.jpg);
+}
+
+#newGameButton {
+	margin-left: 35%;
+	background-size: 100%;
+	background-image: url(./Resources/Play3.png);
+}
+
+.gender{
+	display:block;
+	width: auto;
+	margin-left: 1em;
+
+}
+
+#genderT{
+	width: 100%;
+}
+
+#nextButton1 {
+	height: 5em;
+	width: 30%;
+	margin-left: 10%;
+	margin-right: auto;
+	background-size: 100%;
+	background-image: url(./Resources/next.ico);
+	display: inline-block;
+}
+
+#backButton1 {
+	height: 5em;
+	width: 30%;
+	margin-left: 12.5%;
+	margin-right: auto;
+	background-size: 100%;
+	background-image: url(./Resources/back.jpg);
+	display: inline-block;
+}
+
+
+#backButton {
+	height: 5em;
+	width: 30%;
+	margin-left: 35%;
+	margin-right: auto;
+
+	background-size: 100%;
+
+	background-image: url(./Resources/back.jpg);
+
+}
+
+#backButton2 {
+	height: 5em;
+	width: 30%;
+
+	background-size: 100%;
+
+	background-image: url(./Resources/back.jpg);
+
+}
+
+
+
+#emailTeam{
+	width:100%;
+	margin-left: 0;
+	margin-right: auto;
+	display: inline-block;
+}
+
+.emailEnt{
+	width:65%;
+	margin-left: 0;
+	margin-right: auto;
+	display: inline-block;
+}
+
+.guest{
+	margin-top: .5em;
+	margin-left: 3%;
+	margin-right: auto;
+	height: .75em;
+	width: .75em;
+	border: .1em solid black;
+	display: inline-block;
 	border-radius: .25em;
-	height: 3em;
-	width: 3em;
-	}
+}
 
-#profile {
-	display:inline-block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	}
+.guestC{
+	background-color: black;
+}
 
-#options {
+.guestUC{
+	background-color: white;
+}
+
+#guestP{
 	display: inline-block;
-	position: absolute;
-	margin-top: 0;
-	top: 0;
-	right: 0;
-	padding-top: 0%;
-	}
-.innerbox {
-	z-index: 1
-	
-	}
-
-#bigbox  {
-	width: 25%;
-	height: 25%;
-	background-color: green;
-	margin-left: auto;
-	margin-right: auto;
-	
-	}
-
-#optionbut {
-		width: 3.6em;
-		height: 3.6em;
-		
-		}
-	
-.button2 {
-	width:23em;
-	height: 4em;
-	margin-left: 20%;
-	display: inline-block;
-	margin-top: 1em;
-	
-	}
-	*/
-	
-	/*
-#tourney {
-	display: inline-block;
-	}
-	
-#notifications {
-	margin-right: 20%;
-	}
-	*/
-	/*
-p {
-	color:white;
-	clear: left;
-	padding: 0;
-	margin-top: 3%;
-	}
-.par2 {
-	margin-top:3%;
-	
-/*
-
-/*
-#title2{
-	padding-bottom: 0;
-	padding-top: 0;
+	margin-left: 3%;
+	border: none;
 	color: orange;
-	text-align: center;
-	font-size: 200%;
+}
 
-	}
+#guestP2{
+	display: inline-block;
+	margin-left: 3%;
+	border: none;
+	color: orange;
+}
+
+#funFlagP {
+	display:inline-block;
+	font-weight: bold;
+	margin-left: 3%;
+}
+
+#funFlagP2 {
+	display:inline-block;
+	margin-left: 3%;
+}
+
+#jff {
+	margin-left: 25%;
+}
+
+#funFlagMessage {
+	color: red;
+}
+
+
+
+
+
+/*THIS IS THE END OF THE PLAY LOOP
+/* ***********TODO:
+THIS IS THE BREAK FOR THE NEXT BATCH, CLEANING UP CSS NOW
 */
 
+#bigBubble {
+	width: 60%;
+	height: 5em;
+	margin-left: 20%;
+	border: .1em solid black;
+	border-radius: 1em;
+}
 
+
+/*THIS IS FOR THE PROFILE PAGE
+TODO: CREATE PROFILE PAGE CSS
+THIS IS FOR THE PROFILE PAGE*/
+
+#goBack {
+	background-size: 100%;
+	background-image: url(./Resources/next.ico);
+	left: 0;
+	cursor: pointer;
+}
+
+#editButton{
+	margin-right: 0;
+	right: 0;
+	background-size: 100%;
+	background-image: url(./Resources/editAqua.svg);
+	cursor: pointer;
+}
+
+#bigBorder {
+	margin-left: 10%;
+	width:80%;
+	border: .1em solid black;
+	border-radius: .5em;
+	margin-right: auto;
+	margin-top: 2em;
+
+}
+
+.inputLabel{
+	margin-left: 1em;
+	margin-right: auto;
+	display: inline-block;
+	width: 10em;
+}
+
+.inputSize{
+	margin-left: 1em;
+	margin-right: auto;
+	display: inline-block;
+	width: 10em;
+}
+
+.pwHidden{
+	display:none;
+}
+
+#genderT2{
+	width: 50%;
+	margin-left: 35%;
+	margin-right: auto;
+}
+
+#pwChange{
+	margin-left: 35%;
+	width: 40%;
+}
+
+.readyChange{
+	box-shadow: 0 0 .1em .1em orange;
+}
+
+.required{
+	border: .07em solid red;
+	border-radius: .5em;
+}

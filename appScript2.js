@@ -3,7 +3,7 @@
 // TODO Build an onload event that creates a logon function that checks local storage and if a variable exists, skips the pop-up and goes directly to the landing page,
 // TODO Add to the initialization routine a couple of AJAX calls to load the Stats lines
 
-TEST
+
 var URLout = 'http://www.ibtee.com/';
 var userKey ='';
 var userNick = '';
