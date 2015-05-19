@@ -77,7 +77,7 @@ function checkPassword() {
         console.log(emailPWjson);
             $.ajax({
                 type: "POST",
-                url: URLout +"scripts/PW-get.php",
+                url: "./scripts/PW-get.php",
                 data: emailPWjson,
                 cache: false,
                 dataType: "json",
