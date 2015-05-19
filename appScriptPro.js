@@ -39,7 +39,7 @@ function enableC() {
 }
 
 function enableC2() {
-    alert('IT WORKED');
+    alert('IT WORKED2');
     $('<div>').simpledialog2({
         mode: 'blank',
         top: 1,
