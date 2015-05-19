@@ -1,27 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+
 	<meta name="viewport" content="width=device-width, user-scalable=yes">
 	<link type="text/css" rel="stylesheet" href="pongstyle.css"/>
 	<link type="text/css" rel="stylesheet" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css"/>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
 	<!--    <link rel="stylesheet" type="text/css" href="./themes/PongHoleTheme1.min.css" /> -->
 	<!--     <link rel="stylesheet" type="text/css" href="./themes/jquery.mobile.icons.min.css"/>  -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
 	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" />
 	<!--  <link type="text/css" rel="stylesheet" href="jquery.mobile.external-png-1.4.4.min.css"/>  -->
 	<!-- TODO Add a theme file here-->
 
-
+	<!-- Latest compiled and minified JavaScript -->
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
-	<script src="appScriptNot.js"></script>
+	<script src="appScriptPro.js"></script>
 	<title>IBTEE: Vs. Profile</title>
 </head>
 
 <body id="body1">
-	<div class="button1 border1 text1" id="backButton">Back
+	<div class="color1 border1 text1 topButton background1" onclick="goback()" id="goBack">
 	</div>
+	<div id="title" class="text1"> IBTEE: My Profile
+	</div>
+	<div class="color1 border1 text1 topButton background1" onclick="enableC()" id="editButton">
+	</div>
+	<div class="container" id="bigBorder">
+		<form class="form-horizontal" role="form">
+			<div class="form-group form-group-sm">
+				<label class="col-xs-4 control-label" for="userName">User Name</label>
+				<div class="col-xs-6">
+					<input class="border1" id="userName" placeholder='User Name' disabled/>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<label class="col-xs-4 control-label" for="firstName">First Name</label>
+				<div class="col-xs-6">
+					<input class="border1" id="firstName" placeholder='First Name' type="text" disabled/>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<label class="col-xs-4 control-label" for="lastName">Last Name</label>
+				<div class="col-xs-6">
+					<input class="border1" id="lastName" placeholder='Last Name' type="text" disabled/>
+				</div>
+			</div>
+		</form>
+
+		<table id='genderT2'>
+			<tr>
+				<td>
+					<label class='gender' id='labelM'  >Male</label>
+				</td>
+				<td>
+					<label class='gender' id='labelF'  >Female</label>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<input class='gender' type='radio' name='gender' id='genderM' disabled value='M'/>
+				</td>
+				<td>
+					<input class='gender' type='radio' name='gender' id='genderF' disabled value='F'/>
+				</td>
+			</tr>
+			<tr>
+			</tr>
+		</table>
+		</br>
+		<form class="form-horizontal" role="form">
+			<div class="form-group form-group-sm">
+				<label class="col-xs-4 control-label" for="zipCode">Zip Code</label>
+				<div class="col-xs-6">
+					<input class="border1" id="zipCode" placeholder='Zip Code' disabled/>
+				</div>
+			</div>
+		<p id='zipValidate'></p>
+			<div class="form-group form-group-sm">
+				<label class="col-xs-4 control-label" for="DOB">Birth Date</label>
+				<div class="col-xs-6">
+					<input class='border1' id='DOB' type='date' placeholder='Date of Birth' disabled/>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<label class="col-xs-4 control-label" for="emailNew">Email Address</label>
+				<div class="col-xs-6">
+					<input class='border1' id='emailNew' placeholder='Email Address' disabled/>
+				</div>
+			</div>
+		</form>
+		<button id="pwChange" onclick="enableC()">Change Password</button>
+		</div>
+
 </body>

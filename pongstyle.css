@@ -468,3 +468,71 @@ THIS IS THE BREAK FOR THE NEXT BATCH, CLEANING UP CSS NOW
     border: .1em solid black;
     border-radius: 1em;
 }
+
+
+/*THIS IS FOR THE PROFILE PAGE
+TODO: CREATE PROFILE PAGE CSS
+THIS IS FOR THE PROFILE PAGE*/
+
+#goBack {
+    background-size: 100%;
+    background-image: url(./Resources/next.ico);
+    left: 0;
+    cursor: pointer;
+}
+
+#editButton{
+    margin-right: 0;
+    right: 0;
+    background-size: 100%;
+    background-image: url(./Resources/editAqua.svg);
+    cursor: pointer;
+}
+
+#bigBorder {
+    margin-left: 10%;
+    width:80%;
+    border: .1em solid black;
+    border-radius: .5em;
+    margin-right: auto;
+    margin-top: 2em;
+
+}
+
+.inputLabel{
+    margin-left: 1em;
+    margin-right: auto;
+    display: inline-block;
+    width: 10em;
+}
+
+.inputSize{
+    margin-left: 1em;
+    margin-right: auto;
+    display: inline-block;
+    width: 10em;
+}
+
+.pwHidden{
+    display:none;
+}
+
+#genderT2{
+    width: 50%;
+    margin-left: 35%;
+    margin-right: auto;
+}
+
+#pwChange{
+    margin-left: 35%;
+    width: 40%;
+}
+
+.readyChange{
+    box-shadow: 0em 0em .1em .1em orange;
+}
+
+.required{
+    border: .07em solid red;
+    border-radius: .5em;
+}
