@@ -77,7 +77,7 @@ function checkPassword() {
         console.log(emailPWjson);
             $.ajax({
                 type: "POST",
-                url: "./scripts/PW-get.php",
+                url: "/scripts/PW-get.php",
                 data: emailPWjson,
                 cache: false,
                 dataType: "json",
@@ -142,7 +142,7 @@ function newUser() {
             console.log(emailVal2);
             $.ajax({
                 type: "POST",
-                url: URLout +"scripts/emailVal.php",
+                url: "/scripts/emailVal.php",
                 data: emailVal2,
                 cache: false,
                 dataType: "json",
@@ -220,7 +220,7 @@ function submitUser2() {
     console.log(userDet);
     $.ajax({
         type: "POST",
-        url: URLout +"scripts/newUsers.php",
+        url: "/scripts/newUsers.php",
         data: userDet,
         cache: false,
         dataType: "json",
@@ -254,7 +254,7 @@ function loadstats() {
 
     $.ajax({
         type: "POST",
-        url: URLout +"scripts/pongStat1.php",
+        url: "/scripts/pongStat1.php",
         data: log,
         cache: false,
         dataType: "json",
