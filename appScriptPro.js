@@ -42,11 +42,11 @@ $( document ).ready(function() {
                 $("#lastName").val(results.LNAME);
                 $("#zipCode").val(results.ZIP);
                 $("#DOB").val(results.DOB);
-                if(results.GENDER = 'M')
+                if(results.GENDER == 'M')
                 {
-                    $("#labelM").addClass('genderB')
-                } else if (results.GENDER='F') {
-                    $("#labelF").addClass('genderB')
+                    $("#labelM").addClass('genderB');
+                } else if (results.GENDER =='F') {
+                    $("#labelF").addClass('genderB');
                 }
                 $("input[name=gender]:checked").val(results.GENDER);
                 $("#emailNew").text(email2);
