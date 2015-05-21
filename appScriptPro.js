@@ -34,11 +34,11 @@ $( document ).ready(function() {
                 var results = data;
                 console.log(results);
                 email2 = results.userEmail;
-                $("#userName").value(results.PUBNAME);
-                $("#firstName").value(results.FNAME);
-                $("#lastName").value(results.LNAME);
-                $("#zipCode").value(results.ZIP);
-                $("#DOB").value(results.DOB);
+                $("#userName").val(results.PUBNAME);
+                $("#firstName").val(results.FNAME);
+                $("#lastName").val(results.LNAME);
+                $("#zipCode").val(results.ZIP);
+                $("#DOB").val(results.DOB);
                 $("input[name=gender]:checked").val(results.GENDER);
                 $("#emailNew").text(email2);
             },
