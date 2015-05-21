@@ -168,10 +168,12 @@ function submitPW() {
 }
 
 
-//TODO: Add a dialog for changing password
-//TODO: Make EDIT button enable everything for changes
-//TODO: Make a SAVE button
-//TODO: Add the pushes and pulls
+//TODO: Add a dialog for changing password - Need to finish it
+//TODO: Make a submit button to save edits
+//TODO: Fix the change email button
+//TODO: Add a dialog for the change email
+//TODO: Add a button to send mail if they forgot their password (if they get the Old Password wrong)
+//TODO: Scripts Needed:  Push new values; Check Passwords; Check Email;
 
 function checkPassword(password, email1) {
     var emailPW = {
