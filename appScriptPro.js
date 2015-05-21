@@ -10,9 +10,9 @@ var lastName = '';
 */
 
 $( document ).ready(function() {
-    for(i=0;i <1; i++) {
+    /*for(i=0;i <1; i++) {
         location.reload(true);
-    }
+    }*/
     //localStorage.removeItem("userKey");
 
     console.log(localStorage.userKey);
