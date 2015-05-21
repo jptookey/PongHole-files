@@ -275,7 +275,7 @@ function loadstats() {
 
     $.ajax({
         type: "POST",
-        url: URLout +"scripts/cornStat1.php",
+        url: "/scripts/cornStat1.php",
         data: log,
         cache: false,
         dataType: "json",
@@ -298,7 +298,7 @@ function loadstats() {
 
     $.ajax({
         type: "POST",
-        url: URLout +"scripts/loginTrack.php",
+        url: "/scripts/loginTrack.php",
         data: log,
         cache: false,
      //  dataType: "json",
@@ -775,7 +775,7 @@ function submitScore() {
         console.log(JACK1);
         $.ajax({
             type: "POST",
-            url: URLout + "scripts/pushGame.php",
+            url: "/scripts/pushGame.php",
             data: JACK1,
             cache: false,
             dataType: "json",

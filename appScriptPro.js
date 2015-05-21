@@ -1,23 +1,60 @@
+var userKey = '';
+var email2 = '';
 /*
+var zipCode = '';
+var DOB = '';
+var gender = '';
+var userName= '';
+var firstName = '';
+var lastName = '';
+*/
+
 $( document ).ready(function() {
     //localStorage.removeItem("userKey");
 
     console.log(localStorage.userKey);
     // var email = localStorage.email;
     if (localStorage.getItem("userKey") === null) {
-        window.location.assign("http://ibtee.com");
+        window.location.assign("/PongHole.html");
     } else {
-
         userKey = localStorage.userKey;
         console.log(userKey);
-       // loadstats();
+        var uk = {
+            key: userKey
+        };
+        var varKey = JSON.stringify(uk);
+        $.ajax({
+            type: "POST",
+            url: "/scripts/getUser.php",
+            data: varKey,
+            cache: false,
+            dataType: "json",
+            success: function(data)
+            {
+                var results = data;
+                console.log(results);
+                email2 = results.userEmail;
+                $("#userName").value(results.PUBNAME);
+                $("#firstName").value(results.FNAME);
+                $("#lastName").value(results.LNAME);
+                $("#zipCode").value(results.ZIP);
+                $("#DOB").value(results.DOB);
+                $("input[name=gender]:checked").val(results.GENDER);
+                $("#emailNew").text(email2);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log( jqXHR.responseText);
+                console.log(JSON.stringify(jqXHR));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            }
+        })
     }
 });
 
 function goback() {
-    window.location.assign("http://ibtee.com");
+    window.location.assign("/PongHole.html");
 }
-    */
+
 
 function enableC() {
     if(document.getElementById("emailNew").disabled=true) {
@@ -29,7 +66,7 @@ function enableC() {
         document.getElementById("genderF").disabled = false;
         document.getElementById("genderM").disabled = false;
         document.getElementById("emailNew").disabled = false;
-        $('#emailNew').removeClass("border1").addClass("readyChange required");
+      //  $('#emailNew').removeClass("border1").addClass("readyChange required");
         $('#userName').removeClass("border1").addClass("readyChange required");
         $('#firstName').addClass("readyChange");
         $('#lastName').addClass("readyChange");
@@ -126,3 +163,29 @@ function submitPW() {
 //TODO: Make EDIT button enable everything for changes
 //TODO: Make a SAVE button
 //TODO: Add the pushes and pulls
+
+function checkPassword(password, email1) {
+    var emailPW = {
+        email: email1,
+        pw: password
+    };
+    var emailPWjson = JSON.stringify(emailPW);
+    $.ajax({
+        type: "POST",
+        url: "/scripts/PW-get.php",
+        data: emailPWjson,
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+            var results = data;
+            console.log(results);
+            console.log(results.truth);
+            console.log(results.UID);
+            if (results.truth) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    });
+}
