@@ -61,7 +61,7 @@ $( document ).ready(function() {
 });
 
 function goback() {
-    window.location.assign("/PongHole.html");
+    window.location.assign("/Ponghole.html");
 }
 
 
