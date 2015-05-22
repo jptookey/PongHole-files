@@ -146,8 +146,9 @@ function submitEmailP() {
             console.log(results.truth);
             if (results.truth) {
                 console.log('CP5');
-                console.log(validateEmail(emailNew1));
-                if (validateEmail(emailNew1)) {
+                console.log(emailNew1);
+                console.log(validateEmailP(emailNew1));
+                if (validateEmailP(emailNew1)) {
                     console.log('CP9');
                     var emailVal3 = {
                         emailVal: email
@@ -207,7 +208,7 @@ function submitEmailP() {
     });
 }
 
-function validateEmail(email) {
+function validateEmailP(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     return re.test(email);
 }
