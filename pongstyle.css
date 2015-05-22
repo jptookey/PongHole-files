@@ -543,6 +543,7 @@ THIS IS FOR THE PROFILE PAGE*/
 
 .chgButton{
 	height: 3em;
+	padding-left: 0;
 	margin-left: 0;
 	margin-right: auto;
 	display: inline-block;
