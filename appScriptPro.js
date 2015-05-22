@@ -119,7 +119,7 @@ function updateEmail() {
         "Please enter the following to create a enter a new email address for your account. </span></div>" +
         "<input class='border1' id='pwOld' type='password' placeholder='Old Password'/input>" +
         "<p id=pwVal></p>"+ "</br>"+
-        "<input class='border1' id='emailNew' type='password' placeholder='"+email2+"'/input>" +
+        "<input class='border1' id='emailNew' placeholder='"+email2+"'/input>" +
         "<p id='emailVal'></p>"+
         "<div><a data-role='button' class='border1 text1 background1' id='backButton1' rel='close'></a>" +
         "<a onclick='submitEmailP()' data-role='button' class='border1 text1 background1' id='nextButton1'></a></div>" +
@@ -140,7 +140,6 @@ function submitEmailP() {
         url: "/scripts/PW-get.php",
         data: emailPWjson,
         cache: false,
-        async: false,
         dataType: "json",
         success: function (data) {
             var results = data;
@@ -150,6 +149,7 @@ function submitEmailP() {
             if (results.truth) {
                 console.log('CP5');
                 if (validateEmail(emailNew1)) {
+                    console.log('CP9');
                     var emailVal3 = {
                         emailVal: email
                     };
@@ -160,7 +160,6 @@ function submitEmailP() {
                         url: "/scripts/emailVal.php",
                         data: emailVal2,
                         cache: false,
-                        async: false,
                         dataType: "json",
                         success: function (data) {
                             console.log(data);
