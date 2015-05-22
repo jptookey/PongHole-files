@@ -131,7 +131,6 @@ function updateEmail() {
 
 function submitEmailP() {
     var pwOld = document.getElementById('pwOld').value;
-    console.log(document.getElementById('pwOld').value+document.getElementById('emailNew2').value);
     var emailNew1 = document.getElementById('emailNew2').value;
     var emailPW = {
         email: email2,
@@ -145,18 +144,15 @@ function submitEmailP() {
         cache: false,
         dataType: "json",
         success: function (data) {
-            var results = data;
-            console.log(results.truth);
-            if (results.truth) {
-                console.log('CP5');
-                console.log(emailNew1);
-                console.log(validateEmailP(emailNew1));
+            var results1 = data;
+            console.log(results1);
+            if (results1.truth) {
                 if (validateEmailP(emailNew1)) {
-                    console.log('CP9');
+
                     var emailVal3 = {
                         emailVal: emailNew1
                     };
-                    console.log('CP6');
+
                     var emailVal2 = JSON.stringify(emailVal3);
                     $.ajax({
                         type: "POST",
@@ -169,7 +165,7 @@ function submitEmailP() {
                             if (data > 0) {
                                 $("#emailVal").show().text('Email already in use');
                             } else {
-                                console.log('CP7');
+
                                 var pushdata = {
                                     key: userKey,
                                     email: emailNew1
@@ -182,9 +178,10 @@ function submitEmailP() {
                                     cache: false,
                                     dataType: "json",
                                     success: function () {
-                                        console.log('CP8');
+
                                         email2=emailNew1;
                                         console.log(email2);
+                                        $("#emailNew").text(email2);
                                         $(document).trigger('simpledialog', {'method': 'close'});
                                     },
                                     error: function (jqXHR, textStatus, errorThrown) {
