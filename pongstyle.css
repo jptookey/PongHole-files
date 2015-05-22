@@ -553,18 +553,19 @@ THIS IS FOR THE PROFILE PAGE*/
 }
 
 #pwChange{
-	width: 20em;
+	width: 25%;
 	height: 3em;
 	padding-left: 0;
-	margin-left: 0;
+	margin-left: 15%;
 	margin-right: auto;
 	display: inline-block;
 	cursor: pointer;
 	text-align: center;
 	vertical-align: text-bottom;
+	bottom: 0;
 }
 #emailChange{
-	width: 25em;
+	width: 25%;
 	height: 3em;
 	padding-left: 0;
 	margin-left: 10%;
