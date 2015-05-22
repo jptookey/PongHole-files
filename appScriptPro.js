@@ -70,7 +70,7 @@ function goback() {
 
 
 function enableC() {
-    alert('Hi jack!');
+
     if(document.getElementById("userName").disabled=true) {
         document.getElementById("userName").disabled = false;
         document.getElementById("firstName").disabled = false;
@@ -158,6 +158,8 @@ function updatePW() {
             "<p>Old Password:</p>"+
         "<input class='border1' id='pwOld' type='password' placeholder='Old Password'/input>" + "</br>"+
             "<p id=pwVal></p>"+
+        "<div class='border1 color1 text1' id='forgotPW onclick=sendNewPW()>Forgot Password</div>"+
+        "<p id='sentmail'></p>"+
             "<p>New Password:</p>"+
         "<input class='border1' id='pwNew1' type='password' placeholder='New Password'/input>" +
             "<p>Repeat New Password:</p>"+
@@ -183,8 +185,7 @@ function updateEmail() {
         "<p>Password:</p>"+
         "<input class='border1' id='pwOld' type='password' placeholder='Current Password'/input>" +
         "<p id='pwVal'></p></br>"+
-            "<div class='border1 color1 text1' id='forgotPW onclick=sendNewPW()>Forgot Password</div>"+
-            "<p id='sentmail'></p>"+
+
         "<p>New Email:</p>"+
         "<input class='border1' id='emailNew2' placeholder='"+email2+"'/input>" +
         "<p id='emailVal'></p>"+
