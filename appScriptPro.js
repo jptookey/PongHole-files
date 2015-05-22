@@ -153,6 +153,7 @@ function submitEmailP() {
                     var emailVal3 = {
                         emailVal: email
                     };
+                    console.log('CP6');
                     var emailVal2 = JSON.stringify(emailVal3);
                     $.ajax({
                         type: "POST",
@@ -166,6 +167,7 @@ function submitEmailP() {
                             if (data > 0) {
                                 $("#emailVal").show().text('Email already in use');
                             } else {
+                                console.log('CP7');
                                 var pushdata = {
                                     key: userKey,
                                     email: emailNew1
@@ -178,6 +180,7 @@ function submitEmailP() {
                                     cache: false,
                                     dataType: "json",
                                     success: function () {
+                                        console.log('CP8');
                                         $(document).trigger('simpledialog', {'method': 'close'});
                                     },
                                     error: function (jqXHR, textStatus, errorThrown) {
@@ -196,6 +199,7 @@ function submitEmailP() {
                     });
                 } else {
                     $("#emailVal").show().text('Please Enter a Valid Email Address');
+                    $("#pwVal").hide()
                 }
             } else {
                 $("#pwVal").show().text('Invalid Password');
