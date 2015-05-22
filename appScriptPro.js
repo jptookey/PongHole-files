@@ -84,8 +84,7 @@ function enableC() {
     }
 }
 
-function enableC2() {
-    alert('IT WORKED2');
+function updatePW() {
     $('<div>').simpledialog2({
         mode: 'blank',
         top: 1,
@@ -105,36 +104,67 @@ function enableC2() {
         "<a onclick='submitPW()' data-role='button' class='border1 text1 background1' id='nextButton1'></a></div>" +
         "</div>"
     });
-    $('#pwOld').focusout(function(){
-        var pwvar = document.getElementById('pwOld').value;
-        var emailVal2 = JSON.stringify(pwvar);
-        //console.log(emailVal2);
-            $.ajax({
-                type: "POST",
-                url: "/scripts/checkPW.php",
-                data: emailVal2,
-                cache: false,
-                dataType: "json",
-                success: function(data)
-                {
-                    console.log(data);
-                    if (data > 0) {
-                        $("#pwVal").show().text('Invalid Password');
-                        $("#pwOld").val('');
-                    } else {
-                        $("#pwVal").hide();
-                    }
+}
 
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log( jqXHR.responseText);
-                    console.log(JSON.stringify(jqXHR));
-                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-                }
-            });
-
+function updateEmail() {
+    $('<div>').simpledialog2({
+        mode: 'blank',
+        top: 1,
+        headerText: false,
+        headerClose: false,
+        // dialogAllow: true,
+        // dialogForce: true,
+        blankContent: "<div class='dialogCont'>" +
+        "<div class='text1 diagHeader color1' id='diagHeadLarge'><span class='middle'>" +
+        "Please enter the following to create a enter a new email address for your account. </span></div>" +
+        "<input class='border1' id='pwOld' type='password' placeholder='Old Password'/input>" + "</br>"+
+        "<p id=pwVal></p>"+
+        "<input class='border1' id='emailNew' type='password' placeholder='New Password'/input>" +
+        "<p id='emailVal'></p>"+
+        "<div><a data-role='button' class='border1 text1 background1' id='backButton1' rel='close'></a>" +
+        "<a onclick='submitEmailP()' data-role='button' class='border1 text1 background1' id='nextButton1'></a></div>" +
+        "</div>"
     });
 }
+
+function submitEmailP() {
+    var pwOld = document.getElementById('pwOld').value;
+    var emailNew1 = document.getElementById('emailNew').value;
+    if(checkPassword(pwOld,email2)){
+        if(validateEmail(emailNew1)){
+            if (emailValidate2(emailNew1)) {
+                var pushdata = {
+                    key: userKey,
+                    email: emailNew1
+                };
+                var pushdata2 = JSON.stringify(pushdata);
+                $.ajax({
+                    type: "POST",
+                    url: "/scripts/updateEmail.php",
+                    data: pushdata2,
+                    cache: false,
+                    dataType: "json",
+                    success: function () {
+                        $(document).trigger('simpledialog', {'method': 'close'});
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR.responseText);
+                        console.log(JSON.stringify(jqXHR));
+                        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                    }
+                });
+            } else {
+                $("#emailVal").show().text('Email already in use')
+            }
+        } else {
+            $("#emailVal").show().text('Please Enter a Valid Email Address')
+        }
+    } else {
+        $("#pwVal").show().text('Invalid Password')
+        //TODO Add a forgot email button here as well
+    }
+}
+
 
 function validateEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -142,26 +172,35 @@ function validateEmail(email) {
 }
 
 function submitPW() {
+    var pwOld = document.getElementById('pwOld').value;
     var pw1 = document.getElementById('pwNew1').value;
     var pw2 = document.getElementById('pwNew2').value;
     if (pw1===pw2) {
-        var pw3 = json.stringify(pw1);
-        $.ajax({
-            type: "POST",
-            url: "/scripts/pushPW.php",
-            data: emailVal2,
-            cache: false,
-            dataType: "json",
-            success: function(data)
-            {
-               return('done');
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log( jqXHR.responseText);
-                console.log(JSON.stringify(jqXHR));
-                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        if (checkPassword(pwOld, email2)) {
+            var pw = {
+                key: userKey,
+                pass: pw1
             }
-        });
+            var pw3 = json.stringify(pw);
+            $.ajax({
+                type: "POST",
+                url: "/scripts/updatePW.php",
+                data: pw3,
+                cache: false,
+                dataType: "json",
+                success: function () {
+                    $(document).trigger('simpledialog', {'method': 'close'});
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.responseText);
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+        } else {
+            $("#pwVal").show().text('Invalid Password')
+            //TODO: Add button to email password
+        }
     } else {
         $("#pwVal2").show().text('Passwords do not match');
     }
@@ -197,6 +236,34 @@ function checkPassword(password, email1) {
             } else {
                 return false;
             }
+        }
+    });
+}
+
+function emailValidate2(email) {
+    var emailVal3 = {
+        emailVal: email
+    };
+    var emailVal2 = JSON.stringify(emailVal3);
+    $.ajax({
+        type: "POST",
+        url: "/scripts/emailVal.php",
+        data: emailVal2,
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            if (data > 0) {
+                return false
+            } else {
+                return true
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
         }
     });
 }

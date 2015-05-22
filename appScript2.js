@@ -249,7 +249,7 @@ function loadstats() {
     };
     var log = JSON.stringify(logLog);
     console.log(log);
-    console.log("YOU DID IT");
+    //console.log("YOU DID IT");
     $(document).trigger('simpledialog', {'method':'close'});
 
     $.ajax({
