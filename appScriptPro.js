@@ -119,7 +119,7 @@ function updateEmail() {
         "Please enter the following to create a enter a new email address for your account. </span></div>" +
         "<input class='border1' id='pwOld' type='password' placeholder='Old Password'/input>" +
         "<p id=pwVal></p>"+ "</br>"+
-        "<input class='border1' id='emailNew' type='password' placeholder='New Password'/input>" +
+        "<input class='border1' id='emailNew' type='password' placeholder='"+email2+"'/input>" +
         "<p id='emailVal'></p>"+
         "<div><a data-role='button' class='border1 text1 background1' id='backButton1' rel='close'></a>" +
         "<a onclick='submitEmailP()' data-role='button' class='border1 text1 background1' id='nextButton1'></a></div>" +
