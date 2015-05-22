@@ -236,9 +236,9 @@ function checkPassword(password, email1) {
             console.log(results.UID);
             if (results.truth) {
                 console.log('CP5');
-                return true;
+                return (1===1);
             } else {
-                return false;
+                return (1===2);
             }
         }
     });
@@ -258,9 +258,9 @@ function emailValidate2(email) {
         success: function (data) {
             console.log(data);
             if (data > 0) {
-                return false
+                return (1===2);
             } else {
-                return true
+                return (1===1);
             }
 
         },
