@@ -228,6 +228,7 @@ function checkPassword(password, email1) {
         url: "/scripts/PW-get.php",
         data: emailPWjson,
         cache: false,
+        async: false,
         dataType: "json",
         success: function (data) {
             var results = data;
@@ -254,6 +255,7 @@ function emailValidate2(email) {
         url: "/scripts/emailVal.php",
         data: emailVal2,
         cache: false,
+        async: false,
         dataType: "json",
         success: function (data) {
             console.log(data);
