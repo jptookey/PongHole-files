@@ -81,6 +81,8 @@ function enableC() {
         $('#lastName').addClass("readyChange");
         $('#DOB').addClass("readyChange");
         $('#zipCode').addClass("readyChange");
+        $('#pwChange').hide();
+        $('#emailChange').hide();
     }
 }
 
@@ -259,8 +261,8 @@ function submitPW() {
 
 //TODO: Add a dialog for changing password - Need to finish it
 //TODO: Make a submit button to save edits
-//TODO: Fix the change email button
-//TODO: Add a dialog for the change email
+//TODO: Fix the change email button - DONE
+//TODO: Add a dialog for the change email - DONE
 //TODO: Add a button to send mail if they forgot their password (if they get the Old Password wrong)
 //TODO: Scripts Needed:  Push new values; Check Passwords; Check Email;
 
