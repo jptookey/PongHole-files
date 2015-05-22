@@ -95,9 +95,12 @@ function updatePW() {
         blankContent: "<div class='dialogCont'>" +
         "<div class='text1 diagHeader color1' id='diagHeadLarge'><span class='middle'>" +
         "Please enter the following to create a new password. </span></div>" +
+            "<p>Old Password:</p>"+
         "<input class='border1' id='pwOld' type='password' placeholder='Old Password'/input>" + "</br>"+
             "<p id=pwVal></p>"+
+            "<p>New Password:</p>"+
         "<input class='border1' id='pwNew1' type='password' placeholder='New Password'/input>" +
+            "<p>Repeat New Password:</p>"+
         "<input class='border1' id='pwNew2' type='password' placeholder='Repeat New Password'/input>" +
         "<p id='pwCompare'></p>"+
         "<div><a data-role='button' class='border1 text1 background1' id='backButton1' rel='close'></a>" +
