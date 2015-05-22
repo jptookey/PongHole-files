@@ -337,7 +337,6 @@ function checkPassword(password, email1) {
         url: "/scripts/PW-get.php",
         data: emailPWjson,
         cache: false,
-        async: false,
         dataType: "json",
         success: function (data) {
             var results = data;
