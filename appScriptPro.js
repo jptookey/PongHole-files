@@ -152,7 +152,7 @@ function submitEmailP() {
                 if (validateEmailP(emailNew1)) {
                     console.log('CP9');
                     var emailVal3 = {
-                        emailVal: email
+                        emailVal: emailNew1
                     };
                     console.log('CP6');
                     var emailVal2 = JSON.stringify(emailVal3);
