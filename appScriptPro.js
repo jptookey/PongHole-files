@@ -143,9 +143,7 @@ function submitEmailP() {
         dataType: "json",
         success: function (data) {
             var results = data;
-            console.log(results);
             console.log(results.truth);
-            console.log(results.UID);
             if (results.truth) {
                 console.log('CP5');
                 if (validateEmail(emailNew1)) {
