@@ -146,6 +146,7 @@ function submitEmailP() {
             console.log(results.truth);
             if (results.truth) {
                 console.log('CP5');
+                console.log(validateEmail(emailNew1));
                 if (validateEmail(emailNew1)) {
                     console.log('CP9');
                     var emailVal3 = {
