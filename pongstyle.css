@@ -547,4 +547,6 @@ THIS IS FOR THE PROFILE PAGE*/
 	margin-right: auto;
 	display: inline-block;
 	cursor: pointer;
+	text-align: center;
+	vertical-align: text-bottom;
 }
