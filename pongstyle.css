@@ -540,3 +540,11 @@ THIS IS FOR THE PROFILE PAGE*/
 .genderB{
 	font-weight: bold;
 }
+
+.chgButton{
+	width: 30%;
+	height: 3em;
+	margin-left: 10%;
+	margin-right: auto;
+	display: inline-block;
+}
