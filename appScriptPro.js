@@ -22,43 +22,47 @@ $( document ).ready(function() {
     } else {
         userKey = localStorage.userKey;
         console.log(userKey);
-        var uk = {
-            key: userKey
-        };
-        var varKey = JSON.stringify(uk);
-        $.ajax({
-            type: "POST",
-            url: "/scripts/getUser.php",
-            data: varKey,
-            cache: false,
-            dataType: "json",
-            success: function(data)
-            {
-                var results = data;
-                console.log(results);
-                email2 = results.userEmail;
-                $("#userName").val(results.PUBNAME);
-                $("#firstName").val(results.FNAME);
-                $("#lastName").val(results.LNAME);
-                $("#zipCode").val(results.ZIP);
-                $("#DOB").val(results.DOB);
-                if(results.GENDER == 'M')
-                {
-                    $("#labelM").addClass('genderB');
-                } else if (results.GENDER =='F') {
-                    $("#labelF").addClass('genderB');
-                }
-                $("input[name=gender]:checked").val(results.GENDER);
-                $("#emailNew").text(email2);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log( jqXHR.responseText);
-                console.log(JSON.stringify(jqXHR));
-                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-            }
-        })
+
+        loadUser();
     }
 });
+
+function loadUser() {
+    var uk = {
+        key: userKey
+    };
+    var varKey = JSON.stringify(uk);
+    $.ajax({
+        type: "POST",
+        url: "/scripts/getUser.php",
+        data: varKey,
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+            var results = data;
+            console.log(results);
+            email2 = results.userEmail;
+            $("#userName").val(results.PUBNAME);
+            $("#firstName").val(results.FNAME);
+            $("#lastName").val(results.LNAME);
+            $("#zipCode").val(results.ZIP);
+            $("#DOB").val(results.DOB);
+            if (results.GENDER == 'M') {
+                $("#labelM").addClass('genderB');
+            } else if (results.GENDER == 'F') {
+                $("#labelF").addClass('genderB');
+            }
+            $("input[name=gender]:checked").val(results.GENDER);
+            $("#emailNew").text(email2);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}
+
 
 function goback() {
     window.location.assign("/Ponghole.html");
@@ -66,7 +70,7 @@ function goback() {
 
 
 function enableC() {
-    if(document.getElementById("emailNew").disabled=true) {
+    if(document.getElementById("userName").disabled=true) {
         document.getElementById("userName").disabled = false;
         document.getElementById("firstName").disabled = false;
         document.getElementById("lastName").disabled = false;
@@ -74,7 +78,7 @@ function enableC() {
         document.getElementById("DOB").disabled = false;
         document.getElementById("genderF").disabled = false;
         document.getElementById("genderM").disabled = false;
-        document.getElementById("emailNew").disabled = false;
+       // document.getElementById("emailNew").disabled = false;
       //  $('#emailNew').removeClass("border1").addClass("readyChange required");
         $('#userName').removeClass("border1").addClass("readyChange required");
         $('#firstName').addClass("readyChange");
@@ -86,6 +90,58 @@ function enableC() {
         $('#saveChange').show().text("Save Changes");
     }
 }
+
+function pushChange() {
+    if(document.getElementById("userName").disabled=false) {
+        document.getElementById("userName").disabled = true;
+        document.getElementById("firstName").disabled = true;
+        document.getElementById("lastName").disabled = true ;
+        document.getElementById("zipCode").disabled = true;
+        document.getElementById("DOB").disabled = true;
+        document.getElementById("genderF").disabled = true;
+        document.getElementById("genderM").disabled = true;
+      //  document.getElementById("emailNew").disabled = false;
+        //  $('#emailNew').removeClass("border1").addClass("readyChange required");
+        $('#userName').removeClass("readyChange required").addClass("border1");
+        $('#firstName').removeClass("readyChange");
+        $('#lastName').removeClass("readyChange");
+        $('#DOB').removeClass("readyChange");
+        $('#zipCode').removeClass("readyChange");
+        $('#pwChange').show();
+        $('#emailChange').show();
+        $('#saveChange').hide().text("Save Changes");
+        varUserP = {
+            key:userKey,
+            userName: document.getElementById("userName").value,
+            firstName:  document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            zipCode: document.getElementById("zipCode").value,
+            DOB: document.getElementById("DOB").value,
+            gender: $("input[name=gender]:checked").val()
+        };
+        varUserP2 = JSON.stringify(varUserP)
+
+//TODO: Get the PHP Script working here
+        $.ajax({
+            type: "POST",
+            url: "/scripts/updateUser.php",
+            data: varUserP2,
+            cache: false,
+            dataType: "json",
+            success: function () {
+                loadUser();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.responseText);
+                console.log(JSON.stringify(jqXHR));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            }
+        });
+
+    }
+}
+
+
 
 function updatePW() {
     $('<div>').simpledialog2({
@@ -125,7 +181,9 @@ function updateEmail() {
         "Please enter the following to create a enter a new email address for your account. </span></div>" +
         "<p>Password:</p>"+
         "<input class='border1' id='pwOld' type='password' placeholder='Current Password'/input>" +
-        "<p id=pwVal></p></br>"+
+        "<p id='pwVal'></p></br>"+
+            "<div class='border1 color1 text1' id='forgotPW onclick=sendNewPW()>Forgot Password</div>"+
+            "<p id='sentmail'></p>"+
         "<p>New Email:</p>"+
         "<input class='border1' id='emailNew2' placeholder='"+email2+"'/input>" +
         "<p id='emailVal'></p>"+
@@ -227,6 +285,7 @@ function submitPW() {
     var pw2 = document.getElementById('pwNew2').value;
     if (pw1===pw2) {
         console.log('CP1');
+//TODO: Need to put in an AJAX call for the password check here
         if (checkPassword(pwOld, email2)) {
             console.log('CP2');
             var pw = {

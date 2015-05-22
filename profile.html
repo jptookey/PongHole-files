@@ -16,97 +16,97 @@
 	<!-- TODO Add a theme file here-->
 
 	<!-- Latest compiled and minified JavaScript -->
-		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-		<script src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
-		<script src="appScriptPro.js"></script>
-		<title>IBTEE: Vs. Profile</title>
-	</head>
+		<!-- 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+            <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+             <script src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
+            <script src="appScriptPro.js"></script> -->
+            <title>IBTEE: Vs. Profile</title>
+        </head>
 
-	<body id="body1">
-	<div data-role="page">
+        <body id="body1">
+        <div data-role="page">
 
-		<div class="color1 border1 text1 topButton background1" onclick="goback()" id="goBack">
-		</div>
-		<div id="title" class="text1"> IBTEE: My Profile
-		</div>
-		<div class="color1 border1 text1 topButton background1" onclick="enableC()" id="editButton">
-		</div>
-		<div class="container" id="bigBorder">
-			<form class="form-horizontal" role="form">
-				<div class="form-group form-group-sm">
-					<label class="col-xs-4 control-label" for="userName">User Name</label>
-					<div class="col-xs-8">
-						<input class="border1" id="userName" placeholder='User Name' disabled/>
-					</div>
-				</div>
-				<div class="form-group form-group-sm">
-					<label class="col-xs-4 control-label" for="firstName">First Name</label>
-					<div class="col-xs-8">
-						<input class="border1" id="firstName" placeholder='First Name' type="text" disabled/>
-					</div>
-				</div>
-				<div class="form-group form-group-sm">
-					<label class="col-xs-4 control-label" for="lastName">Last Name</label>
-					<div class="col-xs-8">
-						<input class="border1" id="lastName" placeholder='Last Name' type="text" disabled/>
-					</div>
-				</div>
-			</form>
+            <div class="color1 border1 text1 topButton background1" onclick="goback()" id="goBack">
+            </div>
+            <div id="title" class="text1"> IBTEE: My Profile
+            </div>
+            <div class="color1 border1 text1 topButton background1" onclick="enableC()" id="editButton">
+            </div>
+            <div class="container" id="bigBorder">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-4 control-label" for="userName">User Name</label>
+                        <div class="col-xs-8">
+                            <input class="border1" id="userName" placeholder='User Name' disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-4 control-label" for="firstName">First Name</label>
+                        <div class="col-xs-8">
+                            <input class="border1" id="firstName" placeholder='First Name' type="text" disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-4 control-label" for="lastName">Last Name</label>
+                        <div class="col-xs-8">
+                            <input class="border1" id="lastName" placeholder='Last Name' type="text" disabled/>
+                        </div>
+                    </div>
+                </form>
 
-			<table id='genderT2'>
-				<tr>
-					<td>
-						<label class='gender' id='labelM'  >Male</label>
-					</td>
-					<td>
-						<label class='gender' id='labelF'  >Female</label>
-					</td>
-				</tr>
+                <table id='genderT2'>
+                    <tr>
+                        <td>
+                            <label class='gender' id='labelM'  >Male</label>
+                        </td>
+                        <td>
+                            <label class='gender' id='labelF'  >Female</label>
+                        </td>
+                    </tr>
 
-				<tr>
-					<td>
-						<input class='gender' type='radio' name='gender' id='genderM' disabled value='M'/>
-					</td>
-					<td>
-						<input class='gender' type='radio' name='gender' id='genderF' disabled value='F'/>
-					</td>
-				</tr>
-				<tr>
-				</tr>
-			</table>
-			</br>
+                    <tr>
+                        <td>
+                            <input class='gender' type='radio' name='gender' id='genderM' disabled value='M'/>
+                        </td>
+                        <td>
+                            <input class='gender' type='radio' name='gender' id='genderF' disabled value='F'/>
+                        </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </table>
+                <br/>
 
-			<form class="form-horizontal" role="form">
-				<div class="form-group form-group-sm">
-					<label class="col-xs-4 control-label" for="zipCode">Zip Code</label>
-					<div class="col-xs-8">
-						<input class="border1" id="zipCode" placeholder='Zip Code' disabled/>
-					</div>
-				</div>
-			<p id='zipValidate'></p>
-				<div class="form-group form-group-sm">
-					<label class="col-xs-4 control-label" for="DOB">Birth Date</label>
-					<div class="col-xs-8">
-						<input class='border1' id='DOB' type='date' placeholder='Date of Birth' disabled/>
-					</div>
-				</div>
-				<div class="form-group form-group-sm">
-					<label class="col-xs-4 control-label" for="emailNew">Email Address</label>
-					<div class="col-xs-8">
-						<div id='emailNew'>Email</div>
-					</div>
-				</div>
-			</form>
-			<div class='chgButton border1 color1 text1' id="saveChange" onclick="pushChange()"></div>
-			<div class='col-xs-4 chgButton border1 color1 text1'  id="pwChange" onclick="updatePW()">Change Password</div>
-			<div class='col-xs-3 offset5 chgButton border1 color1 text1'  id="emailChange" onclick="updateEmail()">Change Email</div>
-		</div>
-		<div class="container" id="bottomBut">
-			<div class="row">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-4 control-label" for="zipCode">Zip Code</label>
+                        <div class="col-xs-8">
+                            <input class="border1" id="zipCode" placeholder='Zip Code' disabled/>
+                        </div>
+                    </div>
+                <p id='zipValidate'></p>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-4 control-label" for="DOB">Birth Date</label>
+                        <div class="col-xs-8">
+                            <input class='border1' id='DOB' type='date' placeholder='Date of Birth' disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-4 control-label" for="emailNew">Email Address</label>
+                        <div class="col-xs-8">
+                            <div id='emailNew'>Email</div>
+                        </div>
+                    </div>
+                </form>
+                <div class='chgButton border1 color1 text1' id="saveChange" onclick="pushChange()"></div>
+                <div class='col-xs-4 chgButton border1 color1 text1'  id="pwChange" onclick="updatePW()">Change Password</div>
+                <div class='col-xs-3 offset5 chgButton border1 color1 text1'  id="emailChange" onclick="updateEmail()">Change Email</div>
+            </div>
+            <div class="container" id="bottomBut">
+                <div class="row">
 
-			</div>
-		</div>
-		<script src="appScriptPro.js"></script>
-	</div>
-	</body>
+                </div>
+            </div>
+            <script src="appScriptPro.js"></script>
+        </div>
+        </body>
