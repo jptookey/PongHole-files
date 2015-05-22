@@ -550,3 +550,10 @@ THIS IS FOR THE PROFILE PAGE*/
 	text-align: center;
 	vertical-align: text-bottom;
 }
+
+.pwChange{
+	width: 20%
+}
+.emailChange{
+	width: 25%
+}
