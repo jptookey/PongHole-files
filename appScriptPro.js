@@ -176,12 +176,15 @@ function submitPW() {
     var pw1 = document.getElementById('pwNew1').value;
     var pw2 = document.getElementById('pwNew2').value;
     if (pw1===pw2) {
+        console.log('CP1');
         if (checkPassword(pwOld, email2)) {
+            console.log('CP2');
             var pw = {
                 key: userKey,
                 pass: pw1
-            }
+            };
             var pw3 = json.stringify(pw);
+            console.log('CP3');
             $.ajax({
                 type: "POST",
                 url: "/scripts/updatePW.php",
@@ -232,6 +235,7 @@ function checkPassword(password, email1) {
             console.log(results.truth);
             console.log(results.UID);
             if (results.truth) {
+                console.log('CP5');
                 return true;
             } else {
                 return false;
