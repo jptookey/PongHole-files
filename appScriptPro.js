@@ -117,8 +117,8 @@ function updateEmail() {
         blankContent: "<div class='dialogCont'>" +
         "<div class='text1 diagHeader color1' id='diagHeadLarge'><span class='middle'>" +
         "Please enter the following to create a enter a new email address for your account. </span></div>" +
-        "<input class='border1' id='pwOld' type='password' placeholder='Old Password'/input>" + "</br>"+
-        "<p id=pwVal></p>"+
+        "<input class='border1' id='pwOld' type='password' placeholder='Old Password'/input>" +
+        "<p id=pwVal></p>"+ "</br>"+
         "<input class='border1' id='emailNew' type='password' placeholder='New Password'/input>" +
         "<p id='emailVal'></p>"+
         "<div><a data-role='button' class='border1 text1 background1' id='backButton1' rel='close'></a>" +
@@ -130,41 +130,80 @@ function updateEmail() {
 function submitEmailP() {
     var pwOld = document.getElementById('pwOld').value;
     var emailNew1 = document.getElementById('emailNew').value;
-    if(checkPassword(pwOld,email2)){
-        if(validateEmail(emailNew1)){
-            if (emailValidate2(emailNew1)) {
-                var pushdata = {
-                    key: userKey,
-                    email: emailNew1
-                };
-                var pushdata2 = JSON.stringify(pushdata);
-                $.ajax({
-                    type: "POST",
-                    url: "/scripts/updateEmail.php",
-                    data: pushdata2,
-                    cache: false,
-                    dataType: "json",
-                    success: function () {
-                        $(document).trigger('simpledialog', {'method': 'close'});
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(jqXHR.responseText);
-                        console.log(JSON.stringify(jqXHR));
-                        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-                    }
-                });
+    var emailPW = {
+        email: email2,
+        pw: pwOld
+    };
+    var emailPWjson = JSON.stringify(emailPW);
+    $.ajax({
+        type: "POST",
+        url: "/scripts/PW-get.php",
+        data: emailPWjson,
+        cache: false,
+        async: false,
+        dataType: "json",
+        success: function (data) {
+            var results = data;
+            console.log(results);
+            console.log(results.truth);
+            console.log(results.UID);
+            if (results.truth) {
+                console.log('CP5');
+                if (validateEmail(emailNew1)) {
+                    var emailVal3 = {
+                        emailVal: email
+                    };
+                    var emailVal2 = JSON.stringify(emailVal3);
+                    $.ajax({
+                        type: "POST",
+                        url: "/scripts/emailVal.php",
+                        data: emailVal2,
+                        cache: false,
+                        async: false,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            if (data > 0) {
+                                $("#emailVal").show().text('Email already in use');
+                            } else {
+                                var pushdata = {
+                                    key: userKey,
+                                    email: emailNew1
+                                };
+                                var pushdata2 = JSON.stringify(pushdata);
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/scripts/updateEmail.php",
+                                    data: pushdata2,
+                                    cache: false,
+                                    dataType: "json",
+                                    success: function () {
+                                        $(document).trigger('simpledialog', {'method': 'close'});
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        console.log(jqXHR.responseText);
+                                        console.log(JSON.stringify(jqXHR));
+                                        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                                    }
+                                });
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR.responseText);
+                            console.log(JSON.stringify(jqXHR));
+                            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                        }
+                    });
+                } else {
+                    $("#emailVal").show().text('Please Enter a Valid Email Address');
+                }
             } else {
-                $("#emailVal").show().text('Email already in use')
+                $("#pwVal").show().text('Invalid Password');
+                //TODO Add a forgot email button here as well
             }
-        } else {
-            $("#emailVal").show().text('Please Enter a Valid Email Address')
         }
-    } else {
-        $("#pwVal").show().text('Invalid Password')
-        //TODO Add a forgot email button here as well
-    }
+    });
 }
-
 
 function validateEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -201,7 +240,7 @@ function submitPW() {
                 }
             });
         } else {
-            $("#pwVal").show().text('Invalid Password')
+            $("#pwVal").show().text('Invalid Password');
             //TODO: Add button to email password
         }
     } else {
@@ -245,31 +284,3 @@ function checkPassword(password, email1) {
     });
 }
 
-function emailValidate2(email) {
-    var emailVal3 = {
-        emailVal: email
-    };
-    var emailVal2 = JSON.stringify(emailVal3);
-    $.ajax({
-        type: "POST",
-        url: "/scripts/emailVal.php",
-        data: emailVal2,
-        cache: false,
-        async: false,
-        dataType: "json",
-        success: function (data) {
-            console.log(data);
-            if (data > 0) {
-                return (1===2);
-            } else {
-                return (1===1);
-            }
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR.responseText);
-            console.log(JSON.stringify(jqXHR));
-            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-        }
-    });
-}
