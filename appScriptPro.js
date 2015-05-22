@@ -14,7 +14,7 @@ $( document ).ready(function() {
         location.reload(true);
     }*/
     //localStorage.removeItem("userKey");
-
+    $("#saveChange").hide();
     console.log(localStorage.userKey);
     // var email = localStorage.email;
     if (localStorage.getItem("userKey") === null) {
@@ -83,6 +83,7 @@ function enableC() {
         $('#zipCode').addClass("readyChange");
         $('#pwChange').hide();
         $('#emailChange').hide();
+        $('#saveChange').show().text("Save Changes");
     }
 }
 

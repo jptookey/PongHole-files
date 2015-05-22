@@ -585,3 +585,15 @@ THIS IS FOR THE PROFILE PAGE*/
 .hidden{
 	display:none;
 }
+
+#saveChange{
+	width: 30%;
+	height: 3em;
+	padding-left: 0;
+	margin-left: 35%;
+	margin-right: auto;
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: text-bottom;
+}
