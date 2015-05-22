@@ -552,6 +552,29 @@ THIS IS FOR THE PROFILE PAGE*/
 	vertical-align: text-bottom;
 }
 
+#pwChange{
+	width: 20em;
+	height: 3em;
+	padding-left: 0;
+	margin-left: 0;
+	margin-right: auto;
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: text-bottom;
+}
+#emailChange{
+	width: 25em;
+	height: 3em;
+	padding-left: 0;
+	margin-left: 10%;
+	margin-right: auto;
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: text-bottom;
+}
+
 #bottomBut{
 	width: 80%;
 	margin-left: 10%;
