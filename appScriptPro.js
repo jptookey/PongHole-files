@@ -70,6 +70,7 @@ function goback() {
 
 
 function enableC() {
+    alert('Hi jack!');
     if(document.getElementById("userName").disabled=true) {
         document.getElementById("userName").disabled = false;
         document.getElementById("firstName").disabled = false;
