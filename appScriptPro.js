@@ -183,6 +183,8 @@ function submitEmailP() {
                                     dataType: "json",
                                     success: function () {
                                         console.log('CP8');
+                                        email2=emailNew1;
+                                        console.log(email2);
                                         $(document).trigger('simpledialog', {'method': 'close'});
                                     },
                                     error: function (jqXHR, textStatus, errorThrown) {
