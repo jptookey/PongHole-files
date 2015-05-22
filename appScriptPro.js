@@ -118,8 +118,8 @@ function updateEmail() {
         "<div class='text1 diagHeader color1' id='diagHeadLarge'><span class='middle'>" +
         "Please enter the following to create a enter a new email address for your account. </span></div>" +
         "<input class='border1' id='pwOld' type='password' placeholder='Old Password'/input>" +
-        "<p id=pwVal></p>"+ "</br>"+
-        "<input class='border1' id='emailNew' placeholder='"+email2+"'/input>" +
+        "<p id=pwVal></p></br>"+
+        "<input class='border1' id='emailNew2' placeholder='"+email2+"'/input>" +
         "<p id='emailVal'></p>"+
         "<div><a data-role='button' class='border1 text1 background1' id='backButton1' rel='close'></a>" +
         "<a onclick='submitEmailP()' data-role='button' class='border1 text1 background1' id='nextButton1'></a></div>" +
@@ -129,7 +129,8 @@ function updateEmail() {
 
 function submitEmailP() {
     var pwOld = document.getElementById('pwOld').value;
-    var emailNew1 = document.getElementById('emailNew').value;
+    console.log(document.getElementById('pwOld').value+document.getElementById('emailNew2').value);
+    var emailNew1 = document.getElementById('emailNew2').value;
     var emailPW = {
         email: email2,
         pw: pwOld
