@@ -351,7 +351,7 @@ function gameChoice() {
         "<div class='text1 color1 diagHeader'><span class='middle'>CHOOSE A GAME</span></div>" +
         "<a onclick='pongGame()' class='diagButton color1 border1 background1' id='gameChoicePongDiag' data-role='button' rel='close'></a>"+
         "<a onclick='holeGame()' class='diagButton color1 border1 background1' id ='gameChoiceHoleDiag' data-role='button' rel='close'></a>" +
-        "<select id=gameSelect><option disabled selected> -- Choose another game -- </option><option value='1003'>Bowling</option><option value='1004'>Darts</option><option value='1005'>Kanjam</option></select>"+
+        "<select id=gameSelect><option disabled selected> -- Choose another game -- </option><option value='1003'>Bowling</option><option value='1004'>Darts</option><option value='1005'>Kanjam</option><option value='1006'>Dice 2Player</option><option value='1007'>FlipCup Teams</option></select>"+
         "<div><a onclick='gcBack()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>" +
         "<a onclick='otherGame()' data-role='button' class='border1 background1 text1' rel='close' id='nextButton1'></a></div>" +
         "</div>"
