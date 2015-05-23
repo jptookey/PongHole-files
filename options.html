@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<>
+<html>
 <head>
 	<meta name="viewport" content="width=device-width, user-scalable=yes">
 	<link type="text/css" rel="stylesheet" href="pongstyle.css"/>
@@ -7,24 +7,41 @@
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
 	<!--    <link rel="stylesheet" type="text/css" href="./themes/PongHoleTheme1.min.css" /> -->
 	<!--     <link rel="stylesheet" type="text/css" href="./themes/jquery.mobile.icons.min.css"/>  -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
 	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" />
 	<!--  <link type="text/css" rel="stylesheet" href="jquery.mobile.external-png-1.4.4.min.css"/>  -->
-	<!-- TODO Add a theme file here-->
 
 
+	<!-- Latest compiled and minified JavaScript -->
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
-	<script src="appScriptNot.js"></script>
-	<title>IBTEE: Vs. Options</title>
+	<script src="appScriptOpt.js"></script>
+	<title>IBTEE: Vs. Profile</title>
 </head>
 
-<body>
-	<div class="button1 border1 text1" id="profile">
-		<a href="http://ibtee.com">
-			<img class="buttonpics1" src="./Resources/profile.png"/>
-		</a>
+<body id="body1">
+	<div data-role="page">
+
+		<div class="color1 border1 text1 topButton background1" onclick="goback()" id="goBack">
+		</div>
+		<div id="title" class="text1"> IBTEE: My Profile
+		</div>
+		<div class="color1 border1 text1 topButton background1" onclick="enableC()" id="editButton">
+		</div>
+		<div class="container" id="bigBorder">
+			<form class="form-horizontal" role="form">
+				<div class="form-group form-group-sm">
+					<label class="col-xs-4 control-label" for="userScale">Default Rank Scale</label>
+					<div class="col-xs-8">
+						<input class="border1" id="userScale" placeholder='User Name' disabled/>
+					</div>
+				</div>
+			</form>
+		</div>
+		<script src="appScriptOpt.js"></script>
 	</div>
 </body>
