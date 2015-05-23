@@ -158,7 +158,7 @@ function updatePW() {
             "<p>Old Password:</p>"+
         "<input class='border1' id='pwOld' type='password' placeholder='Old Password'/input>" + "</br>"+
             "<p id=pwVal></p>"+
-        "<div class='border1 color1 text1' id='forgotPW' onclick='sendNewPW()'>Forgot Password</div>"+
+        "<div class='border1 color1 text1' id='forgotPW' onclick='sendNewPW()'><span id='fPWspan'>Forgot Password</span></div>"+
         "<p id='sentmail'></p>"+
             "<p>New Password:</p>"+
         "<input class='border1' id='pwNew1' type='password' placeholder='New Password'/input>" +
