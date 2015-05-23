@@ -597,3 +597,9 @@ THIS IS FOR THE PROFILE PAGE*/
 	text-align: center;
 	vertical-align: text-bottom;
 }
+
+#forgotPW{
+	width: 50%;
+	margin-left: 25%;
+	margin-right: auto;
+}
