@@ -120,9 +120,10 @@ function pushChange() {
             DOB: document.getElementById("DOB").value,
             gender: $("input[name=gender]:checked").val()
         };
-        varUserP2 = JSON.stringify(varUserP)
+        varUserP2 = JSON.stringify(varUserP);
 
 //TODO: Get the PHP Script working here
+        conosle.log(varUserP2);
         $.ajax({
             type: "POST",
             url: "/scripts/updateUser.php",
