@@ -93,7 +93,9 @@ function enableC() {
 }
 
 function pushChange() {
+    console.log('Test1');
     if(document.getElementById("userName").disabled=false) {
+        console.log('Test2');
         document.getElementById("userName").disabled = true;
         document.getElementById("firstName").disabled = true;
         document.getElementById("lastName").disabled = true ;
@@ -111,6 +113,7 @@ function pushChange() {
         $('#pwChange').show();
         $('#emailChange').show();
         $('#saveChange').hide().text("Save Changes");
+        console.log('Test3');
         varUserP = {
             key:userKey,
             userName: document.getElementById("userName").value,
@@ -121,7 +124,7 @@ function pushChange() {
             gender: $("input[name=gender]:checked").val()
         };
         varUserP2 = JSON.stringify(varUserP);
-
+        console.log('Test4');
 //TODO: Get the PHP Script working here
         console.log(varUserP2);
         $.ajax({
@@ -140,6 +143,8 @@ function pushChange() {
             }
         });
 
+    } else {
+        console.log('Test5');
     }
 }
 
