@@ -123,7 +123,7 @@ function pushChange() {
         varUserP2 = JSON.stringify(varUserP);
 
 //TODO: Get the PHP Script working here
-        conosle.log(varUserP2);
+        console.log(varUserP2);
         $.ajax({
             type: "POST",
             url: "/scripts/updateUser.php",
