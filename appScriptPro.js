@@ -94,7 +94,7 @@ function enableC() {
 
 function pushChange() {
     console.log('Test1');
-    if(document.getElementById("userName").disabled=false) {
+ //   if(document.getElementById("userName").disabled=false) {
         console.log('Test2');
         document.getElementById("userName").disabled = true;
         document.getElementById("firstName").disabled = true;
@@ -143,9 +143,9 @@ function pushChange() {
             }
         });
 
-    } else {
+  //  } else {
         console.log('Test5');
-    }
+   // }
 }
 
 
