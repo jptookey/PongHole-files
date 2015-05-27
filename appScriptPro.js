@@ -284,6 +284,7 @@ function submitEmailP() {
             }
         }
     });
+    alert('Email Successfully Changed!');
 }
 
 function validateEmailP(email) {
@@ -346,6 +347,7 @@ function submitPW() {
             }
         }
     });
+    alert('Password Successfully Changed!');
 }
 
 

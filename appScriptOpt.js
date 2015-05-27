@@ -44,3 +44,7 @@ function loadUser() {
         }
     });
 }
+
+function goback() {
+    window.location.assign("/Ponghole.html");
+}
