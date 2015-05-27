@@ -312,6 +312,7 @@ function submitPW() {
             console.log(results.truth);
             console.log(results.UID);
             if (results.truth) {
+                $("#pwVal").hide();
                 if (pw1===pw2) {
                     console.log('CP1');
                     console.log('CP2');
@@ -319,7 +320,7 @@ function submitPW() {
                         key: userKey,
                         pass: pw1
                     };
-                    var pw3 = json.stringify(pw);
+                    var pw3 = JSON.stringify(pw);
                     console.log('CP3');
                     $.ajax({
                         type: "POST",
@@ -337,7 +338,7 @@ function submitPW() {
                         }
                     });
                 } else {
-                    $("#pwVal2").show().text('Passwords do not match');
+                    $("#pwCompare").show().text('Passwords do not match');
                 }
 
             } else {
