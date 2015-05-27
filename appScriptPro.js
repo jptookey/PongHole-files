@@ -123,9 +123,8 @@ function pushChange() {
             DOB: document.getElementById("DOB").value,
             gender: $("input[name=gender]:checked").val()
         };
-        varUserP2 = JSON.stringify(varUserP);
+        var varUserP2 = JSON.stringify(varUserP);
         console.log('Test4');
-//TODO: Get the PHP Script working here
         console.log(varUserP2);
         $.ajax({
             type: "POST",
@@ -202,7 +201,8 @@ function updateEmail() {
 }
 
 function sendNewPW(){
-
+    console.log('Here\'s your new password!');
+    $('#sentmail').show().text('An email has been sent to your current email address with instructions on how to reset your password.')
 }
 
 function submitEmailP() {
@@ -295,39 +295,56 @@ function submitPW() {
     var pwOld = document.getElementById('pwOld').value;
     var pw1 = document.getElementById('pwNew1').value;
     var pw2 = document.getElementById('pwNew2').value;
-    if (pw1===pw2) {
-        console.log('CP1');
-//TODO: Need to put in an AJAX call for the password check here
-        if (checkPassword(pwOld, email2)) {
-            console.log('CP2');
-            var pw = {
-                key: userKey,
-                pass: pw1
-            };
-            var pw3 = json.stringify(pw);
-            console.log('CP3');
-            $.ajax({
-                type: "POST",
-                url: "/scripts/updatePW.php",
-                data: pw3,
-                cache: false,
-                dataType: "json",
-                success: function () {
-                    $(document).trigger('simpledialog', {'method': 'close'});
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(jqXHR.responseText);
-                    console.log(JSON.stringify(jqXHR));
-                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+    var emailPW = {
+        email: email2,
+        pw: pwOld
+    };
+    var emailPWjson = JSON.stringify(emailPW);
+    $.ajax({
+        type: "POST",
+        url: "/scripts/PW-get.php",
+        data: emailPWjson,
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+            var results = data;
+            console.log(results);
+            console.log(results.truth);
+            console.log(results.UID);
+            if (results.truth) {
+                if (pw1===pw2) {
+                    console.log('CP1');
+                    console.log('CP2');
+                    var pw = {
+                        key: userKey,
+                        pass: pw1
+                    };
+                    var pw3 = json.stringify(pw);
+                    console.log('CP3');
+                    $.ajax({
+                        type: "POST",
+                        url: "/scripts/updatePW.php",
+                        data: pw3,
+                        cache: false,
+                        dataType: "json",
+                        success: function () {
+                            $(document).trigger('simpledialog', {'method': 'close'});
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR.responseText);
+                            console.log(JSON.stringify(jqXHR));
+                            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                        }
+                    });
+                } else {
+                    $("#pwVal2").show().text('Passwords do not match');
                 }
-            });
-        } else {
-            $("#pwVal").show().text('Invalid Password');
-            //TODO: Add button to email password
+
+            } else {
+                $("#pwVal").show().text('Invalid Password');
+            }
         }
-    } else {
-        $("#pwVal2").show().text('Passwords do not match');
-    }
+    });
 }
 
 
