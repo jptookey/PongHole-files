@@ -48,3 +48,19 @@ function loadUser() {
 function goback() {
     window.location.assign("/Ponghole.html");
 }
+
+function enableChange() {
+    if (document.getElementById("userScale").disabled) {
+        document.getElementById("userScale").disabled = false;
+        document.getElementById("notificationStyle").disabled = false;
+        document.getElementById("userOrg").disabled = false;
+        $('#saveChangeO').show().text('Save Changes');
+    }
+}
+
+function pushOptions() {
+    document.getElementById("userScale").disabled = true;
+    document.getElementById("notificationStyle").disabled = true;
+    document.getElementById("userOrg").disabled = true;
+    $('#saveChangeO').hide();
+}

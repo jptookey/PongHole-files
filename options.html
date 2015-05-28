@@ -28,22 +28,22 @@
 
 		<div class="color1 border1 text1 topButton background1" onclick="goback()" id="goBack">
 		</div>
-		<div id="title" class="text1"> IBTEE: NOTHING IS WORKING
+		<div id="title" class="text1"> IBTEE: My Options
 		</div>
-		<div class="color1 border1 text1 topButton background1" onclick="enableC()" id="editButton">
+		<div class="color1 border1 text1 topButton background1" onclick="enableChange()" id="editButton">
 		</div>
 		<div class="container" id="bigBorder">
 			<form class="form-horizontal" role="form">
 				<div class="form-group form-group-sm">
 					<label class="col-xs-4 control-label" for="userScale">Default Rank Scale</label>
 					<div class="col-xs-8">
-						<input class="border1" id="userScale" placeholder='User Name' disabled/>
+						<select class='border1' id="userScale"disabled><option value='City'>Local</option><option value='State'>Region</option><option value="Country">Global</option></select>
 					</div>
 				</div>
 				<div class="form-group form-group-sm">
 					<label class="col-xs-4 control-label" for="notificationStyle">Game Notifications</label>
 					<div class="col-xs-8">
-						<select id='notificationStyle' disabled><option value='Email'>Email and App</option><option value='App'>Application Only</option></select>
+						<select class="border1" id='notificationStyle' disabled><option value='Email'>Email and App</option><option value='App'>Application Only</option></select>
 					</div>
 				</div>
 				<div class="form-group form-group-sm">
@@ -52,7 +52,7 @@
 						<input class="border1" id="userOrg" placeholder="Your University" disabled/>
 					</div>
 				</div>
-				<p>HELLO THERE</p>
+				<div class="border1 color1 text1" id="saveChangeO" onclick="pushOptions()"></div>
 			</form>
 		</div>
 		<script src="appScriptOpt.js"></script>
