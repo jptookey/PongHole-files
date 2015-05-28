@@ -621,4 +621,5 @@ THIS IS FOR THE PROFILE PAGE*/
 	text-align: center;
 	cursor: pointer;
 	height: 3em;
+	visibility: hidden;
 }

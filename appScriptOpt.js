@@ -50,12 +50,10 @@ function goback() {
 }
 
 function enableChange() {
-    if (document.getElementById("userScale").disabled) {
-        document.getElementById("userScale").disabled = false;
-        document.getElementById("notificationStyle").disabled = false;
-        document.getElementById("userOrg").disabled = false;
-        $('#saveChangeO').show().text('Save Changes');
-    }
+    document.getElementById("userScale").disabled = false;
+    document.getElementById("notificationStyle").disabled = false;
+    document.getElementById("userOrg").disabled = false;
+    $('#saveChangeO').show().text('Save Changes');
 }
 
 function pushOptions() {
