@@ -6,6 +6,8 @@ $( document ).ready(function() {
      }*/
     //localStorage.removeItem("userKey");
     $("#saveChangeO").hide();
+    document.getElementById("userScale").disabled = true;
+    document.getElementById("notificationStyle").disabled = true;
     console.log(localStorage.userKey);
     // var email = localStorage.email;
     if (localStorage.getItem("userKey") === null) {
