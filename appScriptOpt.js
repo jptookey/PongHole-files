@@ -52,10 +52,12 @@ function goback() {
 }
 
 function enableChange() {
-    document.getElementById("userScale").disabled = false;
-    document.getElementById("notificationStyle").disabled = false;
-    document.getElementById("userOrg").disabled = false;
-    $('#saveChangeO').show().text('Save Changes');
+    if(document.getElementById("userScale").disabled) {
+        document.getElementById("userScale").disabled = false;
+        document.getElementById("notificationStyle").disabled = false;
+        document.getElementById("userOrg").disabled = false;
+        $('#saveChangeO').show().text('Save Changes');
+    }
 }
 
 function pushOptions() {
