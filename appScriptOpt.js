@@ -27,7 +27,7 @@ function loadUser() {
     var varKey = JSON.stringify(uk);
     $.ajax({
         type: "POST",
-        url: "/scripts/getUser.php",
+        url: "/scripts/getOptions.php",
         data: varKey,
         cache: false,
         dataType: "json",
@@ -65,4 +65,64 @@ function pushOptions() {
     document.getElementById("notificationStyle").disabled = true;
     document.getElementById("userOrg").disabled = true;
     $('#saveChangeO').hide();
+    var dataPush = {
+        userScale: document.getElementById("userScale"),
+        noteStyle: document.getElementById("notificationStyle"),
+        userOrg: document.getElementById("userOrg")
+    };
+    var varKey = JSON.stringify(dataPush);
+    $.ajax({
+        type: "POST",
+        url: "/scripts/pushOptions.php",
+        data: varKey,
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+            var results = data;
+            console.log(results);
+            loadUser();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
 }
+
+/* SOME CODE I FOUND HUNTING THAT MAY HELP THE AUTOCOMPLETE
+$( document ).on( "pageinit", "#template", function() {
+    $( "#upperApplianceSearch" ).on( "listviewbeforefilter", function ( e, data ) {
+        var $ul = $( this ),
+            $input = $( data.input ),
+            value = $input.val(),
+            html = "";
+        $ul.html( "" );
+        if ( value && value.length > 1 ) {
+            $ul.html( "<li><div class='ui-loader'><span class='ui-icon ui-icon-loading'></span></div></li>" );
+            $ul.listview( "refresh" );
+            $.ajax({
+                url: "productautocomplete.php",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    q: $input.val()
+                }
+            })
+                .then( function (data) {
+                    $.each( data, function ( i, val ) {
+                       /*html += "<li><a href='#' data-role='none' value=" + val.productId + ">" + val.productName + "</a></li>"; *//*
+                        html += '<li class="upperUlProductSearch" id=' + val.productId + '>' + val.productName + '</li>';
+                    });
+                    $ul.html( html );
+                    $ul.listview( "refresh" );
+                    $ul.trigger( "updatelayout");
+                });
+        }
+    });
+})
+
+$(".upperUlProductSearch").click(function() {
+    alert ("helleo");
+});
+*/
