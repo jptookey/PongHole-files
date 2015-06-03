@@ -77,7 +77,9 @@ function pushOptions() {
         userNotePref: dp2,
         userOrg: dp3
     };
+    console.log(dataPush2);
     var varKey2 = JSON.stringify(dataPush2);
+    console.log(varKey2);
     $.ajax({
         type: "POST",
         url: "/scripts/pushOptions.php",
