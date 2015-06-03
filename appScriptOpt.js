@@ -38,7 +38,7 @@ function loadUser() {
            // console.log(results);
             $("#userOrg").val(results.userOrg);
             $('select#userScale').val(results.userScalePref).change();
-            $("select#userNotePref").val(results.userNotePref).change();
+            $('select#userNotePref').val(results.userNotePref).change();
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
