@@ -68,14 +68,11 @@ function pushOptions() {
     document.getElementById("notificationStyle").disabled = true;
     document.getElementById("userOrg").disabled = true;
     $('#saveChangeO').hide();
-    var dp1=document.getElementById("userScale");
-    var dp2=document.getElementById("notificationStyle");
-    var dp3=document.getElementById("userOrg");
     var dataPush2 = {
         key: userKey,
-        userScalePref: dp1,
-        userNotePref: dp2,
-        userOrg: dp3
+        userScalePref: document.getElementById("userScale").value,
+        userNotePref: document.getElementById("notificationStyle").value,
+        userOrg: document.getElementById("userOrg").value
     };
     console.log(dataPush2);
     var varKey2 = JSON.stringify(dataPush2);
