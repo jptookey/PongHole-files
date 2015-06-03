@@ -38,7 +38,7 @@ function loadUser() {
             console.log(results);
             $("#userOrg").val(results.userOrg);
             $('select#userScale').val(results.userScalePref);
-            console.log($('select#userScale').val);
+            console.log(document.getElementById("userScale").value);
             $("select#userNotePref").val(results.userNotePref);
 
         },
