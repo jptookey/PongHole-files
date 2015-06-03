@@ -66,8 +66,9 @@ function pushOptions() {
     document.getElementById("userOrg").disabled = true;
     $('#saveChangeO').hide();
     var dataPush = {
-        userScale: document.getElementById("userScale"),
-        noteStyle: document.getElementById("notificationStyle"),
+        key: userKey,
+        userScalePref: document.getElementById("userScale"),
+        userNotePref: document.getElementById("notificationStyle"),
         userOrg: document.getElementById("userOrg")
     };
     var varKey = JSON.stringify(dataPush);
