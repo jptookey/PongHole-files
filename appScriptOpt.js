@@ -14,13 +14,14 @@ $( document ).ready(function() {
         window.location.assign("/Ponghole.html");
     } else {
         userKey = localStorage.userKey;
-        console.log(userKey);
+        //console.log(userKey);
 
         loadUser();
     }
 });
 
 function loadUser() {
+    console.log('One');
     var uk = {
         key: userKey
     };
@@ -33,7 +34,7 @@ function loadUser() {
         dataType: "json",
         success: function (data) {
             var results = data;
-            console.log(results);
+            console.log('two');
             $("#userOrg").val(results.userOrg);
             $("#userScale").val(results.userScalePref);
             $("#userNotePref").val(results.userNotePref);
@@ -57,10 +58,12 @@ function enableChange() {
         document.getElementById("notificationStyle").disabled = false;
         document.getElementById("userOrg").disabled = false;
         $('#saveChangeO').show().text('Save Changes');
+        console.log('Three');
     }
 }
 
 function pushOptions() {
+    console.log('Four');
     document.getElementById("userScale").disabled = true;
     document.getElementById("notificationStyle").disabled = true;
     document.getElementById("userOrg").disabled = true;
@@ -80,6 +83,7 @@ function pushOptions() {
         dataType: "json",
         success: function (data) {
             var results = data;
+            console.log('Five');
             console.log(results);
             loadUser();
         },
