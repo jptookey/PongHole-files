@@ -34,12 +34,11 @@ function loadUser() {
         dataType: "json",
         success: function (data) {
             var results = data;
-            console.log('two');
-            console.log(results);
+           // console.log('two');
+           // console.log(results);
             $("#userOrg").val(results.userOrg);
             $('select#userScale').val(results.userScalePref).change();
-            console.log(document.getElementById("userScale").value);
-            $("select#userNotePref").val(results.userNotePref);
+            $("select#userNotePref").val(results.userNotePref).change();
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
