@@ -68,17 +68,17 @@ function pushOptions() {
     document.getElementById("notificationStyle").disabled = true;
     document.getElementById("userOrg").disabled = true;
     $('#saveChangeO').hide();
-    var dataPush = {
+    var dataPush2 = {
         key: userKey,
         userScalePref: document.getElementById("userScale"),
         userNotePref: document.getElementById("notificationStyle"),
         userOrg: document.getElementById("userOrg")
     };
-    var varKey = JSON.stringify(dataPush);
+    var varKey2 = JSON.stringify(dataPush2);
     $.ajax({
         type: "POST",
         url: "/scripts/pushOptions.php",
-        data: varKey,
+        data: varKey2,
         cache: false,
         dataType: "json",
         success: function (data) {
