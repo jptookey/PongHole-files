@@ -35,6 +35,7 @@ function loadUser() {
         success: function (data) {
             var results = data;
             console.log('two');
+            console.log(results);
             $("#userOrg").val(results.userOrg);
             $("#userScale").val(results.userScalePref);
             $("#userNotePref").val(results.userNotePref);
