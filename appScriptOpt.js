@@ -102,12 +102,12 @@ function pushOptions() {
 
 function testOptions() {
     var data1 = {
-        university: 'unc'
+        search: 'unc'
     };
     var data2 = JSON.stringify(data1);
     $.ajax({
         type: "POST",
-        url: "/scripts/pushOptions.php",
+        url: "/scripts/search.php",
         data: data2,
         cache: false,
         dataType: "json",
