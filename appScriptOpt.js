@@ -98,6 +98,33 @@ function pushOptions() {
     });
 }
 
+/*This is to test out how multiple lines are returned*/
+
+function testOptions() {
+    var data1 = {
+        university: 'unc'
+    };
+    var data2 = JSON.stringify(data1);
+    $.ajax({
+        type: "POST",
+        url: "/scripts/pushOptions.php",
+        data: data2,
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+            var results = data;
+            console.log(results);
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}
+
+
 /* SOME CODE I FOUND HUNTING THAT MAY HELP THE AUTOCOMPLETE
 $( document ).on( "pageinit", "#template", function() {
     $( "#upperApplianceSearch" ).on( "listviewbeforefilter", function ( e, data ) {
