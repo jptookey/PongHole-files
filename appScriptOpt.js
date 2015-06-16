@@ -120,7 +120,7 @@ function testOptions() {
                 var t = document.createTextNode(entry);
                 newdiv.setAttribute("id", "Div1");
                 newdiv.appendChild(t);
-               document.getElementById("Div1").className += " chgButton";
+              // document.getElementById("Div1").className += " chgButton";
             });
 
         },
