@@ -622,3 +622,12 @@ THIS IS FOR THE PROFILE PAGE*/
 	cursor: pointer;
 	height: 3em;
 }
+
+#testChangeO{
+	width: 50%;
+	margin-left: 25%;
+	margin-right: auto;
+	text-align: center;
+	cursor: pointer;
+	height: 3em;
+}
