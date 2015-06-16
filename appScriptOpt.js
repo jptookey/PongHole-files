@@ -119,7 +119,7 @@ function testOptions() {
                 var newdiv = document.createElement("DIV");
                 var t = document.createTextNode(entry);
                 newdiv.appendChild(t);
-                document.getElementById("MyElement").className += " chgButton";
+               // document.getElementById("").className += " chgButton";
             });
 
         },
