@@ -114,6 +114,8 @@ function testOptions() {
         success: function (data) {
             var results = data;
             console.log(results);
+            console.log(results[0]);
+            console.log(results[1]);
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
