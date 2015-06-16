@@ -113,9 +113,11 @@ function testOptions() {
         dataType: "json",
         success: function (data) {
             var results = data;
-            console.log(results);
-            console.log(results[0]);
-            console.log(results[1]);
+            var length = results.length;
+            console.log(length);
+            results.forEach(function(entry){
+                alert(entry);
+            });
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
