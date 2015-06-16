@@ -116,10 +116,8 @@ function testOptions() {
             var length = results.length;
             console.log(length);
             results.forEach(function(entry){
-                var newdiv = document.createElement("DIV");
-                var t = document.createTextNode(entry);
-                newdiv.setAttribute("id", "Div1");
-                newdiv.appendChild(t);
+                $("#bigBorder").append("<div class='chgButton'>"+entry+"</div");
+
               // document.getElementById("Div1").className += " chgButton";
             });
 
