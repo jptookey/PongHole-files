@@ -116,7 +116,10 @@ function testOptions() {
             var length = results.length;
             console.log(length);
             results.forEach(function(entry){
-                alert(entry);
+                var newdiv = document.createElement("DIV");
+                var t = document.createTextNode(entry);
+                newdiv.appendChild(t);
+                document.getElementById("MyElement").className += " chgButton";
             });
 
         },
