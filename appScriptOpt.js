@@ -123,7 +123,9 @@ function testOptions() {
         cache: false,
         dataType: "json",
         success: function (data) {
+
             var results = data;
+            console.log(data);
             var length = results.length;
             console.log(length);
             results.forEach(function(entry){
