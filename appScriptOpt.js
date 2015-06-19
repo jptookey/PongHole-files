@@ -100,17 +100,17 @@ function pushOptions() {
 
 /*This is to test out the jquery.autocomplete plugin*/
 
-/*
+
 $('#userOrg').devbridgeAutocomplete({
     serviceUrl: "/scripts/search.php",
     onSelect: function(suggestion) {
         this.value = suggestion.value;
     }
 });
-*/
+
 
 /*This is to test out how multiple lines are returned*/
-
+/*
 function testOptions() {
     var data1 = {
         search: 'unc'
@@ -142,7 +142,7 @@ function testOptions() {
         }
     });
 }
-
+*/
 
 /* SOME CODE I FOUND HUNTING THAT MAY HELP THE AUTOCOMPLETE
 $( document ).on( "pageinit", "#template", function() {
