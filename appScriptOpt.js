@@ -99,8 +99,8 @@ function pushOptions() {
 }
 
 /*This is to test out the jquery.autocomplete plugin*/
-
-function testOptions() {
+var lookup = '';
+function testOptions2() {
     $('#userOrg').autocomplete({
         serviceUrl: "/scripts/search.php",
         onSelect: function (suggestion) {
@@ -110,7 +110,7 @@ function testOptions() {
 }
 
 /*This is to test out how multiple lines are returned*/
-/*
+
 function testOptions() {
     var data1 = {
         search: 'unc'
@@ -127,6 +127,7 @@ function testOptions() {
             var results = data;
             console.log(data);
             var length = results.length;
+            lookup = data;
             console.log(length);
             results.forEach(function(entry){
                 $("#bigBorder").append("<div class='chgButton'>"+entry+"</div");
@@ -142,7 +143,7 @@ function testOptions() {
         }
     });
 }
-*/
+
 
 /* SOME CODE I FOUND HUNTING THAT MAY HELP THE AUTOCOMPLETE
 $( document ).on( "pageinit", "#template", function() {
