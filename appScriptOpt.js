@@ -100,7 +100,7 @@ function pushOptions() {
 
 /*This is to test out the jquery.autocomplete plugin*/
 
-function testoptions() {
+function testOptions() {
     $('#userOrg').autocomplete({
         serviceUrl: "/scripts/search.php",
         onSelect: function (suggestion) {
