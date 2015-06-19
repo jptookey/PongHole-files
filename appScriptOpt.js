@@ -100,14 +100,14 @@ function pushOptions() {
 
 /*This is to test out the jquery.autocomplete plugin*/
 
-
-$('#userOrg').devbridgeAutocomplete({
-    serviceUrl: "/scripts/search.php",
-    onSelect: function(suggestion) {
-        this.value = suggestion.value;
-    }
-});
-
+function testoptions() {
+    $('#userOrg').autocomplete({
+        serviceUrl: "/scripts/search.php",
+        onSelect: function (suggestion) {
+            this.value = suggestion.value;
+        }
+    });
+}
 
 /*This is to test out how multiple lines are returned*/
 /*
