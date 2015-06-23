@@ -99,6 +99,7 @@ function pushOptions() {
 }
 
 /*This is to test out the jquery.autocomplete plugin*/
+/*
 var lookup = '';
 function testOptions2() {
     $('#userOrg').autocomplete({
@@ -108,7 +109,7 @@ function testOptions2() {
         }
     });
 }
-
+*/
 /*This is to test out how multiple lines are returned*/
 
 function testOptions() {
@@ -118,7 +119,7 @@ function testOptions() {
     var data2 = JSON.stringify(data1);
     $.ajax({
         type: "POST",
-        url: "/scripts/search.php",
+        url: "/scripts/search2.php",
         data: data2,
         cache: false,
         dataType: "json",
@@ -147,13 +148,13 @@ function testOptions() {
 
 /* SOME CODE I FOUND HUNTING THAT MAY HELP THE AUTOCOMPLETE
 $( document ).on( "pageinit", "#template", function() {
-    $( "#upperApplianceSearch" ).on( "listviewbeforefilter", function ( e, data ) {
+    $( "#userOrg" ).on( "listviewbeforefilter", function ( e, data ) {
         var $ul = $( this ),
             $input = $( data.input ),
             value = $input.val(),
             html = "";
         $ul.html( "" );
-        if ( value && value.length > 1 ) {
+        if ( value && value.length > 2 ) {
             $ul.html( "<li><div class='ui-loader'><span class='ui-icon ui-icon-loading'></span></div></li>" );
             $ul.listview( "refresh" );
             $.ajax({
