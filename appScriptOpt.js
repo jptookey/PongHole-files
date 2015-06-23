@@ -119,7 +119,7 @@ function testOptions() {
     var data2 = JSON.stringify(data1);
     $.ajax({
         type: "POST",
-        url: "/scripts/search2.php",
+        url: "/scripts/search.php",
         data: data2,
         cache: false,
         dataType: "json",
