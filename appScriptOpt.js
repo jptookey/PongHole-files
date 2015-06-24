@@ -72,6 +72,12 @@ function enableChange() {
                 var results = data;
                 universityList=results.suggestions;
                 console.log(universityList);
+                $('#userOrg').autocomplete({
+                    lookup: universityList,
+                    onSelect: function (suggestion) {
+                        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+                    }
+                });
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -128,12 +134,7 @@ var countries = [
 
 console.log(countries);
 
-$('#userOrg').autocomplete({
-    lookup: countries,
-    onSelect: function (suggestion) {
-        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-    }
-});
+
 
 /*This is to test out the jquery.autocomplete plugin*/
 /*
