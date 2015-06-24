@@ -145,7 +145,7 @@ function testOptions() {
         }
     });
 }
-*/
+
 
 /* SOME CODE I FOUND HUNTING THAT MAY HELP THE AUTOCOMPLETE
 $( document ).on( "pageinit", "#template", function() {
