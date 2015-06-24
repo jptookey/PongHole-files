@@ -69,7 +69,8 @@ function enableChange() {
             dataType: "json",
             success: function (data) {
                 console.log(1);
-                universityList=data;
+                var results = data;
+                universityList=results[0];
                 console.log(universityList);
 
             },
