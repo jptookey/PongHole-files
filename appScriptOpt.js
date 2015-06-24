@@ -98,6 +98,21 @@ function pushOptions() {
     });
 }
 
+
+
+var countries = [
+    { value: 'Andorra', data: 'AD' },
+    // ...
+    { value: 'Zimbabwe', data: 'ZZ' }
+];
+
+$('#userOrg').autocomplete({
+    lookup: countries,
+    onSelect: function (suggestion) {
+        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+    }
+});
+
 /*This is to test out the jquery.autocomplete plugin*/
 /*
 var lookup = '';
@@ -111,7 +126,7 @@ function testOptions2() {
 }
 */
 /*This is to test out how multiple lines are returned*/
-
+/*
 function testOptions2() {
     var data1 = {
         search: 'north c'
@@ -145,7 +160,7 @@ function testOptions2() {
         }
     });
 }
-
+*/
 
 /* SOME CODE I FOUND HUNTING THAT MAY HELP THE AUTOCOMPLETE
 $( document ).on( "pageinit", "#template", function() {
