@@ -119,7 +119,7 @@ function pushOptions() {
 }
 
 
-/*
+
 var countries = [
     { value: 'Andorra', data: 'AD' },
     // ...
@@ -127,7 +127,7 @@ var countries = [
 ];
 
 console.log(countries);
- */
+
 $('#userOrg').autocomplete({
     lookup: universityList,
     onSelect: function (suggestion) {
