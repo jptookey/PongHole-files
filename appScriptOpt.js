@@ -99,7 +99,7 @@ function pushOptions() {
 }
 
 /*This is to test out the jquery.autocomplete plugin*/
-
+/*
 var lookup = '';
 function testOptions2() {
     $('#userOrg').autocomplete({
@@ -109,32 +109,33 @@ function testOptions2() {
         }
     });
 }
-
+*/
 /*This is to test out how multiple lines are returned*/
-/*
+
 function testOptions() {
     var data1 = {
-        search: 'unc'
+        search: 'north c'
     };
     var data2 = JSON.stringify(data1);
     $.ajax({
         type: "POST",
-        url: "/scripts/search.php",
+        url: "/scripts/search3.php",
         data: data2,
         cache: false,
         dataType: "json",
         success: function (data) {
-
+            console.log(1);
             var results = data;
             console.log(data);
             var length = results.length;
             lookup = data;
             console.log(length);
-            results.forEach(function(entry){
-                $("#bigBorder").append("<div class='chgButton'>"+entry+"</div");
+            console.log(results);
+        //    results.forEach(function(entry){
+         //       $("#bigBorder").append("<div class='chgButton'>"+entry+"</div");
 
               // document.getElementById("Div1").className += " chgButton";
-            });
+         //   });
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
