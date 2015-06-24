@@ -126,10 +126,10 @@ function testOptions2() {
         success: function (data) {
             console.log(1);
             var results = data;
+            console.log(results.suggestions);
             console.log(data);
-            var length = results.length;
             lookup = data;
-            console.log(length);
+            console.log(results.length);
             console.log(results);
         //    results.forEach(function(entry){
          //       $("#bigBorder").append("<div class='chgButton'>"+entry+"</div");
