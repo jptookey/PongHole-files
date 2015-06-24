@@ -62,9 +62,9 @@ function enableChange() {
         $('#saveChangeO').show().text('Save Changes');
         console.log('Three');
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: "/scripts/search4.php",
-            data: data2,
+            //data: data2,
             cache: false,
             dataType: "json",
             success: function (data) {
