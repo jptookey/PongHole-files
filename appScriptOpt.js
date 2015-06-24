@@ -119,7 +119,7 @@ $('#userOrg').autocomplete({
 
 var lookup = '';
 $('#userOrg').autocomplete({
-        serviceUrl: "/scripts/search.php",
+        serviceUrl: "/scripts/search2.php",
         onSelect: function (suggestion) {
             console.log(suggestion)
         }
