@@ -112,7 +112,7 @@ function testOptions2() {
 */
 /*This is to test out how multiple lines are returned*/
 
-function testOptions() {
+function testOptions2() {
     var data1 = {
         search: 'north c'
     };
