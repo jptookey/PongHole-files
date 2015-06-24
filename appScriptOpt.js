@@ -75,7 +75,7 @@ function enableChange() {
                 $('#userOrg').autocomplete({
                     lookup: universityList,
                     onSelect: function (suggestion) {
-                        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+                        this.value = suggestion.data;
                     }
                 });
 
