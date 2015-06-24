@@ -106,6 +106,8 @@ var countries = [
     { value: 'Zimbabwe', data: 'ZZ' }
 ];
 
+console.log(countries);
+
 $('#userOrg').autocomplete({
     lookup: countries,
     onSelect: function (suggestion) {
