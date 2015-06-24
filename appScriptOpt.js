@@ -70,6 +70,7 @@ function enableChange() {
             success: function (data) {
                 console.log(1);
                 universityList=data;
+                console.log(universityList);
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
