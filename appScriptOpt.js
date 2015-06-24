@@ -129,7 +129,7 @@ var countries = [
 console.log(countries);
 
 $('#userOrg').autocomplete({
-    lookup: universityList,
+    lookup: countries,
     onSelect: function (suggestion) {
         alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
     }
