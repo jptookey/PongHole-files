@@ -107,26 +107,25 @@ var countries = [
 ];
 
 console.log(countries);
-
+/*
 $('#userOrg').autocomplete({
     lookup: countries,
     onSelect: function (suggestion) {
         alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
     }
 });
-
+*/
 /*This is to test out the jquery.autocomplete plugin*/
-/*
+
 var lookup = '';
-function testOptions2() {
-    $('#userOrg').autocomplete({
-        serviceUrl: "/scripts/search3.php",
+$('#userOrg').autocomplete({
+        serviceUrl: "/scripts/search.php",
         onSelect: function (suggestion) {
             console.log(suggestion)
         }
-    });
-}
-*/
+});
+
+
 /*This is to test out how multiple lines are returned*/
 /*
 function testOptions2() {
