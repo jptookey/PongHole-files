@@ -120,6 +120,7 @@ $('#userOrg').autocomplete({
 //var lookup = '';
 $('#userOrg').autocomplete({
         serviceUrl: "/scripts/search4.php",
+        minChars: 2,
         onSelect: function (suggestion) {
             console.log(suggestion)
         }
