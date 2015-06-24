@@ -1,4 +1,5 @@
 var userKey = '';
+var universityList = '';
 
 $( document ).ready(function() {
     /*for(i=0;i <1; i++) {
@@ -60,6 +61,23 @@ function enableChange() {
         document.getElementById("userOrg").disabled = false;
         $('#saveChangeO').show().text('Save Changes');
         console.log('Three');
+        $.ajax({
+            type: "POST",
+            url: "/scripts/search4.php",
+            data: data2,
+            cache: false,
+            dataType: "json",
+            success: function (data) {
+                console.log(1);
+                universityList=data;
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.responseText);
+                console.log(JSON.stringify(jqXHR));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            }
+        });
     }
 }
 
@@ -99,7 +117,7 @@ function pushOptions() {
 }
 
 
-
+/*
 var countries = [
     { value: 'Andorra', data: 'AD' },
     // ...
@@ -107,16 +125,16 @@ var countries = [
 ];
 
 console.log(countries);
-/*
+ */
 $('#userOrg').autocomplete({
-    lookup: countries,
+    lookup: universityList,
     onSelect: function (suggestion) {
         alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
     }
 });
-*/
-/*This is to test out the jquery.autocomplete plugin*/
 
+/*This is to test out the jquery.autocomplete plugin*/
+/*
 //var lookup = '';
 $('#userOrg').autocomplete({
         serviceUrl: "/scripts/search4.php",
@@ -126,7 +144,7 @@ $('#userOrg').autocomplete({
             console.log(suggestion)
         }
 });
-
+*/
 /*This is to test out how multiple lines are returned*/
 /*
 function testOptions2() {
