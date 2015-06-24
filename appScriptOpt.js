@@ -70,7 +70,7 @@ function enableChange() {
             success: function (data) {
                 console.log(1);
                 var results = data;
-                universityList=[results.suggestions];
+                universityList=results.suggestions;
                 console.log(universityList);
 
             },
