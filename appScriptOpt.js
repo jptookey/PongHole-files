@@ -116,18 +116,18 @@ $('#userOrg').autocomplete({
 });
 */
 /*This is to test out the jquery.autocomplete plugin*/
-
-var lookup = '';
+/*
+//var lookup = '';
 $('#userOrg').autocomplete({
         serviceUrl: "/scripts/search3.php",
         onSelect: function (suggestion) {
             console.log(suggestion)
         }
 });
-
+*/
 
 /*This is to test out how multiple lines are returned*/
-/*
+
 function testOptions2() {
     var data1 = {
         search: 'north c'
@@ -135,7 +135,7 @@ function testOptions2() {
     var data2 = JSON.stringify(data1);
     $.ajax({
         type: "POST",
-        url: "/scripts/search3.php",
+        url: "/scripts/search.php",
         data: data2,
         cache: false,
         dataType: "json",
@@ -161,7 +161,7 @@ function testOptions2() {
         }
     });
 }
-*/
+
 
 /* SOME CODE I FOUND HUNTING THAT MAY HELP THE AUTOCOMPLETE
 $( document ).on( "pageinit", "#template", function() {
