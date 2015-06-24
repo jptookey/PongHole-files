@@ -103,7 +103,7 @@ function pushOptions() {
 var lookup = '';
 function testOptions2() {
     $('#userOrg').autocomplete({
-        serviceUrl: "/scripts/search.php",
+        serviceUrl: "/scripts/search3.php",
         onSelect: function (suggestion) {
             console.log(suggestion)
         }
