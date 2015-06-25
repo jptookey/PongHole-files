@@ -645,6 +645,19 @@ THIS IS FOR THE PROFILE PAGE*/
 	background-image: url(./Resources/back.jpg) ;
 }
 
+
+#saveChangeO2{
+	width: 25%;
+	margin-left: 1%;
+	margin-right: auto;
+	text-align: center;
+	cursor: pointer;
+	height: 4em;
+	display: inline-block;
+	background-size: 100%;
+	background-image: url(./Resources/back.jpg) ;
+}
+
 .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #F0F0F0; }
