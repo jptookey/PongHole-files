@@ -134,6 +134,27 @@ function goBackNoSave() {
     document.getElementById("userOrg").disabled = true;
     $('#saveChangeO').hide();
     $('#saveChangeOB').hide();
+    $.ajax({
+        type: "POST",
+        url: "/scripts/getOptions.php",
+        data: varKey,
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+            var results = data;
+            // console.log('two');
+            // console.log(results);
+            $("#userOrg").val(results.userOrg);
+            $('select#userScale').val(results.userScalePref).change();
+            $('select#notificationStyle').val(results.userNotePref).change();
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
 }
 
 /*
