@@ -59,7 +59,7 @@ function enableChange() {
 
     if(document.getElementById("userScale").disabled) {
         console.log(document.getElementById("userScale").disabled+"1");
-        $("userScale").prop('disabled', false);
+        $("userScale").removeAttr('disabled');
         console.log(document.getElementById("userScale").disabled+"2");
         document.getElementById("userScale").disabled = false;
         console.log(document.getElementById("userScale").disabled+"3");
