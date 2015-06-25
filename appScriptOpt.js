@@ -58,11 +58,10 @@ function goback() {
 function enableChange() {
 
     if(document.getElementById("userScale").disabled) {
-        console.log(document.getElementById("userScale").disabled+"1");
-        $("userScale").removeAttr('disabled');
-        console.log(document.getElementById("userScale").disabled+"2");
         document.getElementById("userScale").disabled = false;
-        console.log(document.getElementById("userScale").disabled+"3");
+        document.getElementById("notificationStyle").disabled = false;
+        console.log(document.getElementById("notificationStyle").disabled+"1");
+        console.log(document.getElementById("userScale").disabled+"2");
         console.log('Three');
         $.ajax({
             type: "GET",
@@ -159,11 +158,11 @@ function goBackNoSave() {
 }
 
 function disco() {
-    console.log(document.getElementById("userScale").disabled+"5");
-    $("userScale").prop('disabled', false);
-    $("notificationStyle").prop('disabled', false);
-    $("userOrg").prop('disabled', false);
-    console.log(document.getElementById("userScale").disabled+"6");
+    console.log(document.getElementById("notificationStyle").disabled+"5");
+   // $("userScale").prop('disabled', false);
+   // $("notificationStyle").prop('disabled', false);
+   // $("userOrg").prop('disabled', false);
+    console.log(document.getElementById("notificationStyle").disabled+"6");
     //   document.getElementById("userScale").disabled = false;
     //  document.getElementById("notificationStyle").disabled = false;
     //  document.getElementById("userOrg").disabled = false;
