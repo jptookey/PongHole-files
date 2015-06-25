@@ -134,6 +134,10 @@ function goBackNoSave() {
     document.getElementById("userOrg").disabled = true;
     $('#saveChangeO').hide();
     $('#saveChangeOB').hide();
+    var uk = {
+        key: userKey
+    };
+    var varKey = JSON.stringify(uk);
     $.ajax({
         type: "POST",
         url: "/scripts/getOptions.php",
