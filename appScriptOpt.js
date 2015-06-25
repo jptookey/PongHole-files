@@ -60,7 +60,8 @@ function enableChange() {
     if(document.getElementById("userScale").disabled) {
         document.getElementById("userScale").disabled = false;
         document.getElementById("notificationStyle").disabled = false;
-        console.log(document.getElementById("notificationStyle").disabled+"1");
+        document.getElementById("userOrg").disabled = false;
+        console.log(document.getElementById("userOrg").disabled+"1");
         console.log(document.getElementById("userScale").disabled+"2");
         console.log('Three');
         $.ajax({
@@ -158,11 +159,11 @@ function goBackNoSave() {
 }
 
 function disco() {
-    console.log(document.getElementById("notificationStyle").disabled+"5");
+    console.log(document.getElementById("userOrg").disabled+"5");
    // $("userScale").prop('disabled', false);
    // $("notificationStyle").prop('disabled', false);
    // $("userOrg").prop('disabled', false);
-    console.log(document.getElementById("notificationStyle").disabled+"6");
+    console.log(document.getElementById("userOrg").disabled+"6");
     //   document.getElementById("userScale").disabled = false;
     //  document.getElementById("notificationStyle").disabled = false;
     //  document.getElementById("userOrg").disabled = false;
