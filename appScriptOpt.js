@@ -61,7 +61,7 @@ function enableChange() {
         document.getElementById("notificationStyle").disabled = false;
         document.getElementById("userOrg").disabled = false;
         $('#saveChangeO').show().text('Save Changes');
-        $('#saveChangeO').show();
+        $('#saveChangeOB').show();
         console.log('Three');
         $.ajax({
             type: "GET",
