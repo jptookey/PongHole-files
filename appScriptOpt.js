@@ -57,12 +57,7 @@ function goback() {
 
 function enableChange() {
     if(document.getElementById("userScale").disabled) {
-        document.getElementById("userScale").disabled = false;
-        document.getElementById("notificationStyle").disabled = false;
-        document.getElementById("userOrg").disabled = false;
-        $('#saveChangeO').show();//.text('Save Changes');
-        $('#saveChangeOB').show();
-        $('#saveChang0').text('Save Changes');
+
         console.log('Three');
         $.ajax({
             type: "GET",
@@ -71,6 +66,12 @@ function enableChange() {
             cache: false,
             dataType: "json",
             success: function (data) {
+                document.getElementById("userScale").disabled = false;
+                document.getElementById("notificationStyle").disabled = false;
+                document.getElementById("userOrg").disabled = false;
+                $('#saveChangeO').show();//.text('Save Changes');
+                $('#saveChangeOB').show();
+                $('#saveChang0').text('Save Changes');
                 console.log(1);
                 var results = data;
                 universityList=results.suggestions;
@@ -79,6 +80,7 @@ function enableChange() {
                     lookup: universityList,
                     onSelect: function (suggestion) {
                         this.value = suggestion.data;
+
                     }
                 });
 
