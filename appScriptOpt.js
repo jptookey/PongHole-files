@@ -62,6 +62,7 @@ function enableChange() {
         document.getElementById("userOrg").disabled = false;
         $('#saveChangeO').show();//.text('Save Changes');
         $('#saveChangeOB').show();
+        $('#saveChang0').text('Save Changes');
         console.log('Three');
         $.ajax({
             type: "GET",
