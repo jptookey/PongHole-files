@@ -56,8 +56,9 @@ function goback() {
 }
 
 function enableChange() {
-    if(document.getElementById("userScale").disabled) {
 
+    if(document.getElementById("userScale").disabled) {
+        console.log(document.getElementById("userScale").disabled+"1");
         console.log('Three');
         $.ajax({
             type: "GET",
@@ -66,27 +67,11 @@ function enableChange() {
             cache: false,
             dataType: "json",
             success: function (data) {
-                $("userScale").prop('disabled', false);
-                $("notificationStyle").prop('disabled', false);
-                $("userOrg").prop('disabled', false);
-                console.log(document.getElementById("userScale").disabled);
-             //   document.getElementById("userScale").disabled = false;
-              //  document.getElementById("notificationStyle").disabled = false;
-              //  document.getElementById("userOrg").disabled = false;
-                $('#saveChangeO').show();//.text('Save Changes');
-                $('#saveChangeOB').show();
-                $('#saveChang0').text('Save Changes');
                 console.log(1);
                 var results = data;
                 universityList=results.suggestions;
-                console.log(universityList);
-                $('#userOrg').autocomplete({
-                    lookup: universityList,
-                    onSelect: function (suggestion) {
-                        this.value = suggestion.data;
-                        console.log(document.getElementById("userScale").disabled);
-                    }
-                });
+               // console.log(universityList);
+                disco();
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -167,6 +152,27 @@ function goBackNoSave() {
         }
     });
 }
+
+function disco() {
+    $("userScale").prop('disabled', false);
+    $("notificationStyle").prop('disabled', false);
+    $("userOrg").prop('disabled', false);
+    console.log(document.getElementById("userScale").disabled);
+    //   document.getElementById("userScale").disabled = false;
+    //  document.getElementById("notificationStyle").disabled = false;
+    //  document.getElementById("userOrg").disabled = false;
+    $('#saveChangeO').show();//.text('Save Changes');
+    $('#saveChangeOB').show();
+    $('#saveChang0').text('Save Changes');
+    $('#userOrg').autocomplete({
+        lookup: universityList,
+        onSelect: function (suggestion) {
+            this.value = suggestion.data;
+            console.log(document.getElementById("userScale").disabled);
+        }
+    });
+}
+
 
 /*
 var countries = [
