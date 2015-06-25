@@ -8,7 +8,9 @@ $( document ).ready(function() {
     //localStorage.removeItem("userKey");
     $("#saveChangeO").hide();
     $('#saveChangeOB').hide();
+    console.log(document.getElementById("userScale").disabled+"1");
     document.getElementById("userScale").disabled = true;
+    console.log(document.getElementById("userScale").disabled+"2");
     document.getElementById("notificationStyle").disabled = true;
  //   console.log(localStorage.userKey);
     // var email = localStorage.email;
@@ -56,9 +58,11 @@ function goback() {
 }
 
 function enableChange() {
-
+    console.log(document.getElementById("userScale").disabled+"3");
     if(document.getElementById("userScale").disabled) {
+        console.log(document.getElementById("userScale").disabled+"4");
         document.getElementById("userScale").disabled = false;
+        console.log(document.getElementById("userScale").disabled+"5");
         document.getElementById("notificationStyle").disabled = false;
         document.getElementById("userOrg").disabled = false;
        // console.log(document.getElementById("userOrg").disabled+"1");
@@ -73,6 +77,7 @@ function enableChange() {
             success: function (data) {
               //  console.log(1);
              //   console.log(document.getElementById("userScale").disabled+"4");
+                console.log(document.getElementById("userScale").disabled+"6");
                 var results = data;
                 universityList=results.suggestions;
                // console.log(universityList);
@@ -90,7 +95,9 @@ function enableChange() {
 
 function pushOptions() {
     console.log('Four');
+    console.log(document.getElementById("userScale").disabled+"7");
     document.getElementById("userScale").disabled = true;
+    console.log(document.getElementById("userScale").disabled+"8");
     document.getElementById("notificationStyle").disabled = true;
     document.getElementById("userOrg").disabled = true;
     $('#saveChangeO').hide();
@@ -126,7 +133,9 @@ function pushOptions() {
 
 
 function goBackNoSave() {
+    console.log(document.getElementById("userScale").disabled+"9");
     document.getElementById("userScale").disabled = true;
+    console.log(document.getElementById("userScale").disabled+"10");
     document.getElementById("notificationStyle").disabled = true;
     document.getElementById("userOrg").disabled = true;
     $('#saveChangeO').hide();
@@ -159,6 +168,7 @@ function goBackNoSave() {
 }
 
 function disco() {
+    console.log(document.getElementById("userScale").disabled+"11");
     $('#saveChangeO').show();//.text('Save Changes');
     $('#saveChangeOB').show();
     $('#saveChang0').text('Save Changes');
@@ -166,7 +176,7 @@ function disco() {
         lookup: universityList,
         onSelect: function (suggestion) {
             this.value = suggestion.data;
-            console.log(document.getElementById("userScale").disabled);
+            console.log(document.getElementById("userScale").disabled+"12");
         }
     });
 }
