@@ -66,9 +66,13 @@ function enableChange() {
             cache: false,
             dataType: "json",
             success: function (data) {
-                document.getElementById("userScale").disabled = false;
-                document.getElementById("notificationStyle").disabled = false;
-                document.getElementById("userOrg").disabled = false;
+                $("userScale").prop('disabled', false);
+                $("notificationStyle").prop('disabled', false);
+                $("userOrg").prop('disabled', false);
+                console.log(document.getElementById("userScale").disabled);
+             //   document.getElementById("userScale").disabled = false;
+              //  document.getElementById("notificationStyle").disabled = false;
+              //  document.getElementById("userOrg").disabled = false;
                 $('#saveChangeO').show();//.text('Save Changes');
                 $('#saveChangeOB').show();
                 $('#saveChang0').text('Save Changes');
@@ -80,7 +84,7 @@ function enableChange() {
                     lookup: universityList,
                     onSelect: function (suggestion) {
                         this.value = suggestion.data;
-
+                        console.log(document.getElementById("userScale").disabled);
                     }
                 });
 
