@@ -622,11 +622,11 @@ THIS IS FOR THE PROFILE PAGE*/
 	cursor: pointer;
 	height: 3em;
 	display: inline-block;
-	padding-top: 0;
-	padding-bottom: 2em;
 }
 
 #saveChangeOB{
+	margin-top: 1em;
+	margin-bottom: auto;
 	width: 25%;
 	margin-left: 20%;
 	margin-right: auto;
@@ -634,8 +634,8 @@ THIS IS FOR THE PROFILE PAGE*/
 	cursor: pointer;
 	height: 3em;
 	display: inline-block;
-/*	background-size: 100%;
-	background-image: url(./Resources/back.jpg) ;*/
+	background-size: 100%;
+	background-image: url(./Resources/back.jpg) ;
 }
 
 .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
