@@ -61,9 +61,9 @@ function enableChange() {
         document.getElementById("userScale").disabled = false;
         document.getElementById("notificationStyle").disabled = false;
         document.getElementById("userOrg").disabled = false;
-        console.log(document.getElementById("userOrg").disabled+"1");
-        console.log(document.getElementById("userScale").disabled+"2");
-        console.log('Three');
+       // console.log(document.getElementById("userOrg").disabled+"1");
+      //  console.log(document.getElementById("userScale").disabled+"2");
+      //  console.log('Three');
         $.ajax({
             type: "GET",
             url: "/scripts/search4.php",
@@ -71,8 +71,8 @@ function enableChange() {
             cache: false,
             dataType: "json",
             success: function (data) {
-                console.log(1);
-                console.log(document.getElementById("userScale").disabled+"4");
+              //  console.log(1);
+             //   console.log(document.getElementById("userScale").disabled+"4");
                 var results = data;
                 universityList=results.suggestions;
                // console.log(universityList);
@@ -159,14 +159,6 @@ function goBackNoSave() {
 }
 
 function disco() {
-    console.log(document.getElementById("userOrg").disabled+"5");
-   // $("userScale").prop('disabled', false);
-   // $("notificationStyle").prop('disabled', false);
-   // $("userOrg").prop('disabled', false);
-    console.log(document.getElementById("userOrg").disabled+"6");
-    //   document.getElementById("userScale").disabled = false;
-    //  document.getElementById("notificationStyle").disabled = false;
-    //  document.getElementById("userOrg").disabled = false;
     $('#saveChangeO').show();//.text('Save Changes');
     $('#saveChangeOB').show();
     $('#saveChang0').text('Save Changes');
