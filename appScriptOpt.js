@@ -7,6 +7,7 @@ $( document ).ready(function() {
      }*/
     //localStorage.removeItem("userKey");
     $("#saveChangeO").hide();
+    $('#saveChangeOB').hide();
     document.getElementById("userScale").disabled = true;
     document.getElementById("notificationStyle").disabled = true;
     console.log(localStorage.userKey);
@@ -60,6 +61,7 @@ function enableChange() {
         document.getElementById("notificationStyle").disabled = false;
         document.getElementById("userOrg").disabled = false;
         $('#saveChangeO').show().text('Save Changes');
+        $('#saveChangeO').show();
         console.log('Three');
         $.ajax({
             type: "GET",
@@ -95,6 +97,7 @@ function pushOptions() {
     document.getElementById("notificationStyle").disabled = true;
     document.getElementById("userOrg").disabled = true;
     $('#saveChangeO').hide();
+    $('#saveChangeOB').hide();
     var dataPush2 = {
         key: userKey,
         userScalePref: document.getElementById("userScale").value,
@@ -125,7 +128,15 @@ function pushOptions() {
 }
 
 
+function goBackNoSave() {
+    document.getElementById("userScale").disabled = true;
+    document.getElementById("notificationStyle").disabled = true;
+    document.getElementById("userOrg").disabled = true;
+    $('#saveChangeO').hide();
+    $('#saveChangeOB').hide();
+}
 
+/*
 var countries = [
     { value: 'Andorra', data: 'AD' },
     // ...
@@ -133,7 +144,7 @@ var countries = [
 ];
 
 console.log(countries);
-
+*/
 
 
 /*This is to test out the jquery.autocomplete plugin*/
