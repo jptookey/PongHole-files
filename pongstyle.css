@@ -646,15 +646,7 @@ THIS IS FOR THE PROFILE PAGE*/
 }
 
 
-#saveChangeO2{
-	width: 25%;
-	margin-left: 8%;
-	margin-right: auto;
-	text-align: center;
-	cursor: pointer;
-	height: 4em;
-	display: inline-block;
-}
+
 
 .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }

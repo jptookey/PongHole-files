@@ -6,7 +6,7 @@ $( document ).ready(function() {
      location.reload(true);
      }*/
     //localStorage.removeItem("userKey");
-    $("#saveChangeO2").hide();
+    $("#saveChangeO").hide();
     $('#saveChangeOB').hide();
     document.getElementById("userScale").disabled = true;
     document.getElementById("notificationStyle").disabled = true;
@@ -60,7 +60,7 @@ function enableChange() {
         document.getElementById("userScale").disabled = false;
         document.getElementById("notificationStyle").disabled = false;
         document.getElementById("userOrg").disabled = false;
-        $('#saveChangeO2').show().text('Save Changes');
+        $('#saveChangeO').show();//.text('Save Changes');
         $('#saveChangeOB').show();
         console.log('Three');
         $.ajax({
@@ -132,7 +132,7 @@ function goBackNoSave() {
     document.getElementById("userScale").disabled = true;
     document.getElementById("notificationStyle").disabled = true;
     document.getElementById("userOrg").disabled = true;
-    $('#saveChangeO2').hide();
+    $('#saveChangeO').hide();
     $('#saveChangeOB').hide();
     var uk = {
         key: userKey
