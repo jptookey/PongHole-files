@@ -614,11 +614,17 @@ THIS IS FOR THE PROFILE PAGE*/
 
 /* The next is for options*/
 
+#bottomContainerO{
+	width: 100%;
+	height: 4em;
+}
+
 #saveChangeO{
+
 	width: 25%;
 	margin-left: 9%;
 	margin-right: auto;
-/*	text-align: center;*/
+	text-align: center;
 	cursor: pointer;
 	height: 3em;
 	display: inline-block;
@@ -627,8 +633,7 @@ THIS IS FOR THE PROFILE PAGE*/
 }
 
 #saveChangeOB{
-	margin-top: 1em;
-	margin-bottom: auto;
+
 	width: 25%;
 	margin-left: 20%;
 	margin-right: auto;
