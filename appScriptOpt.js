@@ -10,7 +10,7 @@ $( document ).ready(function() {
     $('#saveChangeOB').hide();
     document.getElementById("userScale").disabled = true;
     document.getElementById("notificationStyle").disabled = true;
-    console.log(localStorage.userKey);
+ //   console.log(localStorage.userKey);
     // var email = localStorage.email;
     if (localStorage.getItem("userKey") === null) {
         window.location.assign("/Ponghole.html");
@@ -59,6 +59,10 @@ function enableChange() {
 
     if(document.getElementById("userScale").disabled) {
         console.log(document.getElementById("userScale").disabled+"1");
+        document.getElementById("userScale").disabled = false;
+        console.log(document.getElementById("userScale").disabled+"2");
+        $("userScale").prop('disabled', false);
+        console.log(document.getElementById("userScale").disabled+"3");
         console.log('Three');
         $.ajax({
             type: "GET",
@@ -68,6 +72,7 @@ function enableChange() {
             dataType: "json",
             success: function (data) {
                 console.log(1);
+                console.log(document.getElementById("userScale").disabled+"4");
                 var results = data;
                 universityList=results.suggestions;
                // console.log(universityList);
@@ -154,10 +159,11 @@ function goBackNoSave() {
 }
 
 function disco() {
+    console.log(document.getElementById("userScale").disabled+"5");
     $("userScale").prop('disabled', false);
     $("notificationStyle").prop('disabled', false);
     $("userOrg").prop('disabled', false);
-    console.log(document.getElementById("userScale").disabled);
+    console.log(document.getElementById("userScale").disabled+"6");
     //   document.getElementById("userScale").disabled = false;
     //  document.getElementById("notificationStyle").disabled = false;
     //  document.getElementById("userOrg").disabled = false;
