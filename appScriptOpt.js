@@ -59,9 +59,9 @@ function enableChange() {
 
     if(document.getElementById("userScale").disabled) {
         console.log(document.getElementById("userScale").disabled+"1");
-        document.getElementById("userScale").disabled = false;
-        console.log(document.getElementById("userScale").disabled+"2");
         $("userScale").prop('disabled', false);
+        console.log(document.getElementById("userScale").disabled+"2");
+        document.getElementById("userScale").disabled = false;
         console.log(document.getElementById("userScale").disabled+"3");
         console.log('Three');
         $.ajax({
