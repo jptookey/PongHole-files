@@ -3,6 +3,7 @@ var universityList = '';
 
 $( document ).ready(function() {
     $( "select" ).selectmenu();
+    $('select').selectmenu({ icon: "star" });
     /*for(i=0;i <1; i++) {
      location.reload(true);
      }*/
