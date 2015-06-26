@@ -2,6 +2,7 @@ var userKey = '';
 var universityList = '';
 
 $( document ).ready(function() {
+    $( "select" ).selectmenu();
     /*for(i=0;i <1; i++) {
      location.reload(true);
      }*/
