@@ -14,7 +14,8 @@ $( document ).ready(function() {
     $('#userScale').selectmenu('disable');
     //document.getElementById("userScale").disabled = true;
     console.log(document.getElementById("userScale").disabled+"2");
-    document.getElementById("notificationStyle").disabled = true;
+    $('#notificationStyle').selectmenu('disable');
+   // document.getElementById("notificationStyle").disabled = true;
  //   console.log(localStorage.userKey);
     // var email = localStorage.email;
     if (localStorage.getItem("userKey") === null) {
@@ -64,9 +65,10 @@ function enableChangeO() {
     console.log(document.getElementById("userScale").disabled+"3");
     if(document.getElementById("userScale").disabled) {
         console.log(document.getElementById("userScale").disabled+"4");
-        document.getElementById("userScale").disabled = false;
+        $('#userScale').selectmenu('enable');
         console.log(document.getElementById("userScale").disabled+"5");
-        document.getElementById("notificationStyle").disabled = false;
+        $('#notificationStyle').selectmenu('enable');
+        //document.getElementById("notificationStyle").disabled = false;
         document.getElementById("userOrg").disabled = false;
        // console.log(document.getElementById("userOrg").disabled+"1");
       //  console.log(document.getElementById("userScale").disabled+"2");
@@ -124,7 +126,7 @@ function pushOptionsO() {
             var results = data;
             console.log('Five');
             console.log(results);
-            loadUser();
+            loadUserO();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(jqXHR.responseText);
