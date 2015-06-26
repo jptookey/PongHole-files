@@ -20,11 +20,11 @@ $( document ).ready(function() {
         userKey = localStorage.userKey;
         //console.log(userKey);
 
-        loadUser();
+        loadUserO();
     }
 });
 
-function loadUser() {
+function loadUserO() {
     console.log('One');
     var uk = {
         key: userKey
@@ -53,11 +53,11 @@ function loadUser() {
     });
 }
 
-function goback() {
+function gobackO() {
     window.location.assign("/Ponghole.html");
 }
 
-function enableChange() {
+function enableChangeO() {
     console.log(document.getElementById("userScale").disabled+"3");
     if(document.getElementById("userScale").disabled) {
         console.log(document.getElementById("userScale").disabled+"4");
@@ -93,7 +93,7 @@ function enableChange() {
     }
 }
 
-function pushOptions() {
+function pushOptionsO() {
     console.log('Four');
     console.log(document.getElementById("userScale").disabled+"7");
     document.getElementById("userScale").disabled = true;
@@ -132,7 +132,7 @@ function pushOptions() {
 }
 
 
-function goBackNoSave() {
+function goBackNoSaveO() {
     console.log(document.getElementById("userScale").disabled+"9");
     document.getElementById("userScale").disabled = true;
     console.log(document.getElementById("userScale").disabled+"10");
