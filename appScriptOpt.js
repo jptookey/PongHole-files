@@ -8,8 +8,10 @@ $( document ).ready(function() {
     //localStorage.removeItem("userKey");
     $("#saveChangeO").hide();
     $('#saveChangeOB').hide();
+
     console.log(document.getElementById("userScale").disabled+"1");
-    document.getElementById("userScale").disabled = true;
+    $('userScale').selectmenu('disable');
+    //document.getElementById("userScale").disabled = true;
     console.log(document.getElementById("userScale").disabled+"2");
     document.getElementById("notificationStyle").disabled = true;
  //   console.log(localStorage.userKey);
