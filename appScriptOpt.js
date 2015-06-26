@@ -10,7 +10,7 @@ $( document ).ready(function() {
     $('#saveChangeOB').hide();
 
     console.log(document.getElementById("userScale").disabled+"1");
-    $('userScale').selectmenu('disable');
+    $('#userScale').selectmenu('disable');
     //document.getElementById("userScale").disabled = true;
     console.log(document.getElementById("userScale").disabled+"2");
     document.getElementById("notificationStyle").disabled = true;
