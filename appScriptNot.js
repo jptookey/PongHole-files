@@ -12,9 +12,11 @@ $( document ).ready(function() {
         data1 = {
             userKey: userKey
         };
+
         data2 = JSON.stringify(data1);
+        console.log(data2);
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/scripts/getNotes1.php",
             data: data2,
             cache: false,
