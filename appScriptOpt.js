@@ -11,7 +11,7 @@ $( document ).ready(function() {
     $("#saveChangeO").hide();
     $('#saveChangeOB').hide();
 
-    console.log(document.getElementById("userScale").disabled+"1");
+   // console.log(document.getElementById("userScale").disabled+"1");
     $('#userScale').selectmenu('disable');
     //document.getElementById("userScale").disabled = true;
     console.log(document.getElementById("userScale").disabled+"2");
@@ -174,7 +174,7 @@ function goBackNoSaveO() {
 }
 
 function disco() {
-    console.log(document.getElementById("userScale").disabled+"11");
+  //  console.log(document.getElementById("userScale").disabled+"11");
     $('#saveChangeO').show();//.text('Save Changes');
     $('#saveChangeOB').show();
     $('#saveChang0').text('Save Changes');
