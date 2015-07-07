@@ -20,13 +20,11 @@ $( document ).ready(function() {
             cache: false,
             dataType: "json",
             success: function (data) {
-                //  console.log(1);
-                //   console.log(document.getElementById("userScale").disabled+"4");
+
                console.log('Here1');
                 var results = data;
                 console.log(results);
-                // console.log(universityList);
-                disco();
+
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -36,7 +34,6 @@ $( document ).ready(function() {
             }
         });
 
-       // loadstats();
     }
 });
 
