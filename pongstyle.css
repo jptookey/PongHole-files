@@ -662,3 +662,11 @@ THIS IS FOR THE PROFILE PAGE*/
 THE FOLLOWING IS FOR NOTIFICATIONS
 TODO: NOTIFICATIONS CSS
 */
+
+.bubble {
+	width: 90%;
+	margin-left: 4.5%;
+	margin-right: auto;
+	height: 4em;
+	background-color: red;
+}

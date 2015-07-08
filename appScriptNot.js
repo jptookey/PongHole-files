@@ -24,13 +24,8 @@ $( document ).ready(function() {
             cache: false,
             dataType: "json",
             success: function (data) {
-
-               console.log('Here1');
                 notes1 = data;
-                console.log(notes1.length);
-                console.log(notes1[0][3]);
-
-
+                buildBubs();
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(jqXHR.responseText);
@@ -47,8 +42,18 @@ function goback() {
 }
 
 
+function buildBubs() {
+    var lengthi = notes1.length;
+    for (i = 0; i < lengthi; i++) {
+        $("BigBox").append("<div class='bubble' onclick='tryThis(" + i + ")>Gamestatsblablabla</div>");
 
+    }
 
+}
+
+function tryThis(i) {
+    console.log(i);
+}
 
 
 //TODO: Add an append function that uses HTML and a function with an 'i' for a for-loop.
