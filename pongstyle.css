@@ -669,6 +669,8 @@ TODO: NOTIFICATIONS CSS
 	margin-right: auto;
 	height: 4em;
 	background-color: red;
+	border: .1em solid black;
+	border-radius: 1em;
 }
 
 #BigBox {
