@@ -1,3 +1,5 @@
+var notes1 = {};
+
 $( document ).ready(function() {
     //localStorage.removeItem("userKey");
 
@@ -24,8 +26,9 @@ $( document ).ready(function() {
             success: function (data) {
 
                console.log('Here1');
-                var results = data;
-                console.log(results);
+                notes1 = data;
+                console.log(notes1.length);
+                console.log(notes1[0]);
 
 
             },
