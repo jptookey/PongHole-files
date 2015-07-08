@@ -670,3 +670,11 @@ TODO: NOTIFICATIONS CSS
 	height: 4em;
 	background-color: red;
 }
+
+#BigBox {
+	width: 60%;
+	height: 5em;
+	margin-left: 20%;
+	border: .1em solid black;
+	border-radius: 1em;
+}
