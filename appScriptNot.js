@@ -43,6 +43,7 @@ function goback() {
 
 
 function buildBubs() {
+    console.log('Notes1');
     var lengthi = notes1.length;
     for (i = 0; i < lengthi; i++) {
         $("#BigBox").append("<div class='bubble' onclick='tryThis(" + i + ")>Gamestatsblablabla</div>");
