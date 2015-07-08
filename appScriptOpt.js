@@ -76,7 +76,7 @@ function enableChangeO() {
       //  console.log('Three');
         $.ajax({
             type: "GET",
-            url: "/scripts/search4.php",
+            url: "/scripts/searchOrg.php",
             //data: data2,
             cache: false,
             dataType: "json",
