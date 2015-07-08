@@ -28,7 +28,7 @@ $( document ).ready(function() {
                console.log('Here1');
                 notes1 = data;
                 console.log(notes1.length);
-                console.log(notes1[0]);
+                console.log(notes1[0][3]);
 
 
             },
