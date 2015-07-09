@@ -47,7 +47,8 @@ function buildBubs() {
     var lengthi = notes1.length;
     console.log(lengthi);
     for (i = 0; i < lengthi; i++) {
-        $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + "')>Gamestatsblablabla</div>");
+        $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + "')>Gamestatsblablabla</div>"
+        );
 
     }
 
