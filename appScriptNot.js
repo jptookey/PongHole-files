@@ -55,7 +55,7 @@ function buildBubs() {
 }
 
 function tryThis(i) {
-    console.log(notes1[i][8]);
+    alert('You played a game at '+notes1[i][8]+' time.');
 }
 
 
