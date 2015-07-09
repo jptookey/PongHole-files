@@ -675,7 +675,7 @@ TODO: NOTIFICATIONS CSS
 
 #BigBox {
 	width: 60%;
-	height: 5em;
+	height: auto;
 	margin-left: 20%;
 	border: .1em solid black;
 	border-radius: 1em;
