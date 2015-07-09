@@ -55,7 +55,7 @@ function buildBubs() {
 }
 
 function tryThis(i) {
-    console.log(i);
+    console.log(notes1[i][8]);
 }
 
 
