@@ -55,7 +55,7 @@ function buildBubs() {
 }
 
 function tryThis(i) {
-    //alert('You played a game at '+notes1[i][8]+' time.');
+   // alert('You played a game at '+notes1[i][8]+' time.');
     $('<div>').simpledialog2({
         mode: 'blank',
         top: 1,
