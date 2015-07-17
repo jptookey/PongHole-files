@@ -56,6 +56,23 @@ function buildBubs() {
 
 function tryThis(i) {
     alert('You played a game at '+notes1[i][8]+' time.');
+    $('<div>').simpledialog2({
+        mode: 'blank',
+        top: 1,
+        headerText: false,
+        headerClose: false,
+        // dialogAllow: true,
+        // dialogForce: true,
+        blankContent: "<div class='dialogCont'>" +
+        "<div class='text1 diagHeader color1' id='diagHeadLarge'><span class='middle'>Please Confirm the Game</span></div>"
+        +"<div class='text1 border1' id='gndate>Game Played: "+notes1[i][8]+"</div>"+
+            "<div class = 'text1 border1' id='gngametype'>Game Type:"+notes1[i][3]+ "</div>"+
+        "<input class='border1 text1' id='homeScore' placeholder='Your Score'/input>" +
+        "<input class='border1 text1' id='awayScore' placeholder='Opponent Score'/input>" +
+        funFlagHtml+"</br>"+
+        "<div></div><a onclick='cpBack()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>"+
+        "<a onclick='submitScore()' data-role='button' class='border1 text1' id='nextButton1'></a></div>"
+    });
 }
 
 
