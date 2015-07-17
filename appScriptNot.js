@@ -69,7 +69,7 @@ function tryThis(i) {
             "<div class = 'text1 border1' id='gngametype'>Game Type:"+notes1[i][3]+ "</div>"+
         "<input class='border1 text1' id='homeScore' placeholder='Your Score'/input>" +
         "<input class='border1 text1' id='awayScore' placeholder='Opponent Score'/input>" +
-        funFlagHtml+"</br>"+
+        notes1[i][6]+"</br>"+
         "<div></div><a onclick='cpBack()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>"+
         "<a onclick='submitScore()' data-role='button' class='border1 text1' id='nextButton1'></a></div>"
     });
