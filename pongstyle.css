@@ -677,23 +677,11 @@ TODO: NOTIFICATIONS CSS
 .n_form_1 {
 	width: 40%;
 	height: 1em;
-	margin-left: 2%;
+	margin-left: 5%;
 	display: inline-block;
 }
 
-.n_form_2 {
-	width:45%;
-	height: 1em;
-	margin-left: 2%;
-	display: inline-block;
-}
 
-.n_form_3 {
-	width: 30%;
-	height: 1em;
-	margin-left: 2%;
-	display: inline-block;
-}
 
 .n_form_win {
 	background-color: lightgreen;
