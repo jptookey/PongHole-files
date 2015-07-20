@@ -48,7 +48,7 @@ function buildBubs() {
     console.log(lengthi);
     for (i = 0; i < lengthi; i++) {
         $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + ")'>" +
-            "<div class='n_form_1'>Game Date: "+notes1[i][8]+"</div><div class='n_form_1'" +
+            "<div class='n_form_1'>Game Date: "+notes1[i][8]+"</div><div class='n_form_1'>" +
             "Game Type: "+notes1[i][3]+"</div><div class='n_form_2'>Teammate: "+notes1[i][6]+
             "</div><div class='n_form_2'>Opponent 1: "+notes1[i][5]+" </div><div class='n_form_2>" +
             "Opponent 2: "+notes1[i][7]+"</div><div class='n_form_3' id='n_win'>Score: "+notes1[i][9]+"-"+notes1[i][10]+" "+notes1[i][2]+"</div></div>"
