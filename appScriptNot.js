@@ -56,13 +56,14 @@ function buildBubs() {
             "<div class='n_form_1 border1' id='n_win'>Score: "+notes1[i][9]+"-"+notes1[i][10]+" "+notes1[i][2]+"</div>" +
             "</div>"
         );
-        console.log(notes1[i][2] == 'L')
+        console.log(notes1[i][2] == 'L');
         if(notes1[i][2] == 'W') {
             $('#n_win').addClass("n_form_win");
         }
         else if (notes1[i][2] == 'L'){
             $('#n_win').addClass("n_form_lose");
         }
+        console.log('This is '+i+' loop');
 
     }
 
