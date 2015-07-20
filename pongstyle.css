@@ -674,6 +674,35 @@ TODO: NOTIFICATIONS CSS
 	cursor: pointer;
 }
 
+.n_form_1 {
+	width: 25%;
+	height: 1em;
+	margin-left: 2%
+	display: inline-block;
+}
+
+.n_form_2 {
+	width: 35%;
+	height: 1em;
+	margin-left: 2%
+	display: inline-block;
+}
+
+.n_form_3 {
+	width: 20%;
+	height: 1em;
+	margin-left: 2%
+	display: inline-block;
+}
+
+.n_form_win {
+	background-color: lightgreen;
+}
+
+.n_form_lose {
+	background-color: lightcoral;
+}
+
 #BigBox {
 	width: 60%;
 	height: auto;
