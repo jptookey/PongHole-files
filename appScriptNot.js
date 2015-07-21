@@ -115,6 +115,9 @@ function tryThis(i) {
     });
 }
 
+function fn_not_confirm() {
+    $(document).trigger('simpledialog', {'method':'close'});
+}
 
 //TODO: Add an append function that uses HTML and a function with an 'i' for a for-loop.
 
