@@ -697,4 +697,20 @@ TODO: NOTIFICATIONS CSS
 	margin-left: 20%;
 	border: .1em solid black;
 	border-radius: 1em;
+	font-weight: bold;
+}
+
+.button3 {
+	width: 30%;
+	height: 3em;
+	margin-left: 13%;
+
+}
+
+#ui_not_dispute {
+	background-color: red;
+}
+
+#ui_not_confirm {
+	background-color: green;
 }

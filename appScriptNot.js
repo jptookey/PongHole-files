@@ -94,14 +94,21 @@ function tryThis(i) {
         // dialogAllow: true,
         // dialogForce: true,
         blankContent: "<div class='dialogCont'>" +
-        "<div class='text1 diagHeader color1' id='diagHeadLarge'><span class='middle'>Please Confirm the Game</span></div>"
-        +"<div class='text1 border1' id='gndate>Game Played: "+notes1[i][8]+"</div>"+
-            "<div class = 'text1 border1' id='gngametype'>Game Type:"+notes1[i][3]+ "</div>"+
-        "<input class='border1 text1' id='homeScore' placeholder='Your Score'/input>" +
-        "<input class='border1 text1' id='awayScore' placeholder='Opponent Score'/input>" +
-        notes1[i][6]+"</br>"+
-        "<div></div><a onclick='cpBack()' data-role='button' class='border1 text1' id='backButton1' rel='close'></a>"+
-        "<a onclick='submitScore()' data-role='button' class='border1 text1' id='nextButton1'></a></div>"
+        "<div class='text1 diagHeader color1' id='diagHeadLarge'>" +
+        "<span class='middle'>Please Confirm the Game</span></div>"+
+        "<div class='text1 border1' id='gndate'>Game Played: "+notes1[i][8]+"</div>"+
+        "<div class='text1 border1' id='gngametype'>Game Type: "+notes1[i][3]+"</div>"+
+        "<div class='text1 border1'>Teammate: " + notes1[i][6] + " </div>" +
+        "<div class='text1 border1'>Opponent 1: " + notes1[i][5] + "</div>" +
+        "<div class='text1 border1'>Opponent 2: " + notes1[i][7] + "</div>" +
+        "<div class='text1 border1' id='ui_not_homescore'>Your score: " + notes1[i][9] + "</div>" +
+        "<div class='text1 border1' id='ui_not_awayscore'>Opponent score: " + notes1[i][10] + "</div>" +
+        "<input class='border1 text1' hidden='true' id='ui_not_homescore_i' placeholder='Your Score'/input>" +
+        "<input class='border1 text1' hidden='true' id='ui_not_awayscore_i' placeholder='Opponent Score'/input>" +
+        "<a onclick='fn_not_dispute()' data-role='button' class='border1 text1 button3' id='ui_not_dispute'>Dispute</a>"+
+        "<a onclick='fn_not_cancel()' data-role='button' hidden='true' class='border1 text1 button3' id='ui_not_cancel'>Cancel</a></div>"+
+        "<a onclick='fn_not_confirm()' data-role='button' class='border1 text1 button3' id='ui_not_confirm'>Confirm</a></div>"+
+        "<a onclick='fn_not_accept()'  data-role='button' hidden='true' class='border1 text1 button3' id='ut_not_accept'>Accept</a></div>"
     });
 }
 
