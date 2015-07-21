@@ -47,23 +47,38 @@ function buildBubs() {
     var lengthi = notes1.length;
     console.log(lengthi);
     for (i = 0; i < lengthi; i++) {
-        $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + ")'>" +
-            "<div class='n_form_1'>Game Date: "+notes1[i][8]+"</div>" +
-            "<div class='n_form_1'>Game Type: "+notes1[i][3]+"</div>" +
-            "<div class='n_form_1'>Opponent 1: "+notes1[i][5]+"</div>" +
-            "<div class='n_form_1'>Teammate: "+notes1[i][6]+" </div>" +
-            "<div class='n_form_1'>Opponent 2: "+notes1[i][7]+"</div>" +
-            "<div class='n_form_1 border1' id='n_win'>Score: "+notes1[i][9]+"-"+notes1[i][10]+" "+notes1[i][2]+"</div>" +
-            "</div>"
-        );
-        console.log(notes1[i][2] == 'L');
         if(notes1[i][2] == 'W') {
-            $('#n_win').addClass("n_form_win");
+            $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + ")'>" +
+                "<div class='n_form_1'>Game Date: " + notes1[i][8] + "</div>" +
+                "<div class='n_form_1'>Game Type: " + notes1[i][3] + "</div>" +
+                "<div class='n_form_1'>Opponent 1: " + notes1[i][5] + "</div>" +
+                "<div class='n_form_1'>Teammate: " + notes1[i][6] + " </div>" +
+                "<div class='n_form_1'>Opponent 2: " + notes1[i][7] + "</div>" +
+                "<div class='n_form_1 border1 n_form_win' id='n_win'>Score: " + notes1[i][9] + "-" + notes1[i][10] + " " + notes1[i][2] + "</div>" +
+                "</div>"
+            );
+        } else if (notes1[i][2] == 'L'){
+            $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + ")'>" +
+                "<div class='n_form_1'>Game Date: " + notes1[i][8] + "</div>" +
+                "<div class='n_form_1'>Game Type: " + notes1[i][3] + "</div>" +
+                "<div class='n_form_1'>Opponent 1: " + notes1[i][5] + "</div>" +
+                "<div class='n_form_1'>Teammate: " + notes1[i][6] + " </div>" +
+                "<div class='n_form_1'>Opponent 2: " + notes1[i][7] + "</div>" +
+                "<div class='n_form_1 border1 n_form_lose' id='n_win'>Score: " + notes1[i][9] + "-" + notes1[i][10] + " " + notes1[i][2] + "</div>" +
+                "</div>"
+            );
+        } else {
+            $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + ")'>" +
+                "<div class='n_form_1'>Game Date: " + notes1[i][8] + "</div>" +
+                "<div class='n_form_1'>Game Type: " + notes1[i][3] + "</div>" +
+                "<div class='n_form_1'>Opponent 1: " + notes1[i][5] + "</div>" +
+                "<div class='n_form_1'>Teammate: " + notes1[i][6] + " </div>" +
+                "<div class='n_form_1'>Opponent 2: " + notes1[i][7] + "</div>" +
+                "<div class='n_form_1 border1' id='n_win'>Score: " + notes1[i][9] + "-" + notes1[i][10] + " " + notes1[i][2] + "</div>" +
+                "</div>"
+            );
         }
-        else if (notes1[i][2] == 'L'){
-            $('#n_win').addClass("n_form_lose");
-        }
-        console.log('This is '+i+' loop');
+
 
     }
 
