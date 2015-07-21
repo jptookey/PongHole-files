@@ -58,10 +58,10 @@ function buildBubs() {
         );
         console.log(notes1[i][2] == 'L');
         if(notes1[i][2] == 'W') {
-            $('#n_win').addClass("n_form_win");
+            $('#n_win').css("background-color='green'");
         }
         else if (notes1[i][2] == 'L'){
-            $('#n_win').addClass("n_form_lose");
+            $('#n_win').css("background-color='red'");
         }
         console.log('This is '+i+' loop');
 
