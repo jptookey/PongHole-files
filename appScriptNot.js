@@ -108,10 +108,10 @@ function tryThis(i) {
         "<div class='text1 border1' id='ui_not_awayscore'>Opponent score: " + notes1[i][10] + "</div>" +
         "<input class='border1 text1' hidden id='ui_not_homescore_i' placeholder='Your Score'/input>" +
         "<input class='border1 text1' hidden id='ui_not_awayscore_i' placeholder='Opponent Score'/input>" +
-        "<a onclick='fn_not_dispute()' data-role='button' class='border1 text1 button3' id='ui_not_dispute'>Dispute</a>"+
-        "<a onclick='fn_not_cancel()' data-role='button' hidden class='border1 text1 button3' id='ui_not_cancel'>Cancel</a></div>"+
-        "<a onclick='fn_not_confirm()' data-role='button' class='border1 text1 button3' id='ui_not_confirm'>Confirm</a></div>"+
-        "<a onclick='fn_not_accept()'  data-role='button' hidden class='border1 text1 button3' id='ut_not_accept'>Accept</a></div>"
+        "<div onclick='fn_not_dispute()' class='border1 text1 button3' id='ui_not_dispute'>Dispute</div>"+
+        "<div onclick='fn_not_cancel()' hidden class='border1 text1 button3' id='ui_not_cancel'>Cancel</div>"+
+        "<div onclick='fn_not_confirm()'  class='border1 text1 button3' id='ui_not_confirm'>Confirm</div>"+
+        "<div onclick='fn_not_accept()'  hidden class='border1 text1 button3' id='ut_not_accept'>Accept</div>"
     });
 }
 
