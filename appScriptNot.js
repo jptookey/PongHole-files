@@ -43,10 +43,11 @@ function goback() {
 
 
 function buildBubs() {
-    console.log('Notes1');
+   // console.log('Notes1');
     var lengthi = notes1.length;
-    console.log(lengthi);
+    //console.log(lengthi);
     for (i = 0; i < lengthi; i++) {
+        console.log()
         if(notes1[i][2] == 'W') {
             $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + ")'>" +
                 "<div class='n_form_1'>Game Date: " + notes1[i][8] + "</div>" +
@@ -58,7 +59,8 @@ function buildBubs() {
                 "</div>"
             );
         } else if (notes1[i][2] == 'L'){
-            $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + ")'>" +
+            $('#BigBox').append(
+                "<div class='bubble' onclick='tryThis(" + i + ")'>" +
                 "<div class='n_form_1'>Game Date: " + notes1[i][8] + "</div>" +
                 "<div class='n_form_1'>Game Type: " + notes1[i][3] + "</div>" +
                 "<div class='n_form_1'>Opponent 1: " + notes1[i][5] + "</div>" +
@@ -68,7 +70,8 @@ function buildBubs() {
                 "</div>"
             );
         } else {
-            $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + ")'>" +
+            $('#BigBox').append(
+                "<div class='bubble' onclick='tryThis(" + i + ")'>" +
                 "<div class='n_form_1'>Game Date: " + notes1[i][8] + "</div>" +
                 "<div class='n_form_1'>Game Type: " + notes1[i][3] + "</div>" +
                 "<div class='n_form_1'>Opponent 1: " + notes1[i][5] + "</div>" +
@@ -103,12 +106,12 @@ function tryThis(i) {
         "<div class='text1 border1'>Opponent 2: " + notes1[i][7] + "</div>" +
         "<div class='text1 border1' id='ui_not_homescore'>Your score: " + notes1[i][9] + "</div>" +
         "<div class='text1 border1' id='ui_not_awayscore'>Opponent score: " + notes1[i][10] + "</div>" +
-        "<input class='border1 text1' hidden='true' id='ui_not_homescore_i' placeholder='Your Score'/input>" +
-        "<input class='border1 text1' hidden='true' id='ui_not_awayscore_i' placeholder='Opponent Score'/input>" +
+        "<input class='border1 text1' hidden id='ui_not_homescore_i' placeholder='Your Score'/input>" +
+        "<input class='border1 text1' hidden id='ui_not_awayscore_i' placeholder='Opponent Score'/input>" +
         "<a onclick='fn_not_dispute()' data-role='button' class='border1 text1 button3' id='ui_not_dispute'>Dispute</a>"+
-        "<a onclick='fn_not_cancel()' data-role='button' hidden='true' class='border1 text1 button3' id='ui_not_cancel'>Cancel</a></div>"+
+        "<a onclick='fn_not_cancel()' data-role='button' hidden class='border1 text1 button3' id='ui_not_cancel'>Cancel</a></div>"+
         "<a onclick='fn_not_confirm()' data-role='button' class='border1 text1 button3' id='ui_not_confirm'>Confirm</a></div>"+
-        "<a onclick='fn_not_accept()'  data-role='button' hidden='true' class='border1 text1 button3' id='ut_not_accept'>Accept</a></div>"
+        "<a onclick='fn_not_accept()'  data-role='button' hidden class='border1 text1 button3' id='ut_not_accept'>Accept</a></div>"
     });
 }
 
