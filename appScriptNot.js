@@ -47,7 +47,7 @@ function buildBubs() {
     var lengthi = notes1.length;
     //console.log(lengthi);
     for (i = 0; i < lengthi; i++) {
-        console.log()
+        console.log(notes1[i][2] == 'L')
         if(notes1[i][2] == 'W') {
             $('#BigBox').append("<div class='bubble' onclick='tryThis(" + i + ")'>" +
                 "<div class='n_form_1'>Game Date: " + notes1[i][8] + "</div>" +
