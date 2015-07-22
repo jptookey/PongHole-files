@@ -705,6 +705,7 @@ TODO: NOTIFICATIONS CSS
 	height: 3em;
 	margin-left: 13%;
 	display: inline-block;
+	cursor: pointer;
 
 }
 
