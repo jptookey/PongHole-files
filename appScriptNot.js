@@ -107,8 +107,8 @@ function tryThis(i) {
         "<div class='text1 border1'>Opponent 2: " + notes1[i][7] + "</div>" +
         "<div class='text1 border1' id='ui_not_homescore'>Your score: " + notes1[i][9] + "</div>" +
         "<div class='text1 border1' id='ui_not_awayscore'>Opponent score: " + notes1[i][10] + "</div>" +
-        "<input class='border1 text1' style='display:none' id='ui_not_homescore_i' placeholder='Your Score'/input>" +
-        "<input class='border1 text1' type='hidden' id='ui_not_awayscore_i' placeholder='Opponent Score'/input>" +
+        "<input class='border1 text1' style='display:none' id='ui_not_homescore_i' placeholder='"+notes1[i][9]+"'/input>" +
+        "<input class='border1 text1' style='display:none'  id='ui_not_awayscore_i' placeholder='"+ notes1[i][10] +"'/input>" +
         "<div onclick='fn_not_dispute()' class='border1 text1 button3' id='ui_not_dispute'>Dispute</div>"+
         "<div onclick='fn_not_cancel()' hidden class='border1 text1 button3' id='ui_not_cancel'>Cancel</div>"+
         "<div onclick='fn_not_confirm()'  class='border1 text1 button3' id='ui_not_confirm'>Confirm</div>"+
@@ -120,6 +120,8 @@ function tryThis(i) {
 
 
 function fn_not_dispute() {
+    $('#ui_not_homescore').hide();
+    $('#ui_not_awayscore').hide();
     $('#ui_not_homescore_i').show();
     $('#ui_not_awayscore_i').show();
     $('#ui_not_cancel').show().css("display", "inline-block");
@@ -127,6 +129,17 @@ function fn_not_dispute() {
     $('#ui_not_dispute').hide();
     $('#ui_not_confirm').hide();
 }
+
+function fn_not_cancel() {
+    $('#ui_not_homescore_i').hide();
+    $('#ui_not_awayscore_i').hide();
+    $('#ui_not_cancel').show().css("display", "inline-block");
+    $('#ui_not_accept').show().css("display", "inline-block");
+    $('#ui_not_dispute').show().css("display", "inline-block");
+    $('#ui_not_confirm').show().css("display", "inline-block");
+}
+
+
 
 function fn_not_confirm() {
     $(document).trigger('simpledialog', {'method': 'close'});
