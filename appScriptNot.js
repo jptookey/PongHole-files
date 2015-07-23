@@ -114,15 +114,19 @@ function tryThis(i) {
         "<div onclick='fn_not_confirm()'  class='border1 text1 button3' id='ui_not_confirm'>Confirm</div>"+
         "<div onclick='fn_not_accept()'  hidden class='border1 text1 button3' id='ut_not_accept'>Accept</div>"
     });
-    function fn_not_dispute(){
-        $('#ui_not_homescore_i').show();
-        $('#ui_not_awayscore_i').show();
-        $('#ui_not_cancel').show();
-        $('#ui_not_accept').show();
-        $('#ui_not_dispute').hide();
-        $('#ui_not_confirm').hide();
-    }
+
+
 }
+
+
+function fn_not_dispute(){
+    $('#ui_not_homescore_i').show();
+    $('#ui_not_awayscore_i').show();
+    $('#ui_not_cancel').show();
+    $('#ui_not_accept').show();
+    $('#ui_not_dispute').hide();
+    $('#ui_not_confirm').hide();
+
 
 function fn_not_confirm() {
     $(document).trigger('simpledialog', {'method':'close'});
