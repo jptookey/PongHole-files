@@ -119,18 +119,19 @@ function tryThis(i) {
 }
 
 
-function fn_not_dispute(){
+function fn_not_dispute() {
     $('#ui_not_homescore_i').show();
     $('#ui_not_awayscore_i').show();
     $('#ui_not_cancel').show();
     $('#ui_not_accept').show();
     $('#ui_not_dispute').hide();
     $('#ui_not_confirm').hide();
-
+}
 
 function fn_not_confirm() {
-    $(document).trigger('simpledialog', {'method':'close'});
+    $(document).trigger('simpledialog', {'method': 'close'});
 }
+
 
 //TODO: Add an append function that uses HTML and a function with an 'i' for a for-loop.
 
