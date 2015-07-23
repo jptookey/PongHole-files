@@ -100,13 +100,13 @@ function tryThis(i) {
         blankContent: "<div class='dialogCont'>" +
         "<div class='text1 diagHeader color1' id='diagHeadLarge'>" +
         "<span class='middle'>Please Confirm the Game</span></div>"+
-        "<div class='text1 border1' id='gndate'>Game Played: "+notes1[i][8]+"</div>"+
-        "<div class='text1 border1' id='gngametype'>Game Type: "+notes1[i][3]+"</div>"+
-        "<div class='text1 border1'>Teammate: " + notes1[i][6] + " </div>" +
-        "<div class='text1 border1'>Opponent 1: " + notes1[i][5] + "</div>" +
-        "<div class='text1 border1'>Opponent 2: " + notes1[i][7] + "</div>" +
-        "<div class='text1 border1' id='ui_not_homescore'>Your score: " + notes1[i][9] + "</div>" +
-        "<div class='text1 border1' id='ui_not_awayscore'>Opponent score: " + notes1[i][10] + "</div>" +
+        "<div class='text1' id='gndate'>Game Played: "+notes1[i][8]+"</div>"+
+        "<div class='text1' id='gngametype'>Game Type: "+notes1[i][3]+"</div>"+
+        "<div class='text1'>Teammate: " + notes1[i][6] + " </div>" +
+        "<div class='text1'>Opponent 1: " + notes1[i][5] + "</div>" +
+        "<div class='text1'>Opponent 2: " + notes1[i][7] + "</div>" +
+        "<div class='text1' id='ui_not_homescore'>Your score: " + notes1[i][9] + "</div>" +
+        "<div class='text1' id='ui_not_awayscore'>Opponent score: " + notes1[i][10] + "</div>" +
         "<input class='border1 text1' style='display:none' id='ui_not_homescore_i' placeholder='"+notes1[i][9]+"'/input>" +
         "<input class='border1 text1' style='display:none'  id='ui_not_awayscore_i' placeholder='"+ notes1[i][10] +"'/input>" +
         "<div onclick='fn_not_dispute()' class='border1 text1 button3' id='ui_not_dispute'>Dispute</div>"+
@@ -133,8 +133,8 @@ function fn_not_dispute() {
 function fn_not_cancel() {
     $('#ui_not_homescore_i').hide();
     $('#ui_not_awayscore_i').hide();
-    $('#ui_not_cancel').show().css("display", "inline-block");
-    $('#ui_not_accept').show().css("display", "inline-block");
+    $('#ui_not_cancel').hide();
+    $('#ui_not_accept').hide();
     $('#ui_not_dispute').show().css("display", "inline-block");
     $('#ui_not_confirm').show().css("display", "inline-block");
 }
