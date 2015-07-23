@@ -131,8 +131,8 @@ function fn_not_dispute() {
 }
 
 function fn_not_cancel() {
-    $('#ui_not_homescore_i').hide();
-    $('#ui_not_awayscore_i').hide();
+    $('#ui_not_homescore_i').show().css("display", "inline-block");
+    $('#ui_not_awayscore_i').show().css("display", "inline-block");
     $('#ui_not_cancel').hide();
     $('#ui_not_accept').hide();
     $('#ui_not_dispute').show().css("display", "inline-block");
