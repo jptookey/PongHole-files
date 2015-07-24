@@ -2,7 +2,11 @@ var notes1 = {};
 
 $( document ).ready(function() {
     //localStorage.removeItem("userKey");
+pullnotes();
 
+});
+
+function pullnotes() {
     console.log(localStorage.userKey);
     // var email = localStorage.email;
     if (localStorage.getItem("userKey") === null) {
@@ -35,7 +39,11 @@ $( document ).ready(function() {
         });
 
     }
-});
+}
+
+
+
+
 
 function goback() {
     window.location.assign("/Ponghole.html");
@@ -111,7 +119,7 @@ function tryThis(i) {
         "<input class='border1 text1' style='display:none'  id='ui_not_awayscore_i' placeholder='"+ notes1[i][10] +"'/input>" +
         "<div onclick='fn_not_dispute()' class='border1 text1 button3' id='ui_not_dispute'>Dispute</div>"+
         "<div onclick='fn_not_cancel()' hidden class='border1 text1 button3' id='ui_not_cancel'>Cancel</div>"+
-        "<div onclick='fn_not_confirm()'  class='border1 text1 button3' id='ui_not_confirm'>Confirm</div>"+
+        "<div onclick='fn_not_confirm(" + i + ")'  class='border1 text1 button3' id='ui_not_confirm'>Confirm</div>"+
         "<div onclick='fn_not_accept()'  hidden class='border1 text1 button3' id='ui_not_accept'>Accept</div>"
     });
 
@@ -143,9 +151,43 @@ function fn_not_cancel() {
 
 
 
-function fn_not_confirm() {
-    $(document).trigger('simpledialog', {'method': 'close'});
+function fn_not_confirm(i) {
+    var dpush = {
+        userKey: userKey,
+        gameid: notes1[i][0],
+        confirmflag: 'C'
+    };
+
+    var dpush2 = JSON.stringify(dpush);
+    $.ajax({
+        type: "POST",
+        url: "/scripts/getNotes1.php",
+        data: dpush2,
+        cache: false,
+        dataType: "json",
+        success: function () {
+
+            $(document).trigger('simpledialog', {'method': 'close'});
+            destroybubs();
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR.responseText);
+            console.log(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
 }
+
+function destroybubs() {
+    //TODO: need to remove the created bubbles somehow
+    var childnum = document.getElementById("BigBox");
+    var childct = childnum.childElementCount;
+    console.log(childct);
+
+    pullnotes();
+}
+
 
 
 //TODO: Add an append function that uses HTML and a function with an 'i' for a for-loop.
