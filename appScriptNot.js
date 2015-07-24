@@ -187,9 +187,7 @@ function fn_not_accept() {
 function destroybubs() {
     $(document).trigger('simpledialog', {'method': 'close'});
     //TODO: need to remove the created bubbles somehow
-    var childnum = document.getElementById("BigBox");
-    var childct = childnum.childElementCount;
-    console.log(childct);
+    $("#BigBox").empty();
 
     console.log("I am here");
 
