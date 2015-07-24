@@ -53,9 +53,10 @@ function goback() {
 function buildBubs() {
    // console.log('Notes1');
     var lengthi = notes1.length;
-    //console.log(lengthi);
+    console.log(lengthi);
+    console.log(lengthi > 0);
     if(lengthi > 0) {
-        $('#BigBox').append("<p>Pending Confirmations:</p>")
+        $('#BigBox').append("<div><p>Pending Confirmations:</p></div>")
     };
     for (i = 0; i < lengthi; i++) {
         console.log(notes1[i][2]);
