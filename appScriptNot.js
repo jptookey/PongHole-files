@@ -179,6 +179,11 @@ function fn_not_confirm(i) {
     });
 }
 
+function fn_not_accept() {
+    destroybubs();
+}
+
+
 function destroybubs() {
     //TODO: need to remove the created bubbles somehow
     var childnum = document.getElementById("BigBox");
