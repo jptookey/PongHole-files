@@ -54,6 +54,9 @@ function buildBubs() {
    // console.log('Notes1');
     var lengthi = notes1.length;
     //console.log(lengthi);
+    if(lengthi > 0) {
+        $('#BigBox').append("<p>Pending Confirmations:</p>")
+    };
     for (i = 0; i < lengthi; i++) {
         console.log(notes1[i][2]);
         console.log(notes1[i][2] == 'L');
