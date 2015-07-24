@@ -56,7 +56,7 @@ function buildBubs() {
     console.log(lengthi);
     console.log(lengthi > 0);
     if(lengthi > 0) {
-        $('#BigBox').append("<div><p>Pending Confirmations:</p></div>")
+        $('#BigBox').append("<div class='ui_not_pc'>Pending Confirmations:</div>")
     };
     for (i = 0; i < lengthi; i++) {
         console.log(notes1[i][2]);

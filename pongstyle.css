@@ -716,3 +716,9 @@ TODO: NOTIFICATIONS CSS
 #ui_not_confirm {
 	background-color: green;
 }
+
+.ui_not_pc {
+	margin-left: 3%;
+	height: auto;
+	font-weight: bold;
+}
