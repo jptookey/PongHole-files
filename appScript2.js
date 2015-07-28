@@ -375,6 +375,8 @@ function otherGame() {
     choosePlayers()
 }
 
+//TODO: Need to do an AJAX pull here that will get the gametypes from the selectedIndex value for function otherGame
+
 function pongGame() {
     game1.gameType = '1001';
     teamFlag = 1;
